@@ -9,18 +9,25 @@ import Foundation
 import Combine
 
 import CoreMotion
+import SwiftUI
 
 
 class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDelegate {
+    public static let singleton: MotionManager = MotionManager()
+    
+    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
+    
+    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+    
+    var timeInterval: Double = 0
+    
+    private var oldTimestamp: Double = -1
     
     private let manager: CMHeadphoneMotionManager = CMHeadphoneMotionManager()
     
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration(x: 0, y: 0, z: 0))
-    
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate(x: 0, y: 0, z: 0))
     
     
-    override init() {
+    private override init() {
         super.init()
         self.manager.delegate = self
     }
@@ -47,6 +54,12 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         self.manager.startDeviceMotionUpdates(to: OperationQueue.main) { motion, error in
             if let motion {
+                let timestamp = CACurrentMediaTime()
+                self.timeInterval = self.oldTimestamp < 0 ? 0 : timestamp - self.oldTimestamp
+                self.oldTimestamp = timestamp
+                
+                print("time since last update: \(self.timeInterval)")
+                
                 let userAccel = motion.userAcceleration
                 self.userAcceleration = Acceleration(x: userAccel.x, y: userAccel.y, z: userAccel.z)
                 let rotationRate = motion.rotationRate
@@ -61,6 +74,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     func stop() {
         self.manager.stopDeviceMotionUpdates()
+        self.oldTimestamp = -1
     }
     
     // MARK: - Delegate Methods

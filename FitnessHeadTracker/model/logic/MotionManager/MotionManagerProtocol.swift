@@ -17,6 +17,9 @@ protocol MotionManagerProtocol: ObservableObject {
     var rotationRate: RotationRate { get }
     var _rotationRate: CurrentValueSubject<RotationRate, Never> { get }
     
+    /// The time passed since the last update to the motion
+    var timeInterval: Double { get }
+    
     /// Start monitoring the motion
     func start()
     

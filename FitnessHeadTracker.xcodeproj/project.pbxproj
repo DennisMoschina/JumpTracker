@@ -20,6 +20,10 @@
 		950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3133290A7F2E00874EBF /* MotionViewModel.swift */; };
 		950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3135290A8A0E00874EBF /* MotionManagerProtocol.swift */; };
 		950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3138290A8D3C00874EBF /* MotionManagerMock.swift */; };
+		950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D313A290A93A500874EBF /* DistanceTrackerProtocol.swift */; };
+		950D313D290A93D400874EBF /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D313C290A93D400874EBF /* Distance.swift */; };
+		950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */; };
+		950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		950D3133290A7F2E00874EBF /* MotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewModel.swift; sourceTree = "<group>"; };
 		950D3135290A8A0E00874EBF /* MotionManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManagerProtocol.swift; sourceTree = "<group>"; };
 		950D3138290A8D3C00874EBF /* MotionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManagerMock.swift; sourceTree = "<group>"; };
+		950D313A290A93A500874EBF /* DistanceTrackerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTrackerProtocol.swift; sourceTree = "<group>"; };
+		950D313C290A93D400874EBF /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBasedDistanceTracker.swift; sourceTree = "<group>"; };
+		950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTrackerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,8 +170,8 @@
 		950D31292909EB5E00874EBF /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				950D3135290A8A0E00874EBF /* MotionManagerProtocol.swift */,
-				950D312A2909EC1F00874EBF /* MotionManager.swift */,
+				950D313E290A994400874EBF /* DistanceTracker */,
+				950D313F290A995100874EBF /* MotionManager */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -181,6 +189,7 @@
 			children = (
 				950D312E290A7E6400874EBF /* Acceleration.swift */,
 				950D3130290A7EB000874EBF /* RotationRate.swift */,
+				950D313C290A93D400874EBF /* Distance.swift */,
 			);
 			path = motion;
 			sourceTree = "<group>";
@@ -189,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				950D3133290A7F2E00874EBF /* MotionViewModel.swift */,
+				950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -199,6 +209,24 @@
 				950D3138290A8D3C00874EBF /* MotionManagerMock.swift */,
 			);
 			path = mocks;
+			sourceTree = "<group>";
+		};
+		950D313E290A994400874EBF /* DistanceTracker */ = {
+			isa = PBXGroup;
+			children = (
+				950D313A290A93A500874EBF /* DistanceTrackerProtocol.swift */,
+				950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */,
+			);
+			path = DistanceTracker;
+			sourceTree = "<group>";
+		};
+		950D313F290A995100874EBF /* MotionManager */ = {
+			isa = PBXGroup;
+			children = (
+				950D3135290A8A0E00874EBF /* MotionManagerProtocol.swift */,
+				950D312A2909EC1F00874EBF /* MotionManager.swift */,
+			);
+			path = MotionManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,11 +359,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */,
 				950D31002909E5D000874EBF /* ContentView.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
+				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
 				950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */,
+				950D313D290A93D400874EBF /* Distance.swift in Sources */,
 				950D3131290A7EB000874EBF /* RotationRate.swift in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
+				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
 				950D312F290A7E6400874EBF /* Acceleration.swift in Sources */,
