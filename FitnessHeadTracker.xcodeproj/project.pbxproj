@@ -24,6 +24,11 @@
 		950D313D290A93D400874EBF /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D313C290A93D400874EBF /* Distance.swift */; };
 		950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */; };
 		950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */; };
+		950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3144290AADAB00874EBF /* AccelerationChart.swift */; };
+		950D3148290AE72A00874EBF /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3147290AE72A00874EBF /* Filter.swift */; };
+		950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3149290AE94A00874EBF /* EwmaFilter.swift */; };
+		950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */; };
+		950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314D290B32F400874EBF /* DeadBandFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		950D313C290A93D400874EBF /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBasedDistanceTracker.swift; sourceTree = "<group>"; };
 		950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTrackerViewModel.swift; sourceTree = "<group>"; };
+		950D3144290AADAB00874EBF /* AccelerationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationChart.swift; sourceTree = "<group>"; };
+		950D3147290AE72A00874EBF /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		950D3149290AE94A00874EBF /* EwmaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwmaFilter.swift; sourceTree = "<group>"; };
+		950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredMotionManager.swift; sourceTree = "<group>"; };
+		950D314D290B32F400874EBF /* DeadBandFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadBandFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
+				950D3144290AADAB00874EBF /* AccelerationChart.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 		950D31292909EB5E00874EBF /* logic */ = {
 			isa = PBXGroup;
 			children = (
+				950D3146290AE71700874EBF /* filter */,
 				950D313E290A994400874EBF /* DistanceTracker */,
 				950D313F290A995100874EBF /* MotionManager */,
 			);
@@ -225,8 +237,19 @@
 			children = (
 				950D3135290A8A0E00874EBF /* MotionManagerProtocol.swift */,
 				950D312A2909EC1F00874EBF /* MotionManager.swift */,
+				950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */,
 			);
 			path = MotionManager;
+			sourceTree = "<group>";
+		};
+		950D3146290AE71700874EBF /* filter */ = {
+			isa = PBXGroup;
+			children = (
+				950D3147290AE72A00874EBF /* Filter.swift */,
+				950D3149290AE94A00874EBF /* EwmaFilter.swift */,
+				950D314D290B32F400874EBF /* DeadBandFilter.swift */,
+			);
+			path = filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,9 +388,14 @@
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
 				950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */,
 				950D313D290A93D400874EBF /* Distance.swift in Sources */,
+				950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */,
 				950D3131290A7EB000874EBF /* RotationRate.swift in Sources */,
+				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
+				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
 				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
+				950D3148290AE72A00874EBF /* Filter.swift in Sources */,
+				950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
 				950D312F290A7E6400874EBF /* Acceleration.swift in Sources */,
