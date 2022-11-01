@@ -10,9 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var motionViewModel = MotionViewModel(motionManager: FilteredMotionManager(motionManager: MotionManager.singleton, accelFilterX: DeadBandFilter(deadBand: 0.008), accelFilterY: EwmaFilter(alpha: 0.3), accelFilterZ: EwmaFilter(alpha: 0.3)))
     @ObservedObject var distanceTrackerViewModel = MotionBasedDistanceTracker(motionManager: MotionManager.singleton)
+    @ObservedObject var speedViewModel: SpeedViewModel = SpeedViewModel(speedCalculator: MotionBasedSpeedCalculator(motionManager: MotionManager.singleton))
     
     var body: some View {
         VStack {
+            HStack {
+                Text("Current Speed")
+                Text("\(self.speedViewModel.speed.x, specifier: "%.2f")")
+                Text("\(self.speedViewModel.speed.y, specifier: "%.2f")")
+                Text("\(self.speedViewModel.speed.z, specifier: "%.2f")")
+            }
             HStack {
                 Text("Distance travelled")
                 Text("\(self.distanceTrackerViewModel.distance.x, specifier: "%.2f")")
@@ -40,6 +47,7 @@ struct ContentView: View {
             
             Button {
                 self.motionViewModel.startMonitoring()
+                
             } label: {
                 Text("Start Motion Monitoring")
             }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Distance: AdditiveArithmetic {
-    static var zero: Distance = Distance(x: 0, y: 0, z: 0)
+    internal static var zero: Distance = Distance(x: 0, y: 0, z: 0)
     
     var x: Double
     var y: Double

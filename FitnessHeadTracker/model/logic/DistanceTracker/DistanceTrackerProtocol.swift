@@ -22,6 +22,6 @@ extension DistanceTrackerProtocol {
     }
     
     func reset() {
-        self.distance = Distance(x: 0, y: 0, z: 0)
+        self.distance = Distance.zero
     }
 }

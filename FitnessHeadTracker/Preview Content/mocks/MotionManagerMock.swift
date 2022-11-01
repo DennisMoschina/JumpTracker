@@ -27,12 +27,13 @@ class MotionManagerMock: NSObject, MotionManagerProtocol {
         self.active = false
     }
     
-    func update(acceleration: Acceleration = Acceleration(), rotationRate: RotationRate = RotationRate()) {
+    func update(acceleration: Acceleration = Acceleration(), rotationRate: RotationRate = RotationRate(), timeInterval: Double = 0.1) {
         if !self.active {
             return
         }
         
         self.userAcceleration = acceleration
         self.rotationRate = rotationRate
+        self.timeInterval = timeInterval
     }
 }
