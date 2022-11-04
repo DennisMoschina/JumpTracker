@@ -58,7 +58,7 @@ struct ContentView: View {
                 Text("Stop")
             }
             
-            Spacer()
+            HeadingView(motionViewModel: self.motionViewModel)
             
             AccelerationChart(motionViewModel: self.motionViewModel)
         }

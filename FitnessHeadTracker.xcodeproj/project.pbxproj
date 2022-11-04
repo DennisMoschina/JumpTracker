@@ -12,8 +12,10 @@
 		9504E89C29106D3A0009D563 /* MotionBasedSpeedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E89B29106D3A0009D563 /* MotionBasedSpeedCalculator.swift */; };
 		9504E89E2910715F0009D563 /* SpeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E89D2910715F0009D563 /* SpeedViewModel.swift */; };
 		9504E8A02910853B0009D563 /* SpeedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E89F2910853B0009D563 /* SpeedCalculatorTest.swift */; };
-		9504E8A3291160A50009D563 /* HeadingCalculatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E8A2291160A50009D563 /* HeadingCalculatorProtocol.swift */; };
 		9504E8A5291161890009D563 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E8A4291161890009D563 /* Heading.swift */; };
+		9504E8A9291165F70009D563 /* HeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E8A8291165F70009D563 /* HeadingView.swift */; };
+		9504E8AB2911660E0009D563 /* HeadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E8AA2911660E0009D563 /* HeadingViewModel.swift */; };
+		9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504E8AD291169F30009D563 /* MotionSlidersView.swift */; };
 		950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D30FD2909E5D000874EBF /* FitnessHeadTrackerApp.swift */; };
 		950D31002909E5D000874EBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D30FF2909E5D000874EBF /* ContentView.swift */; };
 		950D31022909E5D200874EBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950D31012909E5D200874EBF /* Assets.xcassets */; };
@@ -36,6 +38,9 @@
 		950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3149290AE94A00874EBF /* EwmaFilter.swift */; };
 		950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */; };
 		950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314D290B32F400874EBF /* DeadBandFilter.swift */; };
+		95643EF12912E037009C2628 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* Quaternion.swift */; };
+		95643EF32912E097009C2628 /* Attitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* Attitude.swift */; };
+		95643EF52912E0FA009C2628 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* RotationMatrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +66,10 @@
 		9504E89B29106D3A0009D563 /* MotionBasedSpeedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBasedSpeedCalculator.swift; sourceTree = "<group>"; };
 		9504E89D2910715F0009D563 /* SpeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedViewModel.swift; sourceTree = "<group>"; };
 		9504E89F2910853B0009D563 /* SpeedCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedCalculatorTest.swift; sourceTree = "<group>"; };
-		9504E8A2291160A50009D563 /* HeadingCalculatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingCalculatorProtocol.swift; sourceTree = "<group>"; };
 		9504E8A4291161890009D563 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
+		9504E8A8291165F70009D563 /* HeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingView.swift; sourceTree = "<group>"; };
+		9504E8AA2911660E0009D563 /* HeadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingViewModel.swift; sourceTree = "<group>"; };
+		9504E8AD291169F30009D563 /* MotionSlidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionSlidersView.swift; sourceTree = "<group>"; };
 		950D30FA2909E5D000874EBF /* FitnessHeadTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessHeadTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950D30FD2909E5D000874EBF /* FitnessHeadTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessHeadTrackerApp.swift; sourceTree = "<group>"; };
 		950D30FF2909E5D000874EBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +95,9 @@
 		950D3149290AE94A00874EBF /* EwmaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwmaFilter.swift; sourceTree = "<group>"; };
 		950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredMotionManager.swift; sourceTree = "<group>"; };
 		950D314D290B32F400874EBF /* DeadBandFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadBandFilter.swift; sourceTree = "<group>"; };
+		95643EF02912E037009C2628 /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
+		95643EF22912E097009C2628 /* Attitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attitude.swift; sourceTree = "<group>"; };
+		95643EF42912E0FA009C2628 /* RotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMatrix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +134,12 @@
 			path = SpeedCalculator;
 			sourceTree = "<group>";
 		};
-		9504E8A12911608E0009D563 /* HeadingCalculator */ = {
+		9504E8AC291169D50009D563 /* PreviewManipulationViews */ = {
 			isa = PBXGroup;
 			children = (
-				9504E8A2291160A50009D563 /* HeadingCalculatorProtocol.swift */,
+				9504E8AD291169F30009D563 /* MotionSlidersView.swift */,
 			);
-			path = HeadingCalculator;
+			path = PreviewManipulationViews;
 			sourceTree = "<group>";
 		};
 		950D30F12909E5D000874EBF = {
@@ -168,6 +178,7 @@
 		950D31032909E5D200874EBF /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				9504E8AC291169D50009D563 /* PreviewManipulationViews */,
 				950D3137290A8D2C00874EBF /* mocks */,
 				950D31042909E5D200874EBF /* Preview Assets.xcassets */,
 			);
@@ -197,6 +208,7 @@
 			children = (
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
 				950D3144290AADAB00874EBF /* AccelerationChart.swift */,
+				9504E8A8291165F70009D563 /* HeadingView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -216,7 +228,6 @@
 				950D3146290AE71700874EBF /* filter */,
 				9504E89629106C540009D563 /* SpeedCalculator */,
 				950D313E290A994400874EBF /* DistanceTracker */,
-				9504E8A12911608E0009D563 /* HeadingCalculator */,
 				950D313F290A995100874EBF /* MotionManager */,
 			);
 			path = logic;
@@ -238,6 +249,9 @@
 				950D313C290A93D400874EBF /* Distance.swift */,
 				9504E89929106C9C0009D563 /* Speed.swift */,
 				9504E8A4291161890009D563 /* Heading.swift */,
+				95643EF02912E037009C2628 /* Quaternion.swift */,
+				95643EF22912E097009C2628 /* Attitude.swift */,
+				95643EF42912E0FA009C2628 /* RotationMatrix.swift */,
 			);
 			path = motion;
 			sourceTree = "<group>";
@@ -248,6 +262,7 @@
 				950D3133290A7F2E00874EBF /* MotionViewModel.swift */,
 				950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */,
 				9504E89D2910715F0009D563 /* SpeedViewModel.swift */,
+				9504E8AA2911660E0009D563 /* HeadingViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -421,6 +436,7 @@
 			files = (
 				9504E89E2910715F0009D563 /* SpeedViewModel.swift in Sources */,
 				950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */,
+				95643EF52912E0FA009C2628 /* RotationMatrix.swift in Sources */,
 				950D31002909E5D000874EBF /* ContentView.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
@@ -435,11 +451,15 @@
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
 				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
 				950D3148290AE72A00874EBF /* Filter.swift in Sources */,
+				9504E8A9291165F70009D563 /* HeadingView.swift in Sources */,
 				9504E8A5291161890009D563 /* Heading.swift in Sources */,
-				9504E8A3291160A50009D563 /* HeadingCalculatorProtocol.swift in Sources */,
+				95643EF32912E097009C2628 /* Attitude.swift in Sources */,
 				950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
+				9504E8AB2911660E0009D563 /* HeadingViewModel.swift in Sources */,
+				9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */,
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
+				95643EF12912E037009C2628 /* Quaternion.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
 				950D312F290A7E6400874EBF /* Acceleration.swift in Sources */,
 			);

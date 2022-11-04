@@ -13,11 +13,14 @@ import SwiftUI
 
 
 class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDelegate {
+    
     public static let singleton: MotionManager = MotionManager()
     
     var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
     
     var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+
+    var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
     
     var timeInterval: Double = 0
     
@@ -64,6 +67,8 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
                 self.userAcceleration = Acceleration(x: userAccel.x, y: userAccel.y, z: userAccel.z)
                 let rotationRate = motion.rotationRate
                 self.rotationRate = RotationRate(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
+                let attitude = motion.attitude
+                self.attitude = Attitude(roll: attitude.roll, pitch: attitude.pitch, yaw: attitude.yaw)
             }
             if let error {
                 print(error)

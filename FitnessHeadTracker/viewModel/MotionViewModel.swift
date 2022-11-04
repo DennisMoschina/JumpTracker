@@ -11,6 +11,7 @@ import Combine
 class MotionViewModel: ObservableObject {
     @Published var userAcceleration: Acceleration = Acceleration(x: 0, y: 0, z: 0)
     @Published var rotationRate: RotationRate = RotationRate(x: 0, y: 0, z: 0)
+    @Published var attitude: Attitude = Attitude()
     
     @Published var historicUserAccel: [(acceleration: Acceleration, timestamp: Double)] = Array(repeating: (Acceleration(), 0.1), count: 30)
     
@@ -18,7 +19,7 @@ class MotionViewModel: ObservableObject {
     
     var userAccelerationCancellable: AnyCancellable?
     var rotationRateCancellable: AnyCancellable?
-    var headingCancellable: AnyCancellable?
+    var attitudeCancellable: AnyCancellable?
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
@@ -29,6 +30,9 @@ class MotionViewModel: ObservableObject {
         })
         self.rotationRateCancellable = motionManager._rotationRate.sink(receiveValue: { rotationRate in
             self.rotationRate = rotationRate
+        })
+        self.attitudeCancellable = motionManager._attitude.sink(receiveValue: { attitude in
+            self.attitude = attitude
         })
     }
     

@@ -9,9 +9,12 @@ import Foundation
 import Combine
 
 class MotionManagerMock: NSObject, MotionManagerProtocol {
+    
     var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
     
     var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+    
+    var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
 
     // TODO: use variable interval
     var timeInterval: Double = 0.1
@@ -27,13 +30,14 @@ class MotionManagerMock: NSObject, MotionManagerProtocol {
         self.active = false
     }
     
-    func update(acceleration: Acceleration = Acceleration(), rotationRate: RotationRate = RotationRate(), timeInterval: Double = 0.1) {
+    func update(acceleration: Acceleration = Acceleration(), rotationRate: RotationRate = RotationRate(), attitude: Attitude = Attitude(), timeInterval: Double = 0.1) {
         if !self.active {
             return
         }
         
+        self.timeInterval = timeInterval
         self.userAcceleration = acceleration
         self.rotationRate = rotationRate
-        self.timeInterval = timeInterval
+        self.attitude = attitude
     }
 }
