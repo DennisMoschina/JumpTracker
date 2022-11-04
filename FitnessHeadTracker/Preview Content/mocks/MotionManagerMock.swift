@@ -16,7 +16,6 @@ class MotionManagerMock: NSObject, MotionManagerProtocol {
     
     var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
 
-    // TODO: use variable interval
     var timeInterval: Double = 0.1
     
     private var active: Bool = false
