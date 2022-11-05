@@ -75,7 +75,7 @@ extension CMAcceleration: Acceleration {
     }
 }
 
-extension CMRotationRate {
+extension CMRotationRate: RotationRate {
     init(_ rotationRate: SIMDRotationRate) {
         self.init(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
     }
@@ -85,13 +85,13 @@ extension CMRotationRate {
     }
 }
 
-extension CMQuaternion {
+extension CMQuaternion: Quaternion {
     init(_ quaternion: SIMDQuaternion) {
         self.init(x: quaternion.x, y: quaternion.y, z: quaternion.z, w: quaternion.w)
     }
 }
 
-extension CMRotationMatrix {
+extension CMRotationMatrix: RotationMatrix {
     init(_ rotationMatrix: SIMDRotationMatrix) {
         self.init(m11: rotationMatrix.m11, m12: rotationMatrix.m12, m13: rotationMatrix.m13,
                   m21: rotationMatrix.m21, m22: rotationMatrix.m22, m23: rotationMatrix.m23,
@@ -103,6 +103,10 @@ extension CMRotationMatrix {
                   m21: r.columns.0[1], m22: r.columns.1[1], m23: r.columns.2[1],
                   m31: r.columns.0[2], m32: r.columns.1[2], m33: r.columns.2[2])
     }
+}
+
+extension CMAttitude: Attitude {
+    
 }
 
 // MARK: - vector and matrices

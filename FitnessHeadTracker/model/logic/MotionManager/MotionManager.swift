@@ -63,12 +63,9 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
                 
                 print("time since last update: \(self.timeInterval)")
                 
-                let userAccel = motion.userAcceleration
-                self.userAcceleration = SIMDAcceleration(x: userAccel.x, y: userAccel.y, z: userAccel.z)
-                let rotationRate = motion.rotationRate
-                self.rotationRate = SIMDRotationRate(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
-                let attitude = motion.attitude
-                self.attitude = SIMDAttitude(roll: attitude.roll, pitch: attitude.pitch, yaw: attitude.yaw)
+                self.userAcceleration = motion.userAcceleration
+                self.rotationRate = motion.rotationRate
+                self.attitude = motion.attitude
             }
             if let error {
                 print(error)
