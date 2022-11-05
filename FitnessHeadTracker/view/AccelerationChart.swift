@@ -84,7 +84,7 @@ struct AccelerationChart_Previews: PreviewProvider {
                 }
             }
             MotionSlidersView { x, y, z in
-                self.motionManager.update(acceleration: Acceleration(x: x, y: y, z: z))
+                self.motionManager.update(acceleration: SIMDAcceleration(x: x, y: y, z: z))
             }
         }
     }

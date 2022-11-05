@@ -2,29 +2,22 @@
 //  Attitude.swift
 //  FitnessHeadTracker
 //
-//  Created by Dennis Moschina on 02.11.22.
+//  Created by Dennis Moschina on 04.11.22.
 //
 
 import Foundation
 
-struct Attitude {
-    var roll: Double
-    var pitch: Double
-    var yaw: Double
+protocol Attitude {
+    associatedtype R: RotationMatrix
+    associatedtype Q: Quaternion
     
-    var rotationMatrix: RotationMatrix {
-        // TODO: impplement
-        return RotationMatrix()
-    }
+    var roll: Double { get }
+    var pitch: Double { get }
+    var yaw: Double { get }
     
-    var quaternion: Quaternion {
-        // TODO: impplement
-        return Quaternion()
-    }
+    var rotationMatrix: R { get }
     
-    init(roll: Double = 0, pitch: Double = 0, yaw: Double = 0) {
-        self.roll = roll
-        self.pitch = pitch
-        self.yaw = yaw
-    }
+    var quaternion: Q { get }
+    
+    func multiply(byInverseOf attitude: Self)
 }

@@ -2,20 +2,13 @@
 //  RotationRate.swift
 //  FitnessHeadTracker
 //
-//  Created by Dennis Moschina on 27.10.22.
+//  Created by Dennis Moschina on 04.11.22.
 //
 
 import Foundation
 
-
-struct RotationRate {
-    var x: Double
-    var y: Double
-    var z: Double
-    
-    init(x: Double = 0, y: Double = 0, z: Double = 0) {
-        self.x = x
-        self.y = y
-        self.z = z
-    }
+protocol RotationRate {
+    var x: Double { get set }
+    var y: Double { get set }
+    var z: Double { get set }
 }

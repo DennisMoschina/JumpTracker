@@ -14,7 +14,7 @@ class MotionBasedDistanceTracker: DistanceTrackerProtocol {
     private var motionManager: any MotionManagerProtocol
     
     private var userAccelerationCancellable: AnyCancellable?
-    private var oldAcceleration: Acceleration = Acceleration()
+    private var oldAcceleration: Acceleration = SIMDAcceleration()
     
     
     init(motionManager: any MotionManagerProtocol) {

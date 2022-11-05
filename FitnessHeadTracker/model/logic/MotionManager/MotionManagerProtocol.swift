@@ -17,8 +17,8 @@ protocol MotionManagerProtocol: ObservableObject {
     var rotationRate: RotationRate { get }
     var _rotationRate: CurrentValueSubject<RotationRate, Never> { get }
     
-    var attitude: Attitude { get }
-    var _attitude: CurrentValueSubject<Attitude, Never> { get }
+    var attitude: any Attitude { get }
+    var _attitude: CurrentValueSubject<any Attitude, Never> { get }
     
     /// The time passed since the last update to the motion
     var timeInterval: Double { get }
@@ -41,7 +41,7 @@ extension MotionManagerProtocol {
         set { self._rotationRate.value = newValue }
     }
     
-    var attitude: Attitude {
+    var attitude: any Attitude {
         get { self._attitude.value }
         set { self._attitude.value = newValue }
     }

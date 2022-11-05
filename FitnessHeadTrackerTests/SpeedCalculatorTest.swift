@@ -35,7 +35,7 @@ final class SpeedCalculatorTest: XCTestCase {
         XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
         
         for _ in 0..<5 {
-            self.motionManagerMock?.update(acceleration: Acceleration(x: 0.3))
+            self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3))
         }
         
         XCTAssertEqual(Speed(x: 0.15), self.speedCalculator?.speed)
@@ -44,11 +44,11 @@ final class SpeedCalculatorTest: XCTestCase {
     func testCalculateSpeedDiscrete() throws {
         XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
         
-        self.motionManagerMock?.update(acceleration: Acceleration(x: 0.1))
-        self.motionManagerMock?.update(acceleration: Acceleration(x: 0.3))
-        self.motionManagerMock?.update(acceleration: Acceleration(x: 0.1))
-        self.motionManagerMock?.update(acceleration: Acceleration(x: -0.05))
-        self.motionManagerMock?.update(acceleration: Acceleration(x: 0.2))
+        self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.1))
+        self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3))
+        self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.1))
+        self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: -0.05))
+        self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.2))
         
         XCTAssertEqual(Speed(x: 0.065), self.speedCalculator?.speed)
     }
@@ -57,7 +57,7 @@ final class SpeedCalculatorTest: XCTestCase {
         XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
         
         for _ in 0..<100 {
-            self.motionManagerMock?.update(acceleration: Acceleration(x: 0.3), timeInterval: 0.01)
+            self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3), timeInterval: 0.01)
         }
         
         let speed: Speed = self.speedCalculator!.speed

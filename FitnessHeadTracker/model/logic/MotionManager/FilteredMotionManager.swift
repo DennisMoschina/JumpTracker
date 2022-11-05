@@ -11,11 +11,11 @@ import Combine
 
 class FilteredMotionManager: MotionManagerProtocol {
     
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
+    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(SIMDAcceleration())
     
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(SIMDRotationRate())
 
-    var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
+    var _attitude: CurrentValueSubject<any Attitude, Never> = CurrentValueSubject(SIMDAttitude())
     
     var timeInterval: Double {
         self.motionManager.timeInterval
@@ -39,7 +39,7 @@ class FilteredMotionManager: MotionManagerProtocol {
         self.accelFilterZ = accelFilterZ
         
         self.userAccelerationCancellable = motionManager._userAcceleration.sink(receiveValue: { acceleration in
-            self.userAcceleration = Acceleration(
+            self.userAcceleration = SIMDAcceleration(
                 x: self.accelFilterX.filter(acceleration.x),
                 y: self.accelFilterY.filter(acceleration.y),
                 z: self.accelFilterZ.filter(acceleration.z)

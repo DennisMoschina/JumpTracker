@@ -16,11 +16,11 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     public static let singleton: MotionManager = MotionManager()
     
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
+    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(SIMDAcceleration())
     
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(SIMDRotationRate())
 
-    var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
+    var _attitude: CurrentValueSubject<any Attitude, Never> = CurrentValueSubject(SIMDAttitude())
     
     var timeInterval: Double = 0
     
@@ -64,11 +64,11 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
                 print("time since last update: \(self.timeInterval)")
                 
                 let userAccel = motion.userAcceleration
-                self.userAcceleration = Acceleration(x: userAccel.x, y: userAccel.y, z: userAccel.z)
+                self.userAcceleration = SIMDAcceleration(x: userAccel.x, y: userAccel.y, z: userAccel.z)
                 let rotationRate = motion.rotationRate
-                self.rotationRate = RotationRate(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
+                self.rotationRate = SIMDRotationRate(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z)
                 let attitude = motion.attitude
-                self.attitude = Attitude(roll: attitude.roll, pitch: attitude.pitch, yaw: attitude.yaw)
+                self.attitude = SIMDAttitude(roll: attitude.roll, pitch: attitude.pitch, yaw: attitude.yaw)
             }
             if let error {
                 print(error)

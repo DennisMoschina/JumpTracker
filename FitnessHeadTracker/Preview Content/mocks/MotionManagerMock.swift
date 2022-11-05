@@ -10,11 +10,11 @@ import Combine
 
 class MotionManagerMock: NSObject, MotionManagerProtocol {
     
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(Acceleration())
+    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(SIMDAcceleration())
     
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(RotationRate())
+    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(SIMDRotationRate())
     
-    var _attitude: CurrentValueSubject<Attitude, Never> = CurrentValueSubject(Attitude())
+    var _attitude: CurrentValueSubject<any Attitude, Never> = CurrentValueSubject(SIMDAttitude())
 
     var timeInterval: Double = 0.1
     
@@ -29,7 +29,7 @@ class MotionManagerMock: NSObject, MotionManagerProtocol {
         self.active = false
     }
     
-    func update(acceleration: Acceleration = Acceleration(), rotationRate: RotationRate = RotationRate(), attitude: Attitude = Attitude(), timeInterval: Double = 0.1) {
+    func update(acceleration: Acceleration = SIMDAcceleration(), rotationRate: RotationRate = SIMDRotationRate(), attitude: any Attitude = SIMDAttitude(), timeInterval: Double = 0.1) {
         if !self.active {
             return
         }

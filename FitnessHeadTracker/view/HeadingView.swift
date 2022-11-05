@@ -59,7 +59,7 @@ struct HeadingView_Previews: PreviewProvider {
                 }
             }
             MotionSlidersView { x, y, z in
-                self.motionManager.update(attitude: Attitude(roll: x, pitch: y, yaw: z))
+                self.motionManager.update(attitude: SIMDAttitude(roll: x, pitch: y, yaw: z))
             }
         }
     }

@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class MotionViewModel: ObservableObject {
-    @Published var userAcceleration: Acceleration = Acceleration(x: 0, y: 0, z: 0)
-    @Published var rotationRate: RotationRate = RotationRate(x: 0, y: 0, z: 0)
-    @Published var attitude: Attitude = Attitude()
+    @Published var userAcceleration: Acceleration = SIMDAcceleration(x: 0, y: 0, z: 0)
+    @Published var rotationRate: RotationRate = SIMDRotationRate(x: 0, y: 0, z: 0)
+    @Published var attitude: any Attitude = SIMDAttitude()
     
-    @Published var historicUserAccel: [(acceleration: Acceleration, timestamp: Double)] = Array(repeating: (Acceleration(), 0.1), count: 30)
+    @Published var historicUserAccel: [(acceleration: Acceleration, timestamp: Double)] = Array(repeating: (SIMDAcceleration(), 0.1), count: 30)
     
     var motionManager: any MotionManagerProtocol
     
