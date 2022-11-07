@@ -36,6 +36,8 @@
 		950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3149290AE94A00874EBF /* EwmaFilter.swift */; };
 		950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */; };
 		950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314D290B32F400874EBF /* DeadBandFilter.swift */; };
+		9517473F29199B66007C3308 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517473E29199B66007C3308 /* PersistenceController.swift */; };
+		9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9517474029199B6E007C3308 /* Main.xcdatamodeld */; };
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
@@ -99,6 +101,8 @@
 		950D3149290AE94A00874EBF /* EwmaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwmaFilter.swift; sourceTree = "<group>"; };
 		950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredMotionManager.swift; sourceTree = "<group>"; };
 		950D314D290B32F400874EBF /* DeadBandFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadBandFilter.swift; sourceTree = "<group>"; };
+		9517473E29199B66007C3308 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		9517474129199B6E007C3308 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				950D3132290A7EF500874EBF /* viewModel */,
 				950D30FD2909E5D000874EBF /* FitnessHeadTrackerApp.swift */,
 				950D31012909E5D200874EBF /* Assets.xcassets */,
+				9517473E29199B66007C3308 /* PersistenceController.swift */,
+				9517474029199B6E007C3308 /* Main.xcdatamodeld */,
 				950D31032909E5D200874EBF /* Preview Content */,
 			);
 			path = FitnessHeadTracker;
@@ -478,6 +484,7 @@
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
 				9504E89C29106D3A0009D563 /* MotionBasedSpeedCalculator.swift in Sources */,
 				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
+				9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
 				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
 				950D3148290AE72A00874EBF /* Filter.swift in Sources */,
@@ -489,6 +496,7 @@
 				950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */,
+				9517473F29199B66007C3308 /* PersistenceController.swift in Sources */,
 				95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */,
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,
@@ -821,6 +829,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9517474029199B6E007C3308 /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9517474129199B6E007C3308 /* Main.xcdatamodel */,
+			);
+			currentVersion = 9517474129199B6E007C3308 /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 950D30F22909E5D000874EBF /* Project object */;
 }

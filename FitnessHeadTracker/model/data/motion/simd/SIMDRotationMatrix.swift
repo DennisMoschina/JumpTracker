@@ -52,7 +52,8 @@ struct SIMDRotationMatrix: RotationMatrix {
         self.simdVec = simdVec
     }
 
-    init(m11: Double = 0, m12: Double = 0, m13: Double = 0, m21: Double = 0, m22: Double = 0, m23: Double = 0, m31: Double = 0, m32: Double = 0, m33: Double = 0) {
+
+    init(m11: Double = 1, m12: Double = 0, m13: Double = 0, m21: Double = 0, m22: Double = 1, m23: Double = 0, m31: Double = 0, m32: Double = 0, m33: Double = 1) {
         self.init(simdVec: double3x3(rows: [
             simd_double3(m11, m12, m13),
             simd_double3(m21, m22, m23),

@@ -28,8 +28,9 @@ struct ContentView: View {
             }
             Button {
                 self.distanceTrackerViewModel.reset()
+                self.speedViewModel.reset()
             } label: {
-                Text("Reset distance")
+                Text("Reset")
             }
 
             HStack {

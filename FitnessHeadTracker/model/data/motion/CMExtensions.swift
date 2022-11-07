@@ -62,6 +62,35 @@ extension SIMDAttitude {
     }
 }
 
+// MARK: - CoreData data types
+
+extension CDAttitude: Attitude {
+    typealias R = SIMDRotationMatrix
+    typealias Q = SIMDQuaternion
+
+
+    var rotationMatrix: SIMDRotationMatrix {
+        // TODO: implement
+        return SIMDRotationMatrix()
+    }
+    
+    var quaternion: SIMDQuaternion {
+        // TODO: implement
+        return SIMDQuaternion()
+    }
+    
+    func multiply(byInverseOf attitude: CDAttitude) {
+        // TODO: implement
+    }
+}
+
+extension CDAcceleration: Acceleration {
+    
+}
+
+extension CDRotationRate: RotationRate {
+    
+}
 
 // MARK: - Core Motion Data types
 
