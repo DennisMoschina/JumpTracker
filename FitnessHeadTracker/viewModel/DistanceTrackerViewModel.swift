@@ -8,7 +8,7 @@
 import Combine
 
 class DistanceTrackerViewModel: ObservableObject {
-    @Published var distance: Distance = Distance()
+    @Published var distance: any Distance = SIMDDistance()
     
     private let distanceTracker: any DistanceTrackerProtocol
     private var distanceCancellable: AnyCancellable?

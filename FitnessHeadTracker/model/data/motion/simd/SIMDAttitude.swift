@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import simd
 
 struct SIMDAttitude: Attitude {
     typealias Q = SIMDQuaternion
@@ -17,7 +18,7 @@ struct SIMDAttitude: Attitude {
     
     var rotationMatrix: SIMDRotationMatrix {
         // TODO: impplement
-        return SIMDRotationMatrix()
+        return SIMDRotationMatrix(simdVec: double3x3.init(diagonal: simd_double3(repeating: 1)))
     }
     
     var quaternion: SIMDQuaternion {

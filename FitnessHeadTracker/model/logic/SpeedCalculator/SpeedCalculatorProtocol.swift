@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 protocol SpeedCalculatorProtocol: ObservableObject {
-    var speed: Speed { get }
-    var _speed: CurrentValueSubject<Speed, Never> { get }
+    var speed: any Speed { get }
+    var _speed: CurrentValueSubject<any Speed, Never> { get }
     
     func reset()
 }
 
 extension SpeedCalculatorProtocol {
-    var speed: Speed {
+    var speed: any Speed {
         get { self._speed.value }
         set { self._speed.value = newValue }
     }
     
     func reset() {
-        self.speed = Speed.zero
+        self.speed = SIMDSpeed()
     }
 }
 

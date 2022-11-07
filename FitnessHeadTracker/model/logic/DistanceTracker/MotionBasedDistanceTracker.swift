@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class MotionBasedDistanceTracker: DistanceTrackerProtocol {
-    var _distance: CurrentValueSubject<Distance, Never> = CurrentValueSubject(Distance())
+    var _distance: CurrentValueSubject<any Distance, Never> = CurrentValueSubject(SIMDDistance.zero)
     
     private var motionManager: any MotionManagerProtocol
     
@@ -25,14 +25,14 @@ class MotionBasedDistanceTracker: DistanceTrackerProtocol {
                 return
             }
             
-            self.distance += self.calculateDistanceChange(with: acceleration)
+            self.distance = self.distance as! SIMDDistance + self.calculateDistanceChange(with: acceleration)
             self.oldAcceleration = acceleration
         })
     }
     
-    func calculateDistanceChange(with acceleration: Acceleration) -> Distance {
+    func calculateDistanceChange(with acceleration: Acceleration) -> any Distance {
         //FIXME: does not work, since it anticipates constant acceleration
-        var distanceChange: Distance = Distance()
+        var distanceChange: any Distance = SIMDDistance()
         
         let dt: Double = self.motionManager.timeInterval
         distanceChange.x = 0.5 * (acceleration.x + self.oldAcceleration.x) * dt

@@ -8,7 +8,7 @@
 import Combine
 
 class SpeedViewModel: ObservableObject {
-    @Published var speed: Speed = Speed.zero
+    @Published var speed: any Speed = SIMDSpeed.zero
     
     private let speedCalculator: any SpeedCalculatorProtocol
     private var speedCancellable: AnyCancellable?

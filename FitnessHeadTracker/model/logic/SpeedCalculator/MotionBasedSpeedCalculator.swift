@@ -7,9 +7,10 @@
 
 import Foundation
 import Combine
+import simd
 
 class MotionBasedSpeedCalculator: ObservableObject, SpeedCalculatorProtocol {
-    var _speed: CurrentValueSubject<Speed, Never> = CurrentValueSubject(Speed.zero)
+    var _speed: CurrentValueSubject<any Speed, Never> = CurrentValueSubject(SIMDSpeed.zero)
     
     private var motionManager: any MotionManagerProtocol
     
@@ -23,16 +24,15 @@ class MotionBasedSpeedCalculator: ObservableObject, SpeedCalculatorProtocol {
                 print("discarded measurement due to taking too long to measure")
                 return
             }
-            
-            self.speed += self.calculateSpeedChange(with: acceleration)
+            self.speed = self.speed as! SIMDSpeed + self.calculateSpeedChange(with: acceleration, attitude: self.motionManager.attitude, timeInterval: self.motionManager.timeInterval)
         })
     }
     
-    func calculateSpeedChange(with acceleration: Acceleration) -> Speed {
-        return Speed(
-            x: self.motionManager.timeInterval * self.motionManager.userAcceleration.x,
-            y: self.motionManager.timeInterval * self.motionManager.userAcceleration.y,
-            z: self.motionManager.timeInterval * self.motionManager.userAcceleration.z
-        )
+    private func calculateSpeedChange(with acceleration: Acceleration, attitude: any Attitude, timeInterval: Double) -> any Speed {
+        let simdDirectiveAccel: simd_double3 = double3x3(attitude.rotationMatrix) * simd_double3(acceleration)
+        
+        let simdSpeed: simd_double3 = timeInterval * simdDirectiveAccel
+        
+        return SIMDSpeed(simdVec: simdSpeed)
     }
 }

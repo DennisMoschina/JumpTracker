@@ -112,7 +112,7 @@ extension CMAttitude: Attitude {
 // MARK: - vector and matrices
 
 extension double3x3 {
-    init(_ r: SIMDRotationMatrix) {
+    init(_ r: RotationMatrix) {
         self.init(rows: [
             simd_double3(r.m11, r.m12, r.m13),
             simd_double3(r.m21, r.m22, r.m23),
@@ -122,15 +122,15 @@ extension double3x3 {
 }
 
 extension simd_double3 {
-    init(_ a: SIMDAcceleration) {
+    init(_ a: Acceleration) {
         self.init(a.x, a.y, a.z)
     }
     
-    init(_ r: SIMDRotationRate) {
+    init(_ r: RotationRate) {
         self.init(r.x, r.y, r.z)
     }
     
-    init(_ a: SIMDAttitude) {
+    init(_ a: any Attitude) {
         self.init(a.roll, a.pitch, a.yaw)
     }
 }

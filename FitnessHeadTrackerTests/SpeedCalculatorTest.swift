@@ -32,17 +32,17 @@ final class SpeedCalculatorTest: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         
-        XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
+        self.assertSpeedEqual(SIMDSpeed.zero, self.speedCalculator!.speed)
         
         for _ in 0..<5 {
             self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3))
         }
         
-        XCTAssertEqual(Speed(x: 0.15), self.speedCalculator?.speed)
+        self.assertSpeedEqual(SIMDSpeed(x: 0.15), self.speedCalculator!.speed)
     }
     
     func testCalculateSpeedDiscrete() throws {
-        XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
+        self.assertSpeedEqual(SIMDSpeed.zero, self.speedCalculator!.speed)
         
         self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.1))
         self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3))
@@ -50,20 +50,19 @@ final class SpeedCalculatorTest: XCTestCase {
         self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: -0.05))
         self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.2))
         
-        XCTAssertEqual(Speed(x: 0.065), self.speedCalculator?.speed)
+        self.assertSpeedEqual(SIMDSpeed(x: 0.065), self.speedCalculator!.speed)
     }
     
     func testCalculateSpeedWithSmallInterval() throws {
-        XCTAssertEqual(Speed.zero, self.speedCalculator?.speed)
+        self.assertSpeedEqual(SIMDSpeed.zero, self.speedCalculator!.speed)
         
         for _ in 0..<100 {
             self.motionManagerMock?.update(acceleration: SIMDAcceleration(x: 0.3), timeInterval: 0.01)
         }
         
-        let speed: Speed = self.speedCalculator!.speed
-        let error: Double = 0.3 - speed.x
+        let speed: any Speed = self.speedCalculator!.speed
         
-        XCTAssertLessThanOrEqual(abs(error), 0.03)
+        self.assertSpeedEqual(SIMDSpeed(x: 0.3), speed)
     }
 
     func testPerformanceExample() throws {
@@ -73,4 +72,10 @@ final class SpeedCalculatorTest: XCTestCase {
         }
     }
 
+    
+    private func assertSpeedEqual(_ lhs: any Speed, _ rhs: any Speed) {
+        XCTAssertEqual(lhs.x, rhs.x, accuracy: 0.001)
+        XCTAssertEqual(lhs.y, rhs.y, accuracy: 0.001)
+        XCTAssertEqual(lhs.z, rhs.z, accuracy: 0.001)
+    }
 }
