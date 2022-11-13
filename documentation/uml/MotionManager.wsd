@@ -1,0 +1,23 @@
+@startuml MotionManager
+
+interface MotionManagerProtocol implements ObservableObject {
+    +userAcceleration: Acceleration
+    +_userAcceleration: CurrentValueSubject<Acceleration, Never>
+    +rotationRate: RotationRate
+    +_rotationRate: CurrentValueSubject<RotationRate, Never>
+    +attitude: Attitude
+    +_attitude: CurrentValueSubject<Attitude, Never>
+    +timeInterval: Double
+
+    +start()
+    +stop()
+}
+
+class MotionManager implements MotionManagerProtocol {
+    +{static} shared: MotionManager
+
+    -init()
+}
+
+
+@enduml

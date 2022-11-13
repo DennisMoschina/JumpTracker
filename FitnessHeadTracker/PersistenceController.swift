@@ -16,6 +16,11 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
         
+        for i in 0..<10 {
+            let recording: Recording = Recording(context: controller.container.viewContext)
+            recording.startTime = Date(timeIntervalSince1970: TimeInterval(4000 * i))
+        }
+        
         return controller
     }()
     

@@ -10,19 +10,19 @@
         <attribute name="roll" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="yaw" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="CDMotion" representedClassName="CDMotion" syncable="YES" codeGenerationType="class">
+        <attribute name="timeInterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="attitude" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAttitude"/>
+        <relationship name="rotationRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRotationRate"/>
+        <relationship name="userAcceleration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAcceleration"/>
+    </entity>
     <entity name="CDRotationRate" representedClassName="CDRotationRate" syncable="YES" codeGenerationType="class">
         <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Motion" representedClassName="Motion" syncable="YES" codeGenerationType="class">
-        <attribute name="timeInterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="acceleration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAcceleration"/>
-        <relationship name="attitude" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAttitude"/>
-        <relationship name="rotationRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRotationRate"/>
-    </entity>
     <entity name="Recording" representedClassName="Recording" syncable="YES" codeGenerationType="class">
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="motions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Motion"/>
+        <relationship name="motions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDMotion"/>
     </entity>
 </model>

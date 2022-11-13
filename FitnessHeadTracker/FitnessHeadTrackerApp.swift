@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct FitnessHeadTrackerApp: App {
     let persistenceController = PersistenceController.shared
+    let recorder = MotionCoreDataRecorder()
     
     @Environment(\.scenePhase) var scenePhase
     

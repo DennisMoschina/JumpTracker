@@ -1,0 +1,9 @@
+@startuml Combined
+skinparam linetype ortho
+
+!include MotionManager.wsd
+!include MotionRecorder.wsd
+!include MotionViewModel.wsd
+!include SpeedCalculator.wsd
+
+@enduml

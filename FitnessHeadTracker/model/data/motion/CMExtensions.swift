@@ -68,7 +68,6 @@ extension CDAttitude: Attitude {
     typealias R = SIMDRotationMatrix
     typealias Q = SIMDQuaternion
 
-
     var rotationMatrix: SIMDRotationMatrix {
         // TODO: implement
         return SIMDRotationMatrix()
@@ -90,6 +89,12 @@ extension CDAcceleration: Acceleration {
 
 extension CDRotationRate: RotationRate {
     
+}
+
+extension CDMotion: Motion {
+    typealias ATT = CDAttitude
+    typealias ACC = CDAcceleration
+    typealias RR = CDRotationRate
 }
 
 // MARK: - Core Motion Data types

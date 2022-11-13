@@ -1,0 +1,9 @@
+@startuml SpeedCalculator
+
+class SpeedCalculator {
+
+    +speedChange(acceleration: Acceleration, attitude: Attitude, timeInterval: Double)
+}
+SpeedCalculator --> MotionManagerProtocol: -motionManager
+
+@enduml

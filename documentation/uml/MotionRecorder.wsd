@@ -1,0 +1,23 @@
+@startuml MotionRecorder
+skinparam linetype auto
+
+class Recording {
+    startTime: Date
+}
+Recording "1" - "*" Motion
+
+class Motion {
+    timeInterval: Double
+    acceleration: Acceleration
+    rotationRate: RotationRate
+    attitude: Attitude
+}
+
+class MotionRecorder {
+    +startRecording()
+    +endRecording()
+}
+MotionRecorder -> "1" Recording: -currentRecording
+MotionRecorder -> MotionManagerProtocol: -motionManager
+
+@enduml

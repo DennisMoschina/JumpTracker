@@ -1,0 +1,15 @@
+@startuml MotionViewModel
+
+class MotionViewModel implements ObservableObject {
+    +@Published userAcceleration: Acceleration
+    +@Published rotationRate: RotationRate
+    +@Published attitude: Attitude
+
+    +startMonitoring()
+    +stopMonitoring()
+}
+MotionViewModel -> MotionManagerProtocol: -motionManager
+
+
+
+@enduml
