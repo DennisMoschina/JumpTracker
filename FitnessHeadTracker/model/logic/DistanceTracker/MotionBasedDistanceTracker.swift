@@ -19,14 +19,14 @@ class MotionBasedDistanceTracker: DistanceTrackerProtocol {
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
-        self.userAccelerationCancellable = motionManager._userAcceleration.sink(receiveValue: { acceleration in
-            if self.motionManager.timeInterval > 0.2 {
+        self.userAccelerationCancellable = motionManager._motion.sink(receiveValue: { motion in
+            if motion.timeInterval > 0.2 {
                 print("discarded measurement due to taking too long to measure")
                 return
             }
             
-            self.distance = self.distance as! SIMDDistance + self.calculateDistanceChange(with: acceleration)
-            self.oldAcceleration = acceleration
+            self.distance = self.distance as! SIMDDistance + self.calculateDistanceChange(with: motion.userAcceleration)
+            self.oldAcceleration = motion.userAcceleration
         })
     }
     

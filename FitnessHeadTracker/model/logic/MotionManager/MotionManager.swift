@@ -13,16 +13,9 @@ import SwiftUI
 
 
 class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDelegate {
-    
     public static let singleton: MotionManager = MotionManager()
-    
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(SIMDAcceleration())
-    
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(SIMDRotationRate())
 
-    var _attitude: CurrentValueSubject<any Attitude, Never> = CurrentValueSubject(SIMDAttitude())
-    
-    var timeInterval: Double = 0
+    var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
     
     private var oldTimestamp: Double = -1
     

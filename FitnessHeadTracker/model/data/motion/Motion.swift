@@ -7,22 +7,21 @@
 
 import Foundation
 
-protocol Motion {
-    associatedtype ACC
-    associatedtype RR
-    associatedtype ATT
-    
-    var userAcceleration: ACC? { get set }
-    var rotationRate: RR? { get set }
-    var attitude: ATT? { get set }
-    
-    var timeInterval: Double { get set }
-}
-
-struct AnyMotion: Motion {
-    var userAcceleration: Acceleration?
-    var rotationRate: RotationRate?
-    var attitude: (any Attitude)?
+struct Motion {
+    var userAcceleration: Acceleration
+    var rotationRate: RotationRate
+    var attitude: any Attitude
     
     var timeInterval: Double
+    
+    init(userAcceleration: Acceleration = SIMDAcceleration(),
+         rotationRate: RotationRate = SIMDRotationRate(),
+         attitude: any Attitude = SIMDAttitude(),
+         timeInterval: Double = 0.1) {
+        
+        self.userAcceleration = userAcceleration
+        self.rotationRate = rotationRate
+        self.attitude = attitude
+        self.timeInterval = timeInterval
+    }
 }

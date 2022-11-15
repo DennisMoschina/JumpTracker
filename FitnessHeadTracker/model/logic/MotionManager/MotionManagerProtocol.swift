@@ -9,16 +9,17 @@ import Foundation
 import Combine
 
 protocol MotionManagerProtocol: ObservableObject {
-    /// Access the `Acceleration` in which the user is accelerating
+    /// Access the `Acceleration` in which the device is accelerating
     var userAcceleration: Acceleration { get }
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> { get }
     
     /// Access the `RotationRate` of the device.
     var rotationRate: RotationRate { get }
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> { get }
     
+    /// Access the `Attitude` of the device
     var attitude: any Attitude { get }
-    var _attitude: CurrentValueSubject<any Attitude, Never> { get }
+    
+    var motion: Motion { get set }
+    var _motion: CurrentValueSubject<Motion, Never> { get }
     
     /// The time passed since the last update to the motion
     var timeInterval: Double { get }
@@ -32,17 +33,27 @@ protocol MotionManagerProtocol: ObservableObject {
 
 extension MotionManagerProtocol {
     var userAcceleration: Acceleration {
-        get { self._userAcceleration.value }
-        set { self._userAcceleration.value = newValue }
+        get { self.motion.userAcceleration }
+        set { self.motion.userAcceleration = newValue }
     }
     
     var rotationRate: RotationRate {
-        get { self._rotationRate.value }
-        set { self._rotationRate.value = newValue }
+        get { self.motion.rotationRate }
+        set { self.motion.rotationRate = newValue }
     }
     
     var attitude: any Attitude {
-        get { self._attitude.value }
-        set { self._attitude.value = newValue }
+        get { self.motion.attitude }
+        set { self.motion.attitude = newValue }
+    }
+    
+    var motion: Motion {
+        get { self._motion.value }
+        set { self._motion.value = newValue }
+    }
+    
+    var timeInterval: Double {
+        get { self.motion.timeInterval }
+        set { self.motion.timeInterval = newValue }
     }
 }

@@ -16,7 +16,7 @@ class MotionCoreDataRecorder {
     var runningRecording: Recording?
     
     private var motionManager: any MotionManagerProtocol
-    private var attitudeCancellable: AnyCancellable?
+    private var motionCancellable: AnyCancellable?
     
     init(persistenceController: PersistenceController = PersistenceController.shared,
          context: NSManagedObjectContext? = nil,
@@ -32,11 +32,11 @@ class MotionCoreDataRecorder {
         
         self.motionManager = motionManager
         
-        self.attitudeCancellable = motionManager._attitude.sink(receiveValue: { attitude in
-            self.addToRecording(acceleration: self.motionManager.userAcceleration,
-                                rotationRate: self.motionManager.rotationRate,
-                                attitude: attitude,
-                                timeInterval: self.motionManager.timeInterval)
+        self.motionCancellable = motionManager._motion.sink(receiveValue: { motion in
+            self.addToRecording(acceleration: motion.userAcceleration,
+                                rotationRate: motion.rotationRate,
+                                attitude: motion.attitude,
+                                timeInterval: motion.timeInterval)
         })
     }
     

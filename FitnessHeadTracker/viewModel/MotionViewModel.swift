@@ -15,24 +15,24 @@ class MotionViewModel: ObservableObject {
     
     @Published var historicUserAccel: [(acceleration: Acceleration, timestamp: Double)] = Array(repeating: (SIMDAcceleration(), 0.1), count: 30)
     
-    var motionManager: any MotionManagerProtocol
+    @Published var motion: Motion = Motion()
     
-    var userAccelerationCancellable: AnyCancellable?
-    var rotationRateCancellable: AnyCancellable?
-    var attitudeCancellable: AnyCancellable?
+    private var motionManager: any MotionManagerProtocol
+    
+    private var motionCancellable: AnyCancellable?
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
-        self.userAccelerationCancellable = motionManager._userAcceleration.sink(receiveValue: { acceleration in
+        self.motionCancellable = motionManager._motion.sink(receiveValue: { motion in
+            let acceleration = motion.userAcceleration
             self.userAcceleration = acceleration
             self.historicUserAccel.remove(at: 0)
-            self.historicUserAccel.append((acceleration, (self.historicUserAccel.last?.timestamp ?? 0) + self.motionManager.timeInterval))
-        })
-        self.rotationRateCancellable = motionManager._rotationRate.sink(receiveValue: { rotationRate in
-            self.rotationRate = rotationRate
-        })
-        self.attitudeCancellable = motionManager._attitude.sink(receiveValue: { attitude in
-            self.attitude = attitude
+            self.historicUserAccel.append((acceleration, (self.historicUserAccel.last?.timestamp ?? 0) + motion.timeInterval))
+            
+            self.rotationRate = motion.rotationRate
+            self.attitude = motion.attitude
+            
+            self.motion = motion
         })
     }
     

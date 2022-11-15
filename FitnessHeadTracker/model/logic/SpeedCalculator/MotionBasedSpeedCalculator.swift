@@ -14,17 +14,17 @@ class MotionBasedSpeedCalculator: ObservableObject, SpeedCalculatorProtocol {
     
     private var motionManager: any MotionManagerProtocol
     
-    private var userAccelerationCancellable: AnyCancellable?
+    private var motionCancellable: AnyCancellable?
     
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
-        self.userAccelerationCancellable = motionManager._userAcceleration.sink(receiveValue: { acceleration in
-            if self.motionManager.timeInterval > 0.2 {
+        self.motionCancellable = motionManager._motion.sink(receiveValue: { motion in
+            if motion.timeInterval > 0.2 {
                 print("discarded measurement due to taking too long to measure")
                 return
             }
-            self.speed = self.speed as! SIMDSpeed + self.calculateSpeedChange(with: acceleration, attitude: self.motionManager.attitude, timeInterval: self.motionManager.timeInterval)
+            self.speed = self.speed as! SIMDSpeed + self.calculateSpeedChange(with: motion.userAcceleration, attitude: motion.attitude, timeInterval: motion.timeInterval)
         })
     }
     

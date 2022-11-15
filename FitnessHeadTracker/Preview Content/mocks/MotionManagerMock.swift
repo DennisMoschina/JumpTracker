@@ -9,14 +9,12 @@ import Foundation
 import Combine
 
 class MotionManagerMock: NSObject, MotionManagerProtocol {
+    var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
     
-    var _userAcceleration: CurrentValueSubject<Acceleration, Never> = CurrentValueSubject(SIMDAcceleration())
-    
-    var _rotationRate: CurrentValueSubject<RotationRate, Never> = CurrentValueSubject(SIMDRotationRate())
-    
-    var _attitude: CurrentValueSubject<any Attitude, Never> = CurrentValueSubject(SIMDAttitude())
-
-    var timeInterval: Double = 0.1
+    var timeInterval: Double {
+        get { self.motion.timeInterval }
+        set { self.motion.timeInterval = newValue }
+    }
     
     private var active: Bool = false
     
