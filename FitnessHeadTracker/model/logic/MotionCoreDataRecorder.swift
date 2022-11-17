@@ -43,12 +43,14 @@ class MotionCoreDataRecorder {
     func startRecording() {
         self.runningRecording = Recording(context: self.context)
         self.runningRecording?.startTime = Date()
+        self.runningRecording?.name = self.runningRecording?.startTime?.description
     }
     
     func endRecording() {
         if self.context.hasChanges {
             do {
                 try self.context.save()
+                print("saved recording")
             } catch {
                 print("Error while saving context")
             }
@@ -62,19 +64,13 @@ class MotionCoreDataRecorder {
         motion.timeInterval = timeInterval
         
         let cdAcceleration: CDAcceleration = CDAcceleration(context: self.context)
-        cdAcceleration.x = acceleration.x
-        cdAcceleration.y = acceleration.y
-        cdAcceleration.z = acceleration.z
+        cdAcceleration.insertData(from: acceleration)
         
         let cdRotationRate: CDRotationRate = CDRotationRate(context: self.context)
-        cdRotationRate.x = rotationRate.x
-        cdRotationRate.y = rotationRate.y
-        cdRotationRate.z = rotationRate.z
+        cdRotationRate.insertData(from: rotationRate)
         
         let cdAttitude: CDAttitude = CDAttitude(context: self.context)
-        cdAttitude.roll = attitude.roll
-        cdAttitude.pitch = attitude.pitch
-        cdAttitude.yaw = attitude.yaw
+        cdAttitude.insertData(from: attitude)
         
         motion.attitude = cdAttitude
         motion.rotationRate = cdRotationRate

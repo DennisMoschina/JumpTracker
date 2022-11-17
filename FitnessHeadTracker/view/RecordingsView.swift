@@ -15,7 +15,22 @@ struct RecordingsView: View {
     
     var body: some View {
         List(self.recordings) { recording in
-            Text("\(recording.startTime?.description ?? "N/A")")
+            RecordingRow(recording: recording)
+        }
+    }
+}
+
+struct RecordingRow: View {
+    let recording: Recording
+    
+    var body: some View {
+        HStack {
+            Text(self.recording.name ?? "N/A")
+            
+            Spacer()
+            
+            Text(self.recording.startTime?.description ?? "N/A")
+                .foregroundColor(.secondary)
         }
     }
 }

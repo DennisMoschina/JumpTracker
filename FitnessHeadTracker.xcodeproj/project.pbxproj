@@ -41,6 +41,7 @@
 		9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */; };
 		95174746291A7229007C3308 /* RecordingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95174745291A7229007C3308 /* RecordingsView.swift */; };
 		9517474829214EF5007C3308 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474729214EF5007C3308 /* Motion.swift */; };
+		9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474B29267107007C3308 /* MotionRecorderViewModel.swift */; };
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
@@ -109,6 +110,7 @@
 		9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCoreDataRecorder.swift; sourceTree = "<group>"; };
 		95174745291A7229007C3308 /* RecordingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsView.swift; sourceTree = "<group>"; };
 		9517474729214EF5007C3308 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		9517474B29267107007C3308 /* MotionRecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionRecorderViewModel.swift; sourceTree = "<group>"; };
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				950D3133290A7F2E00874EBF /* MotionViewModel.swift */,
 				950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */,
 				9504E89D2910715F0009D563 /* SpeedViewModel.swift */,
+				9517474B29267107007C3308 /* MotionRecorderViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */,
 				95D03FE729151C1B00C6B7C9 /* CMExtensions.swift in Sources */,
 				9504E89A29106C9C0009D563 /* SIMDSpeed.swift in Sources */,
+				9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */,
 				950D3131290A7EB000874EBF /* SIMDRotationRate.swift in Sources */,
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
 				9504E89C29106D3A0009D563 /* MotionBasedSpeedCalculator.swift in Sources */,

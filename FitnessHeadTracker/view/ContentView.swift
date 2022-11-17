@@ -11,6 +11,7 @@ struct ContentView: View {
     @ObservedObject var motionViewModel = MotionViewModel(motionManager: FilteredMotionManager(motionManager: MotionManager.singleton, accelFilterX: DeadBandFilter(deadBand: 0.008), accelFilterY: EwmaFilter(alpha: 0.3), accelFilterZ: EwmaFilter(alpha: 0.3)))
     @ObservedObject var distanceTrackerViewModel = MotionBasedDistanceTracker(motionManager: MotionManager.singleton)
     @ObservedObject var speedViewModel: SpeedViewModel = SpeedViewModel(speedCalculator: MotionBasedSpeedCalculator(motionManager: MotionManager.singleton))
+    @ObservedObject var recordingViewModel: MotionRecorderViewModel = MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder())
     
     var body: some View {
         NavigationView {
@@ -54,14 +55,15 @@ struct ContentView: View {
                 }
                 
                 Button {
+                    self.recordingViewModel.startRecording()
                     self.motionViewModel.startMonitoring()
-                    
                 } label: {
                     Text("Start Motion Monitoring")
                 }
                 
                 Button {
                     self.motionViewModel.stopMonitoring()
+                    self.recordingViewModel.endRecording()
                 } label: {
                     Text("Stop")
                 }

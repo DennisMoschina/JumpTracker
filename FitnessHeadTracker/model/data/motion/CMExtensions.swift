@@ -81,14 +81,28 @@ extension CDAttitude: Attitude {
     func multiply(byInverseOf attitude: CDAttitude) {
         // TODO: implement
     }
+    
+    func insertData(from attitude: any Attitude) {
+        self.roll = attitude.roll
+        self.pitch = attitude.pitch
+        self.yaw = attitude.yaw
+    }
 }
 
 extension CDAcceleration: Acceleration {
-    
+    func insertData(from acceleration: Acceleration) {
+        self.x = acceleration.x
+        self.y = acceleration.y
+        self.z = acceleration.z
+    }
 }
 
 extension CDRotationRate: RotationRate {
-    
+    func insertData(from rotationRate: RotationRate) {
+        self.x = rotationRate.x
+        self.y = rotationRate.y
+        self.z = rotationRate.z
+    }
 }
 
 // MARK: - Core Motion Data types
