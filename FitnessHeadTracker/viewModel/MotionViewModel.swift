@@ -23,7 +23,7 @@ class MotionViewModel: ObservableObject {
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
-        self.motionCancellable = motionManager._motion.sink(receiveValue: { motion in
+        self.motionCancellable = motionManager._motion.receive(on: DispatchQueue.main).sink(receiveValue: { motion in
             let acceleration = motion.userAcceleration
             self.userAcceleration = acceleration
             self.historicUserAccel.remove(at: 0)

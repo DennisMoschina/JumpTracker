@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 class SpeedViewModel: ObservableObject {
     @Published var speed: any Speed = SIMDSpeed.zero
@@ -15,7 +16,7 @@ class SpeedViewModel: ObservableObject {
     
     init(speedCalculator: any SpeedCalculatorProtocol) {
         self.speedCalculator = speedCalculator
-        self.speedCancellable = speedCalculator._speed.sink(receiveValue: { speed in
+        self.speedCancellable = speedCalculator._speed.receive(on: DispatchQueue.main).sink(receiveValue: { speed in
             self.speed = speed
         })
     }

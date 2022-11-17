@@ -22,6 +22,7 @@
         <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Recording" representedClassName="Recording" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="motions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDMotion"/>
     </entity>

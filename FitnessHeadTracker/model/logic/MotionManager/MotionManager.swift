@@ -30,6 +30,13 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     // MARK: - Methods
     
+    /**
+     * Start monitoring the motion updates.
+     *
+     * The updates are published by the {@link MotionManager#_motion} property.
+     *
+     * The data aquisition does not hapen in the main queue
+     */
     func start() {
         print("Available: \(self.manager.isDeviceMotionAvailable)")
         var authStatus: String
@@ -48,7 +55,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         print("Authorization: \(authStatus)")
         
-        self.manager.startDeviceMotionUpdates(to: OperationQueue.main) { motion, error in
+        self.manager.startDeviceMotionUpdates(to: OperationQueue()) { motion, error in
             if let motion {
                 let timestamp = CACurrentMediaTime()
                 self.timeInterval = self.oldTimestamp < 0 ? 0 : timestamp - self.oldTimestamp

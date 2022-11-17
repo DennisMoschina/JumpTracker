@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 class DistanceTrackerViewModel: ObservableObject {
     @Published var distance: any Distance = SIMDDistance()
@@ -15,7 +16,7 @@ class DistanceTrackerViewModel: ObservableObject {
     
     init(distanceTracker: any DistanceTrackerProtocol) {
         self.distanceTracker = distanceTracker
-        self.distanceCancellable = distanceTracker._distance.sink(receiveValue: { distance in
+        self.distanceCancellable = distanceTracker._distance.receive(on: DispatchQueue.main).sink(receiveValue: { distance in
             self.distance = distance
         })
     }
