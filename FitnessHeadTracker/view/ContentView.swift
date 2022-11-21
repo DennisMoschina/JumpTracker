@@ -17,7 +17,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 NavigationLink {
-                    RecordingsView()
+                    RecordingsListView()
                 } label: {
                     Text("Recordings")
                 }

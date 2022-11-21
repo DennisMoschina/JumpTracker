@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct RecordingsView: View {
+struct RecordingsListView: View {
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\.startTime)
     ]) var recordings: FetchedResults<Recording>
@@ -24,20 +24,22 @@ struct RecordingRow: View {
     let recording: Recording
     
     var body: some View {
-        HStack {
-            Text(self.recording.name ?? "N/A")
-            
-            Spacer()
-            
-            Text(self.recording.startTime?.description ?? "N/A")
-                .foregroundColor(.secondary)
+        NavigationLink(destination: RecordingDetailView(viewModel: RecordingViewModel(recording: recording))) {
+            HStack {
+                Text(self.recording.name ?? "N/A")
+                
+                Spacer()
+                
+                Text(self.recording.startTime?.description ?? "N/A")
+                    .foregroundColor(.secondary)
+            }
         }
     }
 }
 
-struct RecordingsView_Previews: PreviewProvider {
+struct RecordingsListView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordingsView()
+        RecordingsListView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

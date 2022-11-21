@@ -8,6 +8,7 @@
 import Foundation
 import CoreMotion
 import simd
+import CoreTransferable
 
 
 // MARK: - Custom Data types
@@ -64,7 +65,60 @@ extension SIMDAttitude {
 
 // MARK: - CoreData data types
 
-extension CDAttitude: Attitude {
+extension Recording: Encodable, Transferable {
+    static public var transferRepresentation: some TransferRepresentation {
+        DataRepresentation(exportedContentType: .json) { recording in
+            let encoder = JSONEncoder()
+            let encoded: Data? = try? encoder.encode(recording)
+            return encoded!
+        }
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case startTime
+        case name
+        case motions
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.startTime, forKey: .startTime)
+        try container.encode(self.name, forKey: .name)
+        try container.encode((self.motions?.array as? [CDMotion]), forKey: .motions)
+    }
+}
+
+extension CDMotion: Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case attitude
+        case rotationRate
+        case userAcceleration
+        case timeInterval
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.attitude, forKey: .attitude)
+        try container.encode(self.rotationRate, forKey: .rotationRate)
+        try container.encode(self.userAcceleration, forKey: .userAcceleration)
+        try container.encode(self.timeInterval, forKey: .timeInterval)
+    }
+}
+
+extension CDAttitude: Attitude, Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case roll
+        case pitch
+        case yaw
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.roll, forKey: .roll)
+        try container.encode(self.pitch, forKey: .pitch)
+        try container.encode(self.yaw, forKey: .yaw)
+    }
+    
     typealias R = SIMDRotationMatrix
     typealias Q = SIMDQuaternion
 
@@ -89,7 +143,20 @@ extension CDAttitude: Attitude {
     }
 }
 
-extension CDAcceleration: Acceleration {
+extension CDAcceleration: Acceleration, Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case x
+        case y
+        case z
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+        try container.encode(self.z, forKey: .z)
+    }
+    
     func insertData(from acceleration: Acceleration) {
         self.x = acceleration.x
         self.y = acceleration.y
@@ -97,7 +164,20 @@ extension CDAcceleration: Acceleration {
     }
 }
 
-extension CDRotationRate: RotationRate {
+extension CDRotationRate: RotationRate, Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case x
+        case y
+        case z
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+        try container.encode(self.z, forKey: .z)
+    }
+    
     func insertData(from rotationRate: RotationRate) {
         self.x = rotationRate.x
         self.y = rotationRate.y

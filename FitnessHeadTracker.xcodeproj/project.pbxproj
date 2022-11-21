@@ -39,9 +39,11 @@
 		9517473F29199B66007C3308 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517473E29199B66007C3308 /* PersistenceController.swift */; };
 		9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9517474029199B6E007C3308 /* Main.xcdatamodeld */; };
 		9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */; };
-		95174746291A7229007C3308 /* RecordingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95174745291A7229007C3308 /* RecordingsView.swift */; };
+		95174746291A7229007C3308 /* RecordingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95174745291A7229007C3308 /* RecordingsListView.swift */; };
 		9517474829214EF5007C3308 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474729214EF5007C3308 /* Motion.swift */; };
 		9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474B29267107007C3308 /* MotionRecorderViewModel.swift */; };
+		9517474E29267726007C3308 /* RecordingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474D29267726007C3308 /* RecordingDetailView.swift */; };
+		951747502927834D007C3308 /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474F2927834D007C3308 /* RecordingViewModel.swift */; };
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
@@ -108,9 +110,11 @@
 		9517473E29199B66007C3308 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		9517474129199B6E007C3308 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCoreDataRecorder.swift; sourceTree = "<group>"; };
-		95174745291A7229007C3308 /* RecordingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsView.swift; sourceTree = "<group>"; };
+		95174745291A7229007C3308 /* RecordingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsListView.swift; sourceTree = "<group>"; };
 		9517474729214EF5007C3308 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		9517474B29267107007C3308 /* MotionRecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionRecorderViewModel.swift; sourceTree = "<group>"; };
+		9517474D29267726007C3308 /* RecordingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDetailView.swift; sourceTree = "<group>"; };
+		9517474F2927834D007C3308 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
@@ -235,7 +239,8 @@
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
 				950D3144290AADAB00874EBF /* AccelerationChart.swift */,
 				9504E8A8291165F70009D563 /* HeadingView.swift */,
-				95174745291A7229007C3308 /* RecordingsView.swift */,
+				95174745291A7229007C3308 /* RecordingsListView.swift */,
+				9517474D29267726007C3308 /* RecordingDetailView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */,
 				9504E89D2910715F0009D563 /* SpeedViewModel.swift */,
 				9517474B29267107007C3308 /* MotionRecorderViewModel.swift */,
+				9517474F2927834D007C3308 /* RecordingViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -487,13 +493,14 @@
 				950D31002909E5D000874EBF /* ContentView.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
-				95174746291A7229007C3308 /* RecordingsView.swift in Sources */,
+				95174746291A7229007C3308 /* RecordingsListView.swift in Sources */,
 				950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */,
 				950D313D290A93D400874EBF /* Distance.swift in Sources */,
 				95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */,
 				950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */,
 				95D03FE729151C1B00C6B7C9 /* CMExtensions.swift in Sources */,
 				9504E89A29106C9C0009D563 /* SIMDSpeed.swift in Sources */,
+				951747502927834D007C3308 /* RecordingViewModel.swift in Sources */,
 				9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */,
 				950D3131290A7EB000874EBF /* SIMDRotationRate.swift in Sources */,
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
@@ -517,6 +524,7 @@
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
+				9517474E29267726007C3308 /* RecordingDetailView.swift in Sources */,
 				950D312F290A7E6400874EBF /* SIMDAcceleration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
