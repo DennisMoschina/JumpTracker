@@ -13,7 +13,22 @@ class RecordingViewModel: ObservableObject {
     private let persistenceController: PersistenceController
     private let context: NSManagedObjectContext
     
-    let recording: Recording
+    var recordingName: String {
+        get { return self.recording.name ?? self.recording.startTime?.description ?? "N/A" }
+        set { self.recording.name = newValue }
+    }
+    
+    var recording: Recording {
+        didSet {
+            self.save()
+        }
+    }
+    
+    var recordingDuration: Double {
+        self.recording.motions?.reduce(0, { partialResult, motion in
+            partialResult + (motion as! CDMotion).timeInterval
+        }) ?? 0
+    }
     
     let motionArray: [CDMotion]
     let accelerationChartData: [(axis: String, data: [(timestamp: Double, data: Double)])]
@@ -66,19 +81,5 @@ class RecordingViewModel: ObservableObject {
     
     func save() {
         self.persistenceController.save()
-    }
-    
-    func exportJson() {
-        let encoder = JSONEncoder()
-        let encoded: Data? = try? encoder.encode(self.recording)
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("\(self.recording.name ?? self.recording.startTime!.description).json")
-        if let encoded {
-            do {
-                try encoded.write(to: path)
-                print("saved to path \(path)")
-            } catch  {
-                print("error when saving: \(error)")
-            }
-        }
     }
 }

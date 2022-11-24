@@ -9,13 +9,26 @@ import SwiftUI
 import Charts
 
 struct RecordingsListView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\.startTime)
     ]) var recordings: FetchedResults<Recording>
     
     var body: some View {
-        List(self.recordings) { recording in
-            RecordingRow(recording: recording)
+        List {
+            ForEach(self.recordings) { recording in
+                RecordingRow(recording: recording)
+            }
+            .onDelete { indexSet in
+                for i in indexSet {
+                    let recording = self.recordings[i]
+                    self.managedObjectContext.delete(recording)
+                }
+            }
+        }
+        .toolbar {
+            EditButton()
         }
     }
 }
@@ -39,7 +52,9 @@ struct RecordingRow: View {
 
 struct RecordingsListView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordingsListView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        NavigationView {
+            RecordingsListView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        }
     }
 }

@@ -9,47 +9,102 @@ import SwiftUI
 import Charts
 
 struct RecordingDetailView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.editMode) var editMode
+    @Environment(\.dismiss) private var dismiss
+    
     @ObservedObject var viewModel: RecordingViewModel
     
+    @State private var pressedDelete: Bool = false
+    
     var body: some View {
-        VStack {
-            GroupBox {
-                Chart {
-                    ForEach(self.viewModel.accelerationChartData, id: \.axis) { item in
-                        ForEach(Array(item.data.enumerated()), id: \.offset) { (_, data) in
-                            LineMark(
-                                x: .value("Time", data.timestamp),
-                                y: .value("Data", data.data)
-                            )
-                        }
-                        .foregroundStyle(by: .value("Axis", item.axis))
+        Form {
+            Section {
+                if self.editMode?.wrappedValue == .active {
+                    TextField("Name of this recording", text: self.$viewModel.recordingName)
+                }
+            }
+            
+            if self.editMode?.wrappedValue == .inactive {
+                Section {
+                    HStack {
+                        Text("Time")
+                        
+                        Spacer()
+                        
+                        Text(self.viewModel.recording.startTime?.description ?? "N/A")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    HStack {
+                        Text("Duration")
+                        
+                        Spacer()
+                        
+                        Text("\(self.viewModel.recordingDuration, specifier: "%.2f") s")
+                            .foregroundColor(.secondary)
                     }
                 }
-                .chartYScale(domain: -1...1)
-            }.padding()
-        }.toolbar {
-            ShareLink(item: self.viewModel.recording, preview: SharePreview(""))
+                
+                Section {
+                    Chart {
+                        ForEach(self.viewModel.accelerationChartData, id: \.axis) { item in
+                            ForEach(Array(item.data.enumerated()), id: \.offset) { (_, data) in
+                                LineMark(
+                                    x: .value("Time", data.timestamp),
+                                    y: .value("Data", data.data)
+                                )
+                            }
+                            .foregroundStyle(by: .value("Axis", item.axis))
+                        }
+                    }
+                    .chartYScale(domain: -1...1)
+                    .padding()
+                }
+            }
+            
+            Section {
+                if (self.editMode!.wrappedValue == .inactive) {
+                    ShareLink(item: self.viewModel.recording, preview: SharePreview(""))
+                }
+                
+                Button {
+                    self.pressedDelete = true
+                } label: {
+                    Label("Löschen", systemImage: "trash")
+                }.foregroundColor(.red)
+            }
         }
+        .toolbar {
+            HStack {
+                EditButton()
+            }
+        }
+        .navigationTitle(self.viewModel.recordingName)
+        .navigationBarTitleDisplayMode(.automatic)
+        
+        .alert("Delete recording", isPresented: self.$pressedDelete) {
+            Button(role: .destructive) {
+                self.managedObjectContext.delete(self.viewModel.recording)
+                self.dismiss.callAsFunction()
+            } label: {
+                Text("Delete")
+            }
+
+        } message: {
+            Text("This action can not be reversed")
+        }
+
+
     }
 }
 
 struct RecordingsDetailView_Previews: PreviewProvider {
-    static var recording: Recording {
-        let recording = Recording()
-        recording.startTime = Date()
-        recording.name = "Test recording"
-        for i in 0..<10 {
-            let motion = CDMotion()
-            let acceleration: CDAcceleration = CDAcceleration()
-            acceleration.insertData(from: SIMDAcceleration(x: 0.1 * Double(i), y: -0.1 * Double(i), z: 0.05 * Double(i)))
-            motion.userAcceleration = acceleration
-            recording.addToMotions(motion)
-        }
-        
-        return recording
-    }
+    static var recording: Recording = (PersistenceController.preview.container.viewContext.registeredObjects.first as? Recording)!
     
     static var previews: some View {
-        RecordingDetailView(viewModel: RecordingViewModel(recording: recording))
+        NavigationView {
+            RecordingDetailView(viewModel: RecordingViewModel(recording: recording))
+        }
     }
 }
