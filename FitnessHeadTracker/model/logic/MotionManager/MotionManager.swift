@@ -17,7 +17,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
 
     var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
     
-    private var oldTimestamp: Double = -1
+    private var oldTimestamp: TimeInterval = -1
     
     private let manager: CMHeadphoneMotionManager = CMHeadphoneMotionManager()
     
@@ -57,7 +57,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         self.manager.startDeviceMotionUpdates(to: OperationQueue()) { motion, error in
             if let motion {
-                let timestamp = CACurrentMediaTime()
+                let timestamp = motion.timestamp
                 self.timeInterval = self.oldTimestamp < 0 ? 0 : timestamp - self.oldTimestamp
                 self.oldTimestamp = timestamp
                 
