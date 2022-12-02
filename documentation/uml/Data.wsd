@@ -1,0 +1,107 @@
+@startuml Data
+
+interface Motion<ACC: Acceleration, RR: RotationRate, ATT: Attitude> {
+
+}
+Motion --> Acceleration : acceleration
+Motion --> RotationRate : rotationRate
+Motion --> Attitude : attitude
+
+interface Acceleration {
+    x: Double
+    y: Double
+    z: Double
+}
+
+interface RotationRate {
+    x: Double
+    y: Double
+    z: Double
+}
+
+interface Attitude<RM: RotationMatrix, Q: Quaternion> {
+    roll: Double
+    pitch: Double
+    yaw: Double
+}
+
+interface RotationMatrix {
+    m11: Double
+    m12: Double
+    m13: Double
+    m21: Double
+    m22: Double
+    m23: Double
+    m31: Double
+    m32: Double
+    m33: Double
+}
+
+interface Quaternion {
+    x: Double
+    y: Double
+    z: Double
+    w: Double
+}
+
+class CDMotion implements Motion
+CDMotion --> CDAcceleration : acceleration
+CDMotion --> CDRotationRate : rotationRate
+CDMotion --> CDAttitude : attitude
+
+class SIMDAcceleration implements Acceleration {
+    x: Double
+    y: Double
+    z: Double
+}
+
+class SIMDRotationMatrix implements RotationMatrix {
+    m11: Double
+    m12: Double
+    m13: Double
+    m21: Double
+    m22: Double
+    m23: Double
+    m31: Double
+    m32: Double
+    m33: Double
+}
+
+class SIMDRotationRate implements RotationRate {
+    x: Double
+    y: Double
+    z: Double
+}
+
+class SIMDQuaternion implements Quaternion {
+    x: Double
+    y: Double
+    z: Double
+    w: Double
+}
+
+class SIMDAttitude implements Attitude {
+    roll: Double
+    pitch: Double
+    yaw: Double
+}
+
+class CDAcceleration implements Acceleration {
+    x: Double
+    y: Double
+    z: Double
+}
+
+class CDRotationRate implements RotationRate {
+    x: Double
+    y: Double
+    z: Double
+}
+
+class CDAttitude implements Attitude {
+    roll: Double
+    pitch: Double
+    yaw: Double
+}
+
+@enduml
