@@ -13,6 +13,7 @@ import SwiftUI
 
 
 class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDelegate {
+    
     public static let singleton: MotionManager = MotionManager()
 
     var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
@@ -21,6 +22,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     private let manager: CMHeadphoneMotionManager = CMHeadphoneMotionManager()
     
+    var _updating: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     
     
     private override init() {
@@ -55,6 +57,8 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         print("Authorization: \(authStatus)")
         
+        self.updating = true
+        
         self.manager.startDeviceMotionUpdates(to: OperationQueue()) { motion, error in
             if let motion {
                 let timestamp = motion.timestamp
@@ -77,6 +81,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     func stop() {
         self.manager.stopDeviceMotionUpdates()
         self.oldTimestamp = -1
+        self.updating = false
     }
     
     // MARK: - Delegate Methods

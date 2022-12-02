@@ -17,12 +17,19 @@ class MotionViewModel: ObservableObject {
     
     @Published var motion: Motion = Motion()
     
+    @Published var updating: Bool = false
+    
     private var motionManager: any MotionManagerProtocol
     
     private var motionCancellable: AnyCancellable?
     
+    private var updatingCancellable: AnyCancellable?
+    
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
+        self.updatingCancellable = motionManager._updating.sink(receiveValue: { updating in
+            self.updating = updating
+        })
         self.motionCancellable = motionManager._motion.receive(on: DispatchQueue.main).sink(receiveValue: { motion in
             let acceleration = motion.userAcceleration
             self.userAcceleration = acceleration

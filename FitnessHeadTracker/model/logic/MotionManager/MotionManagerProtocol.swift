@@ -21,6 +21,10 @@ protocol MotionManagerProtocol: ObservableObject {
     var motion: Motion { get set }
     var _motion: CurrentValueSubject<Motion, Never> { get }
     
+    /// Indicate that the Device motion updates are running
+    var updating: Bool { get }
+    var _updating: CurrentValueSubject<Bool, Never> { get }
+    
     /// The time passed since the last update to the motion
     var timeInterval: Double { get }
     
@@ -55,5 +59,10 @@ extension MotionManagerProtocol {
     var timeInterval: Double {
         get { self.motion.timeInterval }
         set { self.motion.timeInterval = newValue }
+    }
+    
+    var updating: Bool {
+        get { self._updating.value }
+        set { self._updating.value = newValue }
     }
 }

@@ -15,6 +15,8 @@ class FilteredMotionManager: MotionManagerProtocol {
     var timeInterval: Double {
         self.motionManager.timeInterval
     }
+    
+    var _updating: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
 
     private var motionManager: any MotionManagerProtocol
 
@@ -23,6 +25,7 @@ class FilteredMotionManager: MotionManagerProtocol {
     private var accelFilterZ: any Filter
 
     private var motionCancellable: AnyCancellable?
+    private var updatingCancellable: AnyCancellable?
 
 
     init(motionManager: any MotionManagerProtocol, accelFilterX: any Filter, accelFilterY: any Filter, accelFilterZ: any Filter) {
@@ -30,6 +33,8 @@ class FilteredMotionManager: MotionManagerProtocol {
         self.accelFilterX = accelFilterX
         self.accelFilterY = accelFilterY
         self.accelFilterZ = accelFilterZ
+        
+        self.updatingCancellable = motionManager._updating.sink { self.updating = $0 }
 
         self.motionCancellable = motionManager._motion.sink(receiveValue: { m in
             var motion: Motion = m

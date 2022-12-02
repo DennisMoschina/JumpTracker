@@ -15,6 +15,7 @@ class MotionCoreDataRecorder {
     
     var runningRecording: Recording?
     
+    #warning("TODO: react to MotionManager::updating changes to start recording")
     private var motionManager: any MotionManagerProtocol
     private var motionCancellable: AnyCancellable?
     
