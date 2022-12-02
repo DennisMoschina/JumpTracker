@@ -15,9 +15,12 @@ class MotionCoreDataRecorder {
     
     var runningRecording: Recording?
     
-    #warning("TODO: react to MotionManager::updating changes to start recording")
+    var recordOnMonitoringStart: Bool = false
+    
     private var motionManager: any MotionManagerProtocol
     private var motionCancellable: AnyCancellable?
+    
+    private var updatingCancellable: AnyCancellable?
     
     init(persistenceController: PersistenceController = PersistenceController.shared,
          context: NSManagedObjectContext? = nil,
@@ -33,12 +36,20 @@ class MotionCoreDataRecorder {
         
         self.motionManager = motionManager
         
-        self.motionCancellable = motionManager._motion.sink(receiveValue: { motion in
+        self.updatingCancellable = motionManager._updating.sink { updating in
+            if !updating {
+                self.endRecording()
+            } else if self.recordOnMonitoringStart {
+                self.startRecording()
+            }
+        }
+        
+        self.motionCancellable = motionManager._motion.sink { motion in
             self.addToRecording(acceleration: motion.userAcceleration,
                                 rotationRate: motion.rotationRate,
                                 attitude: motion.attitude,
                                 timeInterval: motion.timeInterval)
-        })
+        }
     }
     
     func startRecording() {
