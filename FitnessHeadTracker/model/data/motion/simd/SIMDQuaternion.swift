@@ -10,29 +10,37 @@ import simd
 
 struct SIMDQuaternion: Quaternion {
     var x: Double {
-        get { self.simdVec.x }
-        set { self.simdVec.x = newValue }
+        get { Double(self.simdVec.imag[0]) }
+        set { self.simdVec.imag[0] = Float(newValue) }
     }
     var y: Double {
-        get { self.simdVec.y }
-        set { self.simdVec.y = newValue }
+        get { Double(self.simdVec.imag[1]) }
+        set { self.simdVec.imag[1] = Float(newValue) }
     }
     var z: Double {
-        get { self.simdVec.z }
-        set { self.simdVec.z = newValue }
+        get { Double(self.simdVec.imag[2]) }
+        set { self.simdVec.imag[2] = Float(newValue) }
     }
     var w: Double {
-        get { self.simdVec.w }
-        set { self.simdVec.w = newValue }
+        get { Double(self.simdVec.real) }
+        set { self.simdVec.real = Float(newValue) }
     }
     
-    var simdVec: simd_double4
+    private var simdVec: simd_quatf
     
-    init(simdVec: simd_double4) {
-        self.simdVec = simdVec
+    init(simdVec: simd_float4) {
+        self.simdVec = simd_quatf(vector: simdVec)
+    }
+    
+    init(angle: Float, axis: simd_float3) {
+        self.simdVec = simd_quatf(angle: angle, axis: axis)
+    }
+    
+    init(from: simd_float3, to: simd_float3) {
+        self.simdVec = simd_quatf(from: from, to: to)
     }
     
     init(x: Double = 0, y: Double = 0, z: Double = 0, w: Double = 0) {
-        self.init(simdVec: simd_double4(x: x, y: y, z: z, w: w))
+        self.init(simdVec: simd_float4(x: Float(x), y: Float(y), z: Float(z), w: Float(w)))
     }
 }

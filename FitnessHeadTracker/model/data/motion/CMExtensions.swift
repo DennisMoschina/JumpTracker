@@ -243,6 +243,16 @@ extension double3x3 {
     }
 }
 
+extension simd_float3x3 {
+    init(_ r: RotationMatrix) {
+        self.init(rows: [
+            simd_float3(Float(r.m11), Float(r.m12), Float(r.m13)),
+            simd_float3(Float(r.m21), Float(r.m22), Float(r.m23)),
+            simd_float3(Float(r.m31), Float(r.m32), Float(r.m33))
+        ])
+    }
+}
+
 extension simd_double3 {
     init(_ a: Acceleration) {
         self.init(a.x, a.y, a.z)
@@ -254,5 +264,16 @@ extension simd_double3 {
     
     init(_ a: any Attitude) {
         self.init(a.roll, a.pitch, a.yaw)
+    }
+}
+
+extension simd_quatf {
+    init(_ a: any Attitude) {
+        let q: Quaternion = a.quaternion
+        self.init(ix: Float(q.x), iy: Float(q.y), iz: Float(q.z), r: Float(q.w))
+    }
+    
+    init(_ q: Quaternion) {
+        self.init(ix: Float(q.x), iy: Float(q.y), iz: Float(q.z), r: Float(q.w))
     }
 }

@@ -7,36 +7,62 @@
 
 import SwiftUI
 
+enum MainNavigation: Int, CaseIterable {
+    case current
+    case attitude
+    case recordingsList
+    
+    var description: String {
+        switch (self) {
+        case .current:
+            return "Current Values"
+        case .attitude:
+            return "Attitude"
+        case .recordingsList:
+            return "Recordings"
+        }
+    }
+    var imageName: String {
+        switch (self) {
+        case .current:
+            return "display"
+        case .attitude:
+            return "circle.and.line.horizontal"
+        case .recordingsList:
+            return "recordingtape"
+        }
+    }
+}
+
 struct RegularHomeView: View {
     private var motionViewModel: MotionViewModel = MotionViewModel(motionManager: MotionManager.singleton)
     private var distanceTrackerViewModel: DistanceTrackerViewModel = DistanceTrackerViewModel(distanceTracker: MotionBasedDistanceTracker(motionManager: MotionManager.singleton))
     private var speedViewModel: SpeedViewModel = SpeedViewModel(speedCalculator: MotionBasedSpeedCalculator(motionManager: MotionManager.singleton))
     private var recordingViewModel: MotionRecorderViewModel = MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder())
     
+    @State var selectedNavigation: MainNavigation = MainNavigation.current
     
     var body: some View {
-        NavigationView {
-            List {
-                NavigationLink {
-                    ContentView(motionViewModel: self.motionViewModel,
-                                distanceTrackerViewModel: self.distanceTrackerViewModel,
-                                speedViewModel: self.speedViewModel,
-                                recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
+        NavigationSplitView {
+            List(MainNavigation.allCases, id: \.rawValue) { nav in
+                Button {
+                    self.selectedNavigation = nav
                 } label: {
-                    Label("Current Values", systemImage: "display")
+                    Label(nav.description, systemImage: nav.imageName)
                 }
-                NavigationLink {
-                    RecordingsListView()
-                } label: {
-                    Label("Recordings", systemImage: "recordingtape")
-                }
-
-            }.listStyle(.sidebar)
-            
-            ContentView(motionViewModel: self.motionViewModel,
-                        distanceTrackerViewModel: self.distanceTrackerViewModel,
-                        speedViewModel: self.speedViewModel,
-                        recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
+            }
+        } detail: {
+            switch self.selectedNavigation {
+            case .current:
+                ContentView(motionViewModel: self.motionViewModel,
+                            distanceTrackerViewModel: self.distanceTrackerViewModel,
+                            speedViewModel: self.speedViewModel,
+                            recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
+            case .attitude:
+                AttitudeIndicator(motionViewModel: self.motionViewModel)
+            case .recordingsList:
+                RecordingsListView()
+            }
         }
     }
 }

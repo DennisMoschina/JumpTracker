@@ -26,6 +26,11 @@ struct CompactHomeView: View {
                         Label("Current", systemImage: "play")
                     }
                 
+                AttitudeIndicator(motionViewModel: self.motionViewModel)
+                    .tabItem {
+                        Label("Attitude", systemImage: "circle.and.line.horizontal")
+                    }
+                
                 RecordingsListView()
                     .tabItem {
                         Label("Recordings", systemImage: "recordingtape")

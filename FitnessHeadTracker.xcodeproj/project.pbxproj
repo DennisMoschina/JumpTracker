@@ -40,6 +40,8 @@
 		9510E4F2293A145D009A2562 /* CompactHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510E4F1293A145D009A2562 /* CompactHomeView.swift */; };
 		9510E4F4293A1503009A2562 /* RegularHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510E4F3293A1503009A2562 /* RegularHomeView.swift */; };
 		9510E4F7293A8FC3009A2562 /* ManageMonitoringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510E4F6293A8FC3009A2562 /* ManageMonitoringButton.swift */; };
+		9510E4FA293B5EDA009A2562 /* YawIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510E4F9293B5EDA009A2562 /* YawIndicator.swift */; };
+		9510E4FC293B5F8B009A2562 /* AttitudeSlidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510E4FB293B5F8B009A2562 /* AttitudeSlidersView.swift */; };
 		9517473F29199B66007C3308 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517473E29199B66007C3308 /* PersistenceController.swift */; };
 		9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9517474029199B6E007C3308 /* Main.xcdatamodeld */; };
 		9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */; };
@@ -51,6 +53,9 @@
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
+		95838AAF293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95838AAE293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift */; };
+		95838AB1293B8EA300F5CEEE /* AttitudeIndicatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95838AB0293B8EA200F5CEEE /* AttitudeIndicatorScene.swift */; };
+		95838AB9293B9F6100F5CEEE /* AttitudeSphereTexture.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */; };
 		95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241A2915BB7F00299821 /* RotationRate.swift */; };
 		95CB241D2917349500299821 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241C2917349500299821 /* Speed.swift */; };
 		95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241E29190B3500299821 /* SIMDDistance.swift */; };
@@ -59,6 +64,7 @@
 		95D03FEB29153A8D00C6B7C9 /* Attitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D03FEA29153A8D00C6B7C9 /* Attitude.swift */; };
 		95D03FED29153AA000C6B7C9 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D03FEC29153AA000C6B7C9 /* RotationMatrix.swift */; };
 		95D03FEF29153B1F00C6B7C9 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D03FEE29153B1F00C6B7C9 /* Quaternion.swift */; };
+		95FD5185293B81B200440CA8 /* AttitudeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD5184293B81B200440CA8 /* AttitudeIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +121,8 @@
 		9510E4F1293A145D009A2562 /* CompactHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHomeView.swift; sourceTree = "<group>"; };
 		9510E4F3293A1503009A2562 /* RegularHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularHomeView.swift; sourceTree = "<group>"; };
 		9510E4F6293A8FC3009A2562 /* ManageMonitoringButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMonitoringButton.swift; sourceTree = "<group>"; };
+		9510E4F9293B5EDA009A2562 /* YawIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YawIndicator.swift; sourceTree = "<group>"; };
+		9510E4FB293B5F8B009A2562 /* AttitudeSlidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeSlidersView.swift; sourceTree = "<group>"; };
 		9517473E29199B66007C3308 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		9517474129199B6E007C3308 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCoreDataRecorder.swift; sourceTree = "<group>"; };
@@ -126,6 +134,9 @@
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
+		95838AAE293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicatorSphereView.swift; sourceTree = "<group>"; };
+		95838AB0293B8EA200F5CEEE /* AttitudeIndicatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicatorScene.swift; sourceTree = "<group>"; };
+		95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttitudeSphereTexture.sks; sourceTree = "<group>"; };
 		95CB241A2915BB7F00299821 /* RotationRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationRate.swift; sourceTree = "<group>"; };
 		95CB241C2917349500299821 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		95CB241E29190B3500299821 /* SIMDDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDDistance.swift; sourceTree = "<group>"; };
@@ -134,6 +145,7 @@
 		95D03FEA29153A8D00C6B7C9 /* Attitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attitude.swift; sourceTree = "<group>"; };
 		95D03FEC29153AA000C6B7C9 /* RotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMatrix.swift; sourceTree = "<group>"; };
 		95D03FEE29153B1F00C6B7C9 /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
+		95FD5184293B81B200440CA8 /* AttitudeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				9504E8AD291169F30009D563 /* MotionSlidersView.swift */,
+				9510E4FB293B5F8B009A2562 /* AttitudeSlidersView.swift */,
 			);
 			path = PreviewManipulationViews;
 			sourceTree = "<group>";
@@ -244,6 +257,7 @@
 		950D31272909E5EB00874EBF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				9510E4F8293B5EC7009A2562 /* attitudeIndicator */,
 				9510E4F5293A8F99009A2562 /* helper */,
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
 				950D3144290AADAB00874EBF /* AccelerationChart.swift */,
@@ -358,6 +372,18 @@
 				9510E4F6293A8FC3009A2562 /* ManageMonitoringButton.swift */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		9510E4F8293B5EC7009A2562 /* attitudeIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9510E4F9293B5EDA009A2562 /* YawIndicator.swift */,
+				95FD5184293B81B200440CA8 /* AttitudeIndicator.swift */,
+				95838AAE293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift */,
+				95838AB0293B8EA200F5CEEE /* AttitudeIndicatorScene.swift */,
+				95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */,
+			);
+			path = attitudeIndicator;
 			sourceTree = "<group>";
 		};
 		95CB24202919443000299821 /* simd */ = {
@@ -478,6 +504,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95838AB9293B9F6100F5CEEE /* AttitudeSphereTexture.sks in Resources */,
 				950D31052909E5D200874EBF /* Preview Assets.xcassets in Resources */,
 				950D31022909E5D200874EBF /* Assets.xcassets in Resources */,
 			);
@@ -504,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95838AB1293B8EA300F5CEEE /* AttitudeIndicatorScene.swift in Sources */,
 				9504E89E2910715F0009D563 /* SpeedViewModel.swift in Sources */,
 				950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */,
 				95D03FED29153AA000C6B7C9 /* RotationMatrix.swift in Sources */,
@@ -513,6 +541,7 @@
 				950D31002909E5D000874EBF /* ContentView.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
+				95838AAF293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift in Sources */,
 				95174746291A7229007C3308 /* RecordingsListView.swift in Sources */,
 				950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */,
 				950D313D290A93D400874EBF /* Distance.swift in Sources */,
@@ -524,9 +553,11 @@
 				9510E4F4293A1503009A2562 /* RegularHomeView.swift in Sources */,
 				9510E4F0293A13BE009A2562 /* HomeView.swift in Sources */,
 				951747502927834D007C3308 /* RecordingViewModel.swift in Sources */,
+				95FD5185293B81B200440CA8 /* AttitudeIndicator.swift in Sources */,
 				9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */,
 				950D3131290A7EB000874EBF /* SIMDRotationRate.swift in Sources */,
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
+				9510E4FA293B5EDA009A2562 /* YawIndicator.swift in Sources */,
 				9504E89C29106D3A0009D563 /* MotionBasedSpeedCalculator.swift in Sources */,
 				9510E4F7293A8FC3009A2562 /* ManageMonitoringButton.swift in Sources */,
 				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
@@ -544,6 +575,7 @@
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */,
 				9517473F29199B66007C3308 /* PersistenceController.swift in Sources */,
+				9510E4FC293B5F8B009A2562 /* AttitudeSlidersView.swift in Sources */,
 				95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */,
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,

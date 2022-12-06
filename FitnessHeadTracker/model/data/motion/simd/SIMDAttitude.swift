@@ -22,8 +22,19 @@ struct SIMDAttitude: Attitude {
     }
     
     var quaternion: SIMDQuaternion {
-        // TODO: impplement
-        return SIMDQuaternion()
+        let cr = cos(roll * 0.5);
+        let sr = sin(roll * 0.5);
+        let cp = cos(pitch * 0.5);
+        let sp = sin(pitch * 0.5);
+        let cy = cos(yaw * 0.5);
+        let sy = sin(yaw * 0.5);
+
+        let w = cr * cp * cy + sr * sp * sy;
+        let x = sr * cp * cy - cr * sp * sy;
+        let y = cr * sp * cy + sr * cp * sy;
+        let z = cr * cp * sy - sr * sp * cy;
+
+        return SIMDQuaternion(x: x, y: y, z: z, w: w)
     }
     
     init(roll: Double = 0, pitch: Double = 0, yaw: Double = 0) {
