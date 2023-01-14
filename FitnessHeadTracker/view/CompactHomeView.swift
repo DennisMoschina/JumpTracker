@@ -35,6 +35,11 @@ struct CompactHomeView: View {
                     .tabItem {
                         Label("Recordings", systemImage: "recordingtape")
                     }
+                
+                DistanceView(distanceTrackerViewModel: AbsoluteDistanceTrackerViewModel(trackerFactory: RSSIBasedAbsoluteDistanceTrackerFactory(bleManager: BLEManager.Singleton)))
+                    .tabItem {
+                        Label("Distance", systemImage: "airpodspro.chargingcase.wireless")
+                    }
             }
         }
     }

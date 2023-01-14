@@ -11,6 +11,7 @@ enum MainNavigation: Int, CaseIterable {
     case current
     case attitude
     case recordingsList
+    case bluetooth
     
     var description: String {
         switch (self) {
@@ -20,6 +21,8 @@ enum MainNavigation: Int, CaseIterable {
             return "Attitude"
         case .recordingsList:
             return "Recordings"
+        case .bluetooth:
+            return "Bluetooth"
         }
     }
     var imageName: String {
@@ -30,6 +33,8 @@ enum MainNavigation: Int, CaseIterable {
             return "circle.and.line.horizontal"
         case .recordingsList:
             return "recordingtape"
+        case .bluetooth:
+            return "airpodspro.chargingcase.wireless"
         }
     }
 }
@@ -62,6 +67,8 @@ struct RegularHomeView: View {
                 AttitudeIndicator(motionViewModel: self.motionViewModel)
             case .recordingsList:
                 RecordingsListView()
+            case .bluetooth:
+                DistanceView(distanceTrackerViewModel: AbsoluteDistanceTrackerViewModel(trackerFactory: RSSIBasedAbsoluteDistanceTrackerFactory(bleManager: BLEManager.Singleton)))
             }
         }
     }

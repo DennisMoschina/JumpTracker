@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct YawIndicator: View {
+    var thickness: Float = 40
     @ObservedObject var motionViewModel: MotionViewModel
     
     var body: some View {
@@ -20,15 +21,16 @@ struct YawIndicator: View {
                     .foregroundColor(.blue)
                     .mask {
                         Circle()
-                            .padding(40)
+                            .padding(EdgeInsets(top: CGFloat(self.thickness), leading: CGFloat(self.thickness), bottom: CGFloat(self.thickness), trailing: CGFloat(self.thickness)))
                             .foregroundColor(.black)
                             .background(.white)
                             .compositingGroup()
                             .luminanceToAlpha()
                     }
-                Rectangle().frame(width: 20, height: 40)
+                Rectangle().frame(width: CGFloat(self.thickness / 2), height: CGFloat(self.thickness))
+                    .foregroundColor(.white)
             }
-            .rotationEffect(Angle(radians: self.motionViewModel.attitude.yaw))
+            .rotationEffect(Angle(radians: -self.motionViewModel.attitude.yaw))
         }
     }
 }

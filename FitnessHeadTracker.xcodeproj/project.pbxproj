@@ -50,6 +50,34 @@
 		9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474B29267107007C3308 /* MotionRecorderViewModel.swift */; };
 		9517474E29267726007C3308 /* RecordingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474D29267726007C3308 /* RecordingDetailView.swift */; };
 		951747502927834D007C3308 /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9517474F2927834D007C3308 /* RecordingViewModel.swift */; };
+		9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544ACF72946252F00C92BC4 /* AbsoluteDistance.swift */; };
+		9544AD0029462FCD00C92BC4 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544ACFF29462FCD00C92BC4 /* DistanceView.swift */; };
+		9544AD0529475A3400C92BC4 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0429475A3400C92BC4 /* ConnectionState.swift */; };
+		9544AD0729475A4200C92BC4 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0629475A4200C92BC4 /* Device.swift */; };
+		9544AD0929475A5200C92BC4 /* BluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0829475A5200C92BC4 /* BluetoothDevice.swift */; };
+		9544AD0B29475A6300C92BC4 /* BluetoothConnectionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0A29475A6300C92BC4 /* BluetoothConnectionOptions.swift */; };
+		9544AD0E29475A7300C92BC4 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0C29475A7300C92BC4 /* BluetoothConnector.swift */; };
+		9544AD0F29475A7300C92BC4 /* BluetoothScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD0D29475A7300C92BC4 /* BluetoothScanner.swift */; };
+		9544AD1129475A8900C92BC4 /* BluetoothScanningOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1029475A8900C92BC4 /* BluetoothScanningOptions.swift */; };
+		9544AD1829475AA400C92BC4 /* ConnectionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1229475AA400C92BC4 /* ConnectionOptions.swift */; };
+		9544AD1929475AA400C92BC4 /* ConnectionScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1329475AA400C92BC4 /* ConnectionScanner.swift */; };
+		9544AD1A29475AA400C92BC4 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1429475AA400C92BC4 /* Connectable.swift */; };
+		9544AD1B29475AA400C92BC4 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1529475AA400C92BC4 /* Connector.swift */; };
+		9544AD1C29475AA400C92BC4 /* ScanningOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1629475AA400C92BC4 /* ScanningOptions.swift */; };
+		9544AD1D29475AA400C92BC4 /* DataReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1729475AA400C92BC4 /* DataReceiver.swift */; };
+		9544AD2029475ABF00C92BC4 /* BLEManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1E29475ABF00C92BC4 /* BLEManagerProtocol.swift */; };
+		9544AD2129475ABF00C92BC4 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD1F29475ABF00C92BC4 /* BLEManager.swift */; };
+		9544AD2429475B1600C92BC4 /* ForbiddenActionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2329475B1600C92BC4 /* ForbiddenActionError.swift */; };
+		9544AD2729475DC300C92BC4 /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2629475DC300C92BC4 /* DeviceViewModel.swift */; };
+		9544AD2929475EF200C92BC4 /* Precision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2829475EF200C92BC4 /* Precision.swift */; };
+		9544AD2B2947600D00C92BC4 /* AbsoluteDistanceTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2A2947600D00C92BC4 /* AbsoluteDistanceTrackerProtocol.swift */; };
+		9544AD2D294760C000C92BC4 /* RSSIBasedAbsoluteDistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2C294760C000C92BC4 /* RSSIBasedAbsoluteDistanceTracker.swift */; };
+		9544AD2F294769A600C92BC4 /* AbsoluteDistanceTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD2E294769A600C92BC4 /* AbsoluteDistanceTrackerViewModel.swift */; };
+		9544AD3129487CED00C92BC4 /* AbsoluteDistanceTrackerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD3029487CED00C92BC4 /* AbsoluteDistanceTrackerFactory.swift */; };
+		9544AD3429488F0F00C92BC4 /* RSSIBasedAbsoluteDistanceTrackerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD3329488F0F00C92BC4 /* RSSIBasedAbsoluteDistanceTrackerFactory.swift */; };
+		9544AD36294A949600C92BC4 /* RSSIAbsoluteDistanceTrackerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD35294A949600C92BC4 /* RSSIAbsoluteDistanceTrackerTest.swift */; };
+		9544AD38294B54AC00C92BC4 /* DeviceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544AD37294B54AB00C92BC4 /* DeviceMock.swift */; };
+		9544F1FC294C892D000F590A /* BLEManagerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544F1FB294C892D000F590A /* BLEManagerState.swift */; };
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
@@ -131,6 +159,35 @@
 		9517474B29267107007C3308 /* MotionRecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionRecorderViewModel.swift; sourceTree = "<group>"; };
 		9517474D29267726007C3308 /* RecordingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDetailView.swift; sourceTree = "<group>"; };
 		9517474F2927834D007C3308 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
+		9544ACF72946252F00C92BC4 /* AbsoluteDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteDistance.swift; sourceTree = "<group>"; };
+		9544ACFE29462C5D00C92BC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9544ACFF29462FCD00C92BC4 /* DistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
+		9544AD0429475A3400C92BC4 /* ConnectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		9544AD0629475A4200C92BC4 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		9544AD0829475A5200C92BC4 /* BluetoothDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDevice.swift; sourceTree = "<group>"; };
+		9544AD0A29475A6300C92BC4 /* BluetoothConnectionOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectionOptions.swift; sourceTree = "<group>"; };
+		9544AD0C29475A7300C92BC4 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
+		9544AD0D29475A7300C92BC4 /* BluetoothScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothScanner.swift; sourceTree = "<group>"; };
+		9544AD1029475A8900C92BC4 /* BluetoothScanningOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothScanningOptions.swift; sourceTree = "<group>"; };
+		9544AD1229475AA400C92BC4 /* ConnectionOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionOptions.swift; sourceTree = "<group>"; };
+		9544AD1329475AA400C92BC4 /* ConnectionScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionScanner.swift; sourceTree = "<group>"; };
+		9544AD1429475AA400C92BC4 /* Connectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
+		9544AD1529475AA400C92BC4 /* Connector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		9544AD1629475AA400C92BC4 /* ScanningOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningOptions.swift; sourceTree = "<group>"; };
+		9544AD1729475AA400C92BC4 /* DataReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReceiver.swift; sourceTree = "<group>"; };
+		9544AD1E29475ABF00C92BC4 /* BLEManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManagerProtocol.swift; sourceTree = "<group>"; };
+		9544AD1F29475ABF00C92BC4 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
+		9544AD2329475B1600C92BC4 /* ForbiddenActionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForbiddenActionError.swift; sourceTree = "<group>"; };
+		9544AD2629475DC300C92BC4 /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
+		9544AD2829475EF200C92BC4 /* Precision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Precision.swift; sourceTree = "<group>"; };
+		9544AD2A2947600D00C92BC4 /* AbsoluteDistanceTrackerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteDistanceTrackerProtocol.swift; sourceTree = "<group>"; };
+		9544AD2C294760C000C92BC4 /* RSSIBasedAbsoluteDistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSIBasedAbsoluteDistanceTracker.swift; sourceTree = "<group>"; };
+		9544AD2E294769A600C92BC4 /* AbsoluteDistanceTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteDistanceTrackerViewModel.swift; sourceTree = "<group>"; };
+		9544AD3029487CED00C92BC4 /* AbsoluteDistanceTrackerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteDistanceTrackerFactory.swift; sourceTree = "<group>"; };
+		9544AD3329488F0F00C92BC4 /* RSSIBasedAbsoluteDistanceTrackerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSIBasedAbsoluteDistanceTrackerFactory.swift; sourceTree = "<group>"; };
+		9544AD35294A949600C92BC4 /* RSSIAbsoluteDistanceTrackerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSIAbsoluteDistanceTrackerTest.swift; sourceTree = "<group>"; };
+		9544AD37294B54AB00C92BC4 /* DeviceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMock.swift; sourceTree = "<group>"; };
+		9544F1FB294C892D000F590A /* BLEManagerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManagerState.swift; sourceTree = "<group>"; };
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
@@ -214,6 +271,7 @@
 		950D30FC2909E5D000874EBF /* FitnessHeadTracker */ = {
 			isa = PBXGroup;
 			children = (
+				9544ACFE29462C5D00C92BC4 /* Info.plist */,
 				950D31282909EB0B00874EBF /* model */,
 				950D31272909E5EB00874EBF /* view */,
 				950D3132290A7EF500874EBF /* viewModel */,
@@ -241,6 +299,7 @@
 			children = (
 				950D310E2909E5D200874EBF /* FitnessHeadTrackerTests.swift */,
 				9504E89F2910853B0009D563 /* SpeedCalculatorTest.swift */,
+				9544AD35294A949600C92BC4 /* RSSIAbsoluteDistanceTrackerTest.swift */,
 			);
 			path = FitnessHeadTrackerTests;
 			sourceTree = "<group>";
@@ -267,6 +326,7 @@
 				9510E4EF293A13BE009A2562 /* HomeView.swift */,
 				9510E4F1293A145D009A2562 /* CompactHomeView.swift */,
 				9510E4F3293A1503009A2562 /* RegularHomeView.swift */,
+				9544ACFF29462FCD00C92BC4 /* DistanceView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -283,6 +343,7 @@
 		950D31292909EB5E00874EBF /* logic */ = {
 			isa = PBXGroup;
 			children = (
+				9544AD01294759EA00C92BC4 /* bluetooth */,
 				950D3146290AE71700874EBF /* filter */,
 				9504E89629106C540009D563 /* SpeedCalculator */,
 				950D313E290A994400874EBF /* DistanceTracker */,
@@ -313,6 +374,8 @@
 				950D313C290A93D400874EBF /* Distance.swift */,
 				95CB24202919443000299821 /* simd */,
 				95D03FE629151C1B00C6B7C9 /* CMExtensions.swift */,
+				9544ACF72946252F00C92BC4 /* AbsoluteDistance.swift */,
+				9544AD2829475EF200C92BC4 /* Precision.swift */,
 			);
 			path = motion;
 			sourceTree = "<group>";
@@ -325,6 +388,8 @@
 				9504E89D2910715F0009D563 /* SpeedViewModel.swift */,
 				9517474B29267107007C3308 /* MotionRecorderViewModel.swift */,
 				9517474F2927834D007C3308 /* RecordingViewModel.swift */,
+				9544AD2629475DC300C92BC4 /* DeviceViewModel.swift */,
+				9544AD2E294769A600C92BC4 /* AbsoluteDistanceTrackerViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -333,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				950D3138290A8D3C00874EBF /* MotionManagerMock.swift */,
+				9544AD37294B54AB00C92BC4 /* DeviceMock.swift */,
 			);
 			path = mocks;
 			sourceTree = "<group>";
@@ -342,6 +408,9 @@
 			children = (
 				950D313A290A93A500874EBF /* DistanceTrackerProtocol.swift */,
 				950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */,
+				9544AD2A2947600D00C92BC4 /* AbsoluteDistanceTrackerProtocol.swift */,
+				9544AD2C294760C000C92BC4 /* RSSIBasedAbsoluteDistanceTracker.swift */,
+				9544AD3229488EF700C92BC4 /* factory */,
 			);
 			path = DistanceTracker;
 			sourceTree = "<group>";
@@ -384,6 +453,56 @@
 				95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */,
 			);
 			path = attitudeIndicator;
+			sourceTree = "<group>";
+		};
+		9544AD01294759EA00C92BC4 /* bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				9544AD2229475AC700C92BC4 /* manager */,
+				9544AD2529475B5800C92BC4 /* connection */,
+				9544AD2329475B1600C92BC4 /* ForbiddenActionError.swift */,
+				9544AD0629475A4200C92BC4 /* Device.swift */,
+				9544AD0829475A5200C92BC4 /* BluetoothDevice.swift */,
+				9544AD1729475AA400C92BC4 /* DataReceiver.swift */,
+				9544AD1629475AA400C92BC4 /* ScanningOptions.swift */,
+				9544AD0C29475A7300C92BC4 /* BluetoothConnector.swift */,
+				9544AD0D29475A7300C92BC4 /* BluetoothScanner.swift */,
+				9544AD0A29475A6300C92BC4 /* BluetoothConnectionOptions.swift */,
+				9544AD1029475A8900C92BC4 /* BluetoothScanningOptions.swift */,
+				9544F1FB294C892D000F590A /* BLEManagerState.swift */,
+			);
+			name = bluetooth;
+			path = ../data/bluetooth;
+			sourceTree = "<group>";
+		};
+		9544AD2229475AC700C92BC4 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				9544AD1F29475ABF00C92BC4 /* BLEManager.swift */,
+				9544AD1E29475ABF00C92BC4 /* BLEManagerProtocol.swift */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		9544AD2529475B5800C92BC4 /* connection */ = {
+			isa = PBXGroup;
+			children = (
+				9544AD0429475A3400C92BC4 /* ConnectionState.swift */,
+				9544AD1429475AA400C92BC4 /* Connectable.swift */,
+				9544AD1229475AA400C92BC4 /* ConnectionOptions.swift */,
+				9544AD1329475AA400C92BC4 /* ConnectionScanner.swift */,
+				9544AD1529475AA400C92BC4 /* Connector.swift */,
+			);
+			path = connection;
+			sourceTree = "<group>";
+		};
+		9544AD3229488EF700C92BC4 /* factory */ = {
+			isa = PBXGroup;
+			children = (
+				9544AD3029487CED00C92BC4 /* AbsoluteDistanceTrackerFactory.swift */,
+				9544AD3329488F0F00C92BC4 /* RSSIBasedAbsoluteDistanceTrackerFactory.swift */,
+			);
+			path = factory;
 			sourceTree = "<group>";
 		};
 		95CB24202919443000299821 /* simd */ = {
@@ -531,6 +650,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9544AD0929475A5200C92BC4 /* BluetoothDevice.swift in Sources */,
+				9544AD3129487CED00C92BC4 /* AbsoluteDistanceTrackerFactory.swift in Sources */,
+				9544AD0E29475A7300C92BC4 /* BluetoothConnector.swift in Sources */,
 				95838AB1293B8EA300F5CEEE /* AttitudeIndicatorScene.swift in Sources */,
 				9504E89E2910715F0009D563 /* SpeedViewModel.swift in Sources */,
 				950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */,
@@ -539,46 +661,70 @@
 				9517474829214EF5007C3308 /* Motion.swift in Sources */,
 				95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */,
 				950D31002909E5D000874EBF /* ContentView.swift in Sources */,
+				9544AD2429475B1600C92BC4 /* ForbiddenActionError.swift in Sources */,
+				9544AD1A29475AA400C92BC4 /* Connectable.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
+				9544AD0529475A3400C92BC4 /* ConnectionState.swift in Sources */,
+				9544AD2929475EF200C92BC4 /* Precision.swift in Sources */,
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
 				95838AAF293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift in Sources */,
+				9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */,
 				95174746291A7229007C3308 /* RecordingsListView.swift in Sources */,
 				950D30FE2909E5D000874EBF /* FitnessHeadTrackerApp.swift in Sources */,
+				9544AD1B29475AA400C92BC4 /* Connector.swift in Sources */,
 				950D313D290A93D400874EBF /* Distance.swift in Sources */,
 				95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */,
+				9544AD2729475DC300C92BC4 /* DeviceViewModel.swift in Sources */,
 				950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */,
 				95D03FE729151C1B00C6B7C9 /* CMExtensions.swift in Sources */,
 				9510E4F2293A145D009A2562 /* CompactHomeView.swift in Sources */,
 				9504E89A29106C9C0009D563 /* SIMDSpeed.swift in Sources */,
 				9510E4F4293A1503009A2562 /* RegularHomeView.swift in Sources */,
 				9510E4F0293A13BE009A2562 /* HomeView.swift in Sources */,
+				9544AD2D294760C000C92BC4 /* RSSIBasedAbsoluteDistanceTracker.swift in Sources */,
 				951747502927834D007C3308 /* RecordingViewModel.swift in Sources */,
 				95FD5185293B81B200440CA8 /* AttitudeIndicator.swift in Sources */,
+				9544AD0029462FCD00C92BC4 /* DistanceView.swift in Sources */,
 				9517474C29267107007C3308 /* MotionRecorderViewModel.swift in Sources */,
 				950D3131290A7EB000874EBF /* SIMDRotationRate.swift in Sources */,
+				9544AD0B29475A6300C92BC4 /* BluetoothConnectionOptions.swift in Sources */,
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
+				9544AD0F29475A7300C92BC4 /* BluetoothScanner.swift in Sources */,
 				9510E4FA293B5EDA009A2562 /* YawIndicator.swift in Sources */,
 				9504E89C29106D3A0009D563 /* MotionBasedSpeedCalculator.swift in Sources */,
 				9510E4F7293A8FC3009A2562 /* ManageMonitoringButton.swift in Sources */,
 				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
+				9544AD2F294769A600C92BC4 /* AbsoluteDistanceTrackerViewModel.swift in Sources */,
+				9544AD1D29475AA400C92BC4 /* DataReceiver.swift in Sources */,
 				9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
 				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
 				950D3148290AE72A00874EBF /* Filter.swift in Sources */,
+				9544AD1829475AA400C92BC4 /* ConnectionOptions.swift in Sources */,
+				9544AD2129475ABF00C92BC4 /* BLEManager.swift in Sources */,
 				95D03FEB29153A8D00C6B7C9 /* Attitude.swift in Sources */,
+				9544AD2B2947600D00C92BC4 /* AbsoluteDistanceTrackerProtocol.swift in Sources */,
 				9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */,
 				9504E8A9291165F70009D563 /* HeadingView.swift in Sources */,
+				9544AD1929475AA400C92BC4 /* ConnectionScanner.swift in Sources */,
+				9544AD38294B54AC00C92BC4 /* DeviceMock.swift in Sources */,
+				9544AD1C29475AA400C92BC4 /* ScanningOptions.swift in Sources */,
+				9544AD2029475ABF00C92BC4 /* BLEManagerProtocol.swift in Sources */,
 				95D03FE929153A3500C6B7C9 /* Acceleration.swift in Sources */,
 				95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */,
 				95D03FEF29153B1F00C6B7C9 /* Quaternion.swift in Sources */,
+				9544AD1129475A8900C92BC4 /* BluetoothScanningOptions.swift in Sources */,
 				950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */,
 				9517473F29199B66007C3308 /* PersistenceController.swift in Sources */,
 				9510E4FC293B5F8B009A2562 /* AttitudeSlidersView.swift in Sources */,
 				95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */,
+				9544AD0729475A4200C92BC4 /* Device.swift in Sources */,
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,
+				9544F1FC294C892D000F590A /* BLEManagerState.swift in Sources */,
+				9544AD3429488F0F00C92BC4 /* RSSIBasedAbsoluteDistanceTrackerFactory.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
 				9517474E29267726007C3308 /* RecordingDetailView.swift in Sources */,
 				950D312F290A7E6400874EBF /* SIMDAcceleration.swift in Sources */,
@@ -589,6 +735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9544AD36294A949600C92BC4 /* RSSIAbsoluteDistanceTrackerTest.swift in Sources */,
 				950D310F2909E5D200874EBF /* FitnessHeadTrackerTests.swift in Sources */,
 				9504E8A02910853B0009D563 /* SpeedCalculatorTest.swift in Sources */,
 			);
@@ -744,6 +891,8 @@
 				DEVELOPMENT_TEAM = 4875A95ZVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitnessHeadTracker/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This App uses Bluetooth to track the distance between you and your phone";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This App uses Motion to track your Body movement during a workout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -774,6 +923,8 @@
 				DEVELOPMENT_TEAM = 4875A95ZVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitnessHeadTracker/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This App uses Bluetooth to track the distance between you and your phone";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This App uses Motion to track your Body movement during a workout";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

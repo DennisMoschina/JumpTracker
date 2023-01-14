@@ -52,21 +52,13 @@ class AttitudeIndicatorScene: SCNScene {
     }
     
     public func rotateSphere(to attitude: any Attitude) {
-        self.sphereNode.simdLocalRotate(by: self.getRelativeRotation(for: self.sphereNode, by: attitude))
+        // a new Attitude is created since the coordinate systems don't match
+        let newAttitude = SIMDAttitude(roll: attitude.pitch, yaw: -attitude.roll)
+        self.sphereNode.simdWorldOrientation = simd_quatf(newAttitude.quaternion)
     }
     
     private func build() {
         self.rootNode.addChildNode(self.sphereNode)
         self.rootNode.addChildNode(self.cameraNode)
-    }
-    
-    private func getRelativeRotation(for node: SCNNode, by attitude: any Attitude) -> simd_quatf {
-        let currentOrientation: simd_quatf = node.simdWorldOrientation
-        let resetOrientation: simd_quatf = currentOrientation.inverse
-        let desiredOrentation: simd_quatf = simd_quatf(Self.TRANSFORM_QUATERNION) * simd_quatf(attitude)
-        
-        let result: simd_quatf = resetOrientation * desiredOrentation * simd_quatf(angle: Float.pi / 2, axis: simd_float3(x: 1, y: 0, z: 0))
-
-        return result
     }
 }
