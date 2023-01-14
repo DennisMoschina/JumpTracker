@@ -14,6 +14,8 @@ class MotionViewModel: ObservableObject {
     @Published var attitude: any Attitude = SIMDAttitude()
     
     @Published var historicUserAccel: [(acceleration: Acceleration, timestamp: Double)] = Array(repeating: (SIMDAcceleration(), 0.1), count: 30)
+    @Published var historicRotationRate: [(acceleration: RotationRate, timestamp: Double)] = Array(repeating: (SIMDRotationRate(), 0.1), count: 30)
+    @Published var historicAttitude: [(acceleration: any Attitude, timestamp: Double)] = Array(repeating: (SIMDAttitude(), 0.1), count: 30)
     
     @Published var motion: Motion = Motion()
     
@@ -35,6 +37,10 @@ class MotionViewModel: ObservableObject {
             self.userAcceleration = acceleration
             self.historicUserAccel.remove(at: 0)
             self.historicUserAccel.append((acceleration, (self.historicUserAccel.last?.timestamp ?? 0) + motion.timeInterval))
+            self.historicRotationRate.remove(at: 0)
+            self.historicRotationRate.append((motion.rotationRate, (self.historicRotationRate.last?.timestamp ?? 0) + motion.timeInterval))
+            self.historicAttitude.remove(at: 0)
+            self.historicAttitude.append((motion.attitude, (self.historicAttitude.last?.timestamp ?? 0) + motion.timeInterval))
             
             self.rotationRate = motion.rotationRate
             self.attitude = motion.attitude

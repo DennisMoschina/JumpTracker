@@ -8,14 +8,18 @@
 import SwiftUI
 import Charts
 
-struct AccelerationChart: View {
+typealias Chart3dDataOverTime = [(axis: String, data: [Double])]
+
+struct Data3dOverTimeChart: View {
     @ObservedObject var motionViewModel: MotionViewModel
+    
+    let dataKeyPath: KeyPath<MotionViewModel, Chart3dDataOverTime>
     
     var body: some View {
         ZStack {
             GroupBox {
                 Chart {
-                    ForEach(self.motionViewModel.historicUserActionChartAccessible, id: \.axis) { item in
+                    ForEach(self.motionViewModel[keyPath: self.dataKeyPath], id: \.axis) { item in
                         ForEach(Array(item.data.enumerated()), id: \.offset) { (index, dataElement) in
                             LineMark(
                                 x: .value("Time", index),
@@ -42,7 +46,7 @@ struct AccelerationChart: View {
 // MARK: - ViewModel Extension
 
 extension MotionViewModel {
-    var historicUserActionChartAccessible: [(axis: String, data: [Double])] {
+    var historicUserActionChartAccessible: Chart3dDataOverTime {
         return [
             (
                 axis: "X",
@@ -64,6 +68,52 @@ extension MotionViewModel {
             ),
         ]
     }
+    
+    var historicRotationRateChartAccessible: Chart3dDataOverTime {
+        return [
+            (
+                axis: "X",
+                data: self.historicRotationRate.map { (rotationRate: RotationRate, timestamp: Double) in
+                    rotationRate.x
+                }
+            ),
+            (
+                axis: "Y",
+                data: self.historicRotationRate.map { (rotationRate: RotationRate, timestamp: Double) in
+                    rotationRate.y
+                }
+            ),
+            (
+                axis: "Z",
+                data: self.historicRotationRate.map { (rotationRate: RotationRate, timestamp: Double) in
+                    rotationRate.z
+                }
+            ),
+        ]
+    }
+    
+    var historicAttitudeChartAccessible: Chart3dDataOverTime {
+        return [
+            (
+                axis: "roll",
+                data: self.historicAttitude.map { (attitude: Attitude, timestamp: Double) in
+                    attitude.roll
+                }
+            ),
+            (
+                axis: "pitch",
+                data: self.historicAttitude.map { (attitude: Attitude, timestamp: Double) in
+                    attitude.pitch
+                }
+            ),
+            (
+                axis: "yaw",
+                data: self.historicAttitude.map { (attitude: Attitude, timestamp: Double) in
+                    attitude.yaw
+                }
+            ),
+        ]
+    }
 }
 
 // MARK: - Preview
@@ -73,7 +123,7 @@ struct AccelerationChart_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack {
-            AccelerationChart(motionViewModel: MotionViewModel(motionManager: motionManager))
+            Data3dOverTimeChart(motionViewModel: MotionViewModel(motionManager: motionManager), dataKeyPath: \.historicUserActionChartAccessible)
             Spacer()
             HStack {
                 Button("Start") {

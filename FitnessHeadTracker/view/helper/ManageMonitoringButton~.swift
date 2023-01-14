@@ -17,7 +17,6 @@ struct ManageMonitoringButton: View {
                     self.viewModel.stopMonitoring()
                 } label: {
                     Text("Stop Motion Monitoring")
-                        .padding()
                 }
                 .tint(.red)
             } else {
@@ -25,10 +24,10 @@ struct ManageMonitoringButton: View {
                     self.viewModel.startMonitoring()
                 } label: {
                     Text("Start Motion Monitoring")
-                        .padding()
                 }
             }
         }
+        .padding()
         .buttonStyle(.borderedProminent)
     }
 }

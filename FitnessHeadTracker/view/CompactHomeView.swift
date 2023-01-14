@@ -31,6 +31,11 @@ struct CompactHomeView: View {
                         Label("Attitude", systemImage: "circle.and.line.horizontal")
                     }
                 
+                ValuesView(viewModel: self.motionViewModel)
+                    .tabItem {
+                        Label("Charts", systemImage: "chart.xyaxis.line")
+                    }
+                
                 RecordingsListView()
                     .tabItem {
                         Label("Recordings", systemImage: "recordingtape")

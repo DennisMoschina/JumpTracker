@@ -49,14 +49,15 @@ struct ContentView: View {
                 Text("\(motionViewModel.rotationRate.z, specifier: "%.2f")")
             }
             
+            
+            HeadingView(motionViewModel: self.motionViewModel)
+            
+            Spacer()
+            
             Toggle("Record when monitoring", isOn: self.$recordingViewModel.startOnMonitor)
                 .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
             
             ManageMonitoringButton(viewModel: self.motionViewModel)
-            
-            HeadingView(motionViewModel: self.motionViewModel)
-            
-            AccelerationChart(motionViewModel: self.motionViewModel)
         }
     }
 }

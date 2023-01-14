@@ -31,7 +31,7 @@
 		950D313D290A93D400874EBF /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D313C290A93D400874EBF /* Distance.swift */; };
 		950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */; };
 		950D3143290AA36300874EBF /* DistanceTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */; };
-		950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3144290AADAB00874EBF /* AccelerationChart.swift */; };
+		950D3145290AADAB00874EBF /* Data3dOverTimeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3144290AADAB00874EBF /* Data3dOverTimeChart.swift */; };
 		950D3148290AE72A00874EBF /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3147290AE72A00874EBF /* Filter.swift */; };
 		950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D3149290AE94A00874EBF /* EwmaFilter.swift */; };
 		950D314C290AEBEE00874EBF /* FilteredMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */; };
@@ -84,6 +84,7 @@
 		95838AAF293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95838AAE293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift */; };
 		95838AB1293B8EA300F5CEEE /* AttitudeIndicatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95838AB0293B8EA200F5CEEE /* AttitudeIndicatorScene.swift */; };
 		95838AB9293B9F6100F5CEEE /* AttitudeSphereTexture.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */; };
+		959ED9012972F56B000FF474 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED9002972F56B000FF474 /* ValuesView.swift */; };
 		95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241A2915BB7F00299821 /* RotationRate.swift */; };
 		95CB241D2917349500299821 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241C2917349500299821 /* Speed.swift */; };
 		95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241E29190B3500299821 /* SIMDDistance.swift */; };
@@ -140,7 +141,7 @@
 		950D313C290A93D400874EBF /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		950D3140290A996200874EBF /* MotionBasedDistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBasedDistanceTracker.swift; sourceTree = "<group>"; };
 		950D3142290AA36300874EBF /* DistanceTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTrackerViewModel.swift; sourceTree = "<group>"; };
-		950D3144290AADAB00874EBF /* AccelerationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationChart.swift; sourceTree = "<group>"; };
+		950D3144290AADAB00874EBF /* Data3dOverTimeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data3dOverTimeChart.swift; sourceTree = "<group>"; };
 		950D3147290AE72A00874EBF /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		950D3149290AE94A00874EBF /* EwmaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwmaFilter.swift; sourceTree = "<group>"; };
 		950D314B290AEBEE00874EBF /* FilteredMotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredMotionManager.swift; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 		95838AAE293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicatorSphereView.swift; sourceTree = "<group>"; };
 		95838AB0293B8EA200F5CEEE /* AttitudeIndicatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicatorScene.swift; sourceTree = "<group>"; };
 		95838AB8293B9F6100F5CEEE /* AttitudeSphereTexture.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttitudeSphereTexture.sks; sourceTree = "<group>"; };
+		959ED9002972F56B000FF474 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
 		95CB241A2915BB7F00299821 /* RotationRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationRate.swift; sourceTree = "<group>"; };
 		95CB241C2917349500299821 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		95CB241E29190B3500299821 /* SIMDDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDDistance.swift; sourceTree = "<group>"; };
@@ -319,7 +321,7 @@
 				9510E4F8293B5EC7009A2562 /* attitudeIndicator */,
 				9510E4F5293A8F99009A2562 /* helper */,
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
-				950D3144290AADAB00874EBF /* AccelerationChart.swift */,
+				950D3144290AADAB00874EBF /* Data3dOverTimeChart.swift */,
 				9504E8A8291165F70009D563 /* HeadingView.swift */,
 				95174745291A7229007C3308 /* RecordingsListView.swift */,
 				9517474D29267726007C3308 /* RecordingDetailView.swift */,
@@ -327,6 +329,7 @@
 				9510E4F1293A145D009A2562 /* CompactHomeView.swift */,
 				9510E4F3293A1503009A2562 /* RegularHomeView.swift */,
 				9544ACFF29462FCD00C92BC4 /* DistanceView.swift */,
+				959ED9002972F56B000FF474 /* ValuesView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
 				9544AD0529475A3400C92BC4 /* ConnectionState.swift in Sources */,
 				9544AD2929475EF200C92BC4 /* Precision.swift in Sources */,
+				959ED9012972F56B000FF474 /* ValuesView.swift in Sources */,
 				950D313B290A93A500874EBF /* DistanceTrackerProtocol.swift in Sources */,
 				95838AAF293B879B00F5CEEE /* AttitudeIndicatorSphereView.swift in Sources */,
 				9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */,
@@ -714,7 +718,7 @@
 				95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */,
 				95D03FEF29153B1F00C6B7C9 /* Quaternion.swift in Sources */,
 				9544AD1129475A8900C92BC4 /* BluetoothScanningOptions.swift in Sources */,
-				950D3145290AADAB00874EBF /* AccelerationChart.swift in Sources */,
+				950D3145290AADAB00874EBF /* Data3dOverTimeChart.swift in Sources */,
 				950D3139290A8D3C00874EBF /* MotionManagerMock.swift in Sources */,
 				9504E8AE291169F30009D563 /* MotionSlidersView.swift in Sources */,
 				9517473F29199B66007C3308 /* PersistenceController.swift in Sources */,
