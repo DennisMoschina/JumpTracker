@@ -13,6 +13,8 @@ class AbsoluteDistanceTrackerViewModel: ObservableObject {
     @Published var ready: Bool = false
     @Published var failed: Bool = false
     
+    private var trackerFactory: any AbsoluteDistanceTrackerFactory
+    
     private var tracker: (any AbsoluteDistanceTrackerProtocol)? {
         didSet {
             if let tracker {
@@ -28,8 +30,25 @@ class AbsoluteDistanceTrackerViewModel: ObservableObject {
     private var distanceCancellable: AnyCancellable?
 
     init(trackerFactory: some AbsoluteDistanceTrackerFactory) {
+        self.trackerFactory = trackerFactory
+        self.createTracker(factory: trackerFactory)
+    }
+    
+    public func start() {
+        if self.tracker == nil {
+            self.createTracker(factory: self.trackerFactory)
+        }
+        self.tracker?.start()
+    }
+    
+    public func stop() {
+        self.tracker?.stop()
+    }
+    
+    private func createTracker(factory: some AbsoluteDistanceTrackerFactory) {
         Task {
-            let result = await trackerFactory.create()
+            self.failed = false
+            let result = await factory.create()
             switch result {
             case .success(_):
                 do {
@@ -41,13 +60,5 @@ class AbsoluteDistanceTrackerViewModel: ObservableObject {
                 self.failed = true
             }
         }
-    }
-    
-    func start() {
-        self.tracker?.start()
-    }
-    
-    func stop() {
-        self.tracker?.stop()
     }
 }

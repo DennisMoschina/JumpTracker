@@ -21,15 +21,20 @@ class MotionViewModel: ObservableObject {
     
     @Published var updating: Bool = false
     
+    @Published var failed: Bool = false
+    
+    var reason: String = ""
+    
     private var motionManager: any MotionManagerProtocol
     
     private var motionCancellable: AnyCancellable?
     
     private var updatingCancellable: AnyCancellable?
+    private var failedCancellable: AnyCancellable?
     
     init(motionManager: any MotionManagerProtocol) {
         self.motionManager = motionManager
-        self.updatingCancellable = motionManager._updating.sink(receiveValue: { updating in
+        self.updatingCancellable = motionManager._updating.receive(on: DispatchQueue.main).sink(receiveValue: { updating in
             self.updating = updating
         })
         self.motionCancellable = motionManager._motion.receive(on: DispatchQueue.main).sink(receiveValue: { motion in
@@ -47,10 +52,16 @@ class MotionViewModel: ObservableObject {
             
             self.motion = motion
         })
+        self.failedCancellable = motionManager._failed.receive(on: DispatchQueue.main).sink(receiveValue: { failed in
+            self.failed = failed
+            self.reason = self.motionManager.reason
+        })
     }
     
     func startMonitoring() {
-        self.motionManager.start()
+        Task {
+            await self.motionManager.start()
+        }
     }
     
     func stopMonitoring() {

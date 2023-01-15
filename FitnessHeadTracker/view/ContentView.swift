@@ -58,6 +58,8 @@ struct ContentView: View {
                 .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
             
             ManageMonitoringButton(viewModel: self.motionViewModel)
+            
+            Spacer()
         }
     }
 }

@@ -15,7 +15,7 @@ struct DistanceView: View {
             Text("\(self.distanceTrackerViewModel.distance.distance)")
                 .alert("Failed to connect", isPresented: self.$distanceTrackerViewModel.failed) {
                     Button("Try again") {
-                        #warning("TODO: implement")
+                        self.distanceTrackerViewModel.start()
                     }
                 }
             

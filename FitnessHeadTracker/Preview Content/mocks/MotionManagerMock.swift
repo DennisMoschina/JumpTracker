@@ -9,6 +9,10 @@ import Foundation
 import Combine
 
 class MotionManagerMock: NSObject, MotionManagerProtocol {
+    var _failed: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    
+    var reason: String = ""
+    
     var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
     
     var _updating: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)

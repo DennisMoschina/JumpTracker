@@ -10,6 +10,10 @@ import Combine
 
 
 class FilteredMotionManager: MotionManagerProtocol {
+    var _failed: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    
+    var reason: String = ""
+    
     var _motion: CurrentValueSubject<Motion, Never> = CurrentValueSubject(Motion())
 
     var timeInterval: Double {
@@ -26,6 +30,7 @@ class FilteredMotionManager: MotionManagerProtocol {
 
     private var motionCancellable: AnyCancellable?
     private var updatingCancellable: AnyCancellable?
+    private var failedCancellable: AnyCancellable?
 
 
     init(motionManager: any MotionManagerProtocol, accelFilterX: any Filter, accelFilterY: any Filter, accelFilterZ: any Filter) {
@@ -48,10 +53,14 @@ class FilteredMotionManager: MotionManagerProtocol {
             )
             self.motion = motion
         })
+        self.failedCancellable = motionManager._failed.sink(receiveValue: { failed in
+            self.failed = failed
+            self.reason = self.motionManager.reason
+        })
     }
 
-    func start() {
-        self.motionManager.start()
+    func start() async {
+        await self.motionManager.start()
     }
 
     func stop() {

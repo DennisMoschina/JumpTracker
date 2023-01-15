@@ -13,6 +13,7 @@ import SwiftUI
 
 
 class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDelegate {
+    private static let TIME_OUT_TIME = 5
     
     public static let singleton: MotionManager = MotionManager()
 
@@ -24,6 +25,11 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     var _updating: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     
+    var _failed: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    
+    var reason: String = ""
+    
+    private var startedTimestamp: CFTimeInterval = -1
     
     private override init() {
         super.init()
@@ -39,7 +45,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
      *
      * The data aquisition does not hapen in the main queue
      */
-    func start() {
+    func start() async {
         print("Available: \(self.manager.isDeviceMotionAvailable)")
         var authStatus: String
         switch CMHeadphoneMotionManager.authorizationStatus() {
@@ -57,7 +63,17 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         print("Authorization: \(authStatus)")
         
-        self.updating = true
+        switch CMHeadphoneMotionManager.authorizationStatus() {
+        case .restricted, .denied, .notDetermined:
+            self.failed = true
+            self.reason = "Missing authorization"
+            return
+        default:
+            break
+        }
+        
+        
+        self.startedTimestamp = CACurrentMediaTime()
         
         self.manager.startDeviceMotionUpdates(to: OperationQueue()) { motion, error in
             if let motion {
@@ -75,13 +91,26 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
                 print(error)
             }
         }
+        
+        while ((!self.manager.isDeviceMotionActive || self.oldTimestamp < 0) && CACurrentMediaTime() < self.startedTimestamp + Double(Self.TIME_OUT_TIME)) {
+            await Task.yield()
+        }
+        
         print("Active: \(self.manager.isDeviceMotionActive)")
+        
+        if !(self.manager.isDeviceMotionActive && self.oldTimestamp > 0) {
+            self.reason = "Could not activate in time, make sure AirPods are connected"
+            self.failed = true
+            self.stop()
+            return
+        }
+        self.updating = true
     }
     
     func stop() {
+        self.updating = false
         self.manager.stopDeviceMotionUpdates()
         self.oldTimestamp = -1
-        self.updating = false
     }
     
     // MARK: - Delegate Methods
@@ -92,5 +121,10 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     internal func headphoneMotionManagerDidDisconnect(_ manager: CMHeadphoneMotionManager) {
         print("disconnected Headphones")
+        if self.updating {
+            self.failed = true
+            self.reason = "Headphones disconnected"
+            self.updating = false            
+        }
     }
 }

@@ -30,6 +30,11 @@ struct ManageMonitoringButton: View {
             }
         }
         .buttonStyle(.borderedProminent)
+        .alert(self.viewModel.reason, isPresented: self.$viewModel.failed) {
+            Button("OK") {
+                return
+            }
+        }
     }
 }
 
