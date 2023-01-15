@@ -10,6 +10,7 @@ import SwiftUI
 enum MainNavigation: Int, CaseIterable {
     case current
     case attitude
+    case charts
     case recordingsList
     case bluetooth
     
@@ -19,6 +20,8 @@ enum MainNavigation: Int, CaseIterable {
             return "Current Values"
         case .attitude:
             return "Attitude"
+        case .charts:
+            return "Charts"
         case .recordingsList:
             return "Recordings"
         case .bluetooth:
@@ -31,6 +34,8 @@ enum MainNavigation: Int, CaseIterable {
             return "display"
         case .attitude:
             return "circle.and.line.horizontal"
+        case .charts:
+            return "chart.xyaxis.line"
         case .recordingsList:
             return "recordingtape"
         case .bluetooth:
@@ -65,6 +70,8 @@ struct RegularHomeView: View {
                             recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
             case .attitude:
                 AttitudeIndicator(motionViewModel: self.motionViewModel)
+            case.charts:
+                ValuesView(viewModel: self.motionViewModel)
             case .recordingsList:
                 RecordingsListView()
             case .bluetooth:

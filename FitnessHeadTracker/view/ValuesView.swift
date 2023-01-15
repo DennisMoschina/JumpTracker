@@ -46,11 +46,11 @@ struct ValuesView: View {
             Group {
                 switch self.selected {
                 case .ACCEL:
-                    Data3dOverTimeChart(motionViewModel: self.viewModel, dataKeyPath: \.historicUserActionChartAccessible)
+                    LiveMotionChart(motionViewModel: self.viewModel, dataKeyPath: \.historicUserActionChartAccessible)
                 case .ROT_RATE:
-                    Data3dOverTimeChart(motionViewModel: self.viewModel, dataKeyPath: \.historicRotationRateChartAccessible)
+                    LiveMotionChart(motionViewModel: self.viewModel, dataKeyPath: \.historicRotationRateChartAccessible)
                 case .ATT:
-                    Data3dOverTimeChart(motionViewModel: self.viewModel, dataKeyPath: \.historicAttitudeChartAccessible)
+                    LiveMotionChart(motionViewModel: self.viewModel, dataKeyPath: \.historicAttitudeChartAccessible)
                 }
             }
         }

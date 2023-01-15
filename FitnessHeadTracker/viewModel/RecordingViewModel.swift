@@ -31,7 +31,9 @@ class RecordingViewModel: ObservableObject {
     }
     
     let motionArray: [CDMotion]
-    let accelerationChartData: [(axis: String, data: [(timestamp: Double, data: Double)])]
+    let accelerationChartData: Chart3dDataOverTime
+    let rotationRateChartData: Chart3dDataOverTime
+    let attitudeChartData: Chart3dDataOverTime
     
     init(recording: Recording,
          persistenceController: PersistenceController = PersistenceController.shared,
@@ -47,36 +49,65 @@ class RecordingViewModel: ObservableObject {
         self.accelerationChartData = [
             (
                 axis: "X",
-                data: self.motionArray.reduce([], { partialResult, motion in
-                    var newResult: [(timestamp: Double, data: Double)] = partialResult
-                    let lastTimestamp: Double = newResult.last?.timestamp ?? 0
-                    newResult.append((timestamp: motion.timeInterval + lastTimestamp, data: motion.userAcceleration?.x ?? 0))
-                    
-                    return newResult
-                })
+                data: self.motionArray.compactMap({ $0.userAcceleration }).map { (acceleration: Acceleration) in
+                    acceleration.x
+                }
             ),
             (
                 axis: "Y",
-                data: self.motionArray.reduce([], { partialResult, motion in
-                    var newResult: [(timestamp: Double, data: Double)] = partialResult
-                    let lastTimestamp: Double = newResult.last?.timestamp ?? 0
-                    newResult.append((timestamp: motion.timeInterval + lastTimestamp, data: motion.userAcceleration?.y ?? 0))
-                    
-                    return newResult
-                })
+                data: self.motionArray.compactMap({ $0.userAcceleration }).map { (acceleration: Acceleration) in
+                    acceleration.y
+                }
             ),
             (
                 axis: "Z",
-                data: self.motionArray.reduce([], { partialResult, motion in
-                    var newResult: [(timestamp: Double, data: Double)] = partialResult
-                    let lastTimestamp: Double = newResult.last?.timestamp ?? 0
-                    newResult.append((timestamp: motion.timeInterval + lastTimestamp, data: motion.userAcceleration?.z ?? 0))
-                    
-                    return newResult
-                })
-            )
+                data: self.motionArray.compactMap({ $0.userAcceleration }).map { (acceleration: Acceleration) in
+                    acceleration.z
+                }
+            ),
         ]
         
+        self.rotationRateChartData = [
+            (
+                axis: "X",
+                data: self.motionArray.compactMap({ $0.rotationRate }).map { (rotationRate: RotationRate) in
+                    rotationRate.x
+                }
+            ),
+            (
+                axis: "Y",
+                data: self.motionArray.compactMap({ $0.rotationRate }).map { (rotationRate: RotationRate) in
+                    rotationRate.y
+                }
+            ),
+            (
+                axis: "Z",
+                data: self.motionArray.compactMap({ $0.rotationRate }).map { (rotationRate: RotationRate) in
+                    rotationRate.z
+                }
+            ),
+        ]
+        
+        self.attitudeChartData = [
+            (
+                axis: "roll",
+                data: self.motionArray.compactMap({ $0.attitude }).map { (attitude: Attitude) in
+                    attitude.roll
+                }
+            ),
+            (
+                axis: "pitch",
+                data: self.motionArray.compactMap({ $0.attitude }).map { (attitude: Attitude) in
+                    attitude.pitch
+                }
+            ),
+            (
+                axis: "yaw",
+                data: self.motionArray.compactMap({ $0.attitude }).map { (attitude: Attitude) in
+                    attitude.yaw
+                }
+            ),
+        ]
     }
     
     func save() {

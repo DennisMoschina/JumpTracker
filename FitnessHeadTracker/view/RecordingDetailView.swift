@@ -47,19 +47,7 @@ struct RecordingDetailView: View {
                 }
                 
                 Section {
-                    Chart {
-                        ForEach(self.viewModel.accelerationChartData, id: \.axis) { item in
-                            ForEach(Array(item.data.enumerated()), id: \.offset) { (_, data) in
-                                LineMark(
-                                    x: .value("Time", data.timestamp),
-                                    y: .value("Data", data.data)
-                                )
-                            }
-                            .foregroundStyle(by: .value("Axis", item.axis))
-                        }
-                    }
-                    .chartYScale(domain: -1...1)
-                    .padding()
+                    RecordingChartsView(recordingViewModel: self.viewModel)
                 }
             }
             

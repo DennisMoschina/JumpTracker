@@ -16,19 +16,21 @@ struct RecordingsListView: View {
     ]) var recordings: FetchedResults<Recording>
     
     var body: some View {
-        List {
-            ForEach(self.recordings) { recording in
-                RecordingRow(recording: recording)
-            }
-            .onDelete { indexSet in
-                for i in indexSet {
-                    let recording = self.recordings[i]
-                    self.managedObjectContext.delete(recording)
+        NavigationView {
+            List {
+                ForEach(self.recordings) { recording in
+                    RecordingRow(recording: recording)
+                }
+                .onDelete { indexSet in
+                    for i in indexSet {
+                        let recording = self.recordings[i]
+                        self.managedObjectContext.delete(recording)
+                    }
                 }
             }
-        }
-        .toolbar {
-            EditButton()
+            .toolbar {
+                EditButton()
+            }
         }
     }
 }

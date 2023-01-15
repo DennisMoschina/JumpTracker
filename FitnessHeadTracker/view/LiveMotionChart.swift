@@ -10,7 +10,7 @@ import Charts
 
 typealias Chart3dDataOverTime = [(axis: String, data: [Double])]
 
-struct Data3dOverTimeChart: View {
+struct LiveMotionChart: View {
     @ObservedObject var motionViewModel: MotionViewModel
     
     let dataKeyPath: KeyPath<MotionViewModel, Chart3dDataOverTime>
@@ -123,7 +123,7 @@ struct AccelerationChart_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack {
-            Data3dOverTimeChart(motionViewModel: MotionViewModel(motionManager: motionManager), dataKeyPath: \.historicUserActionChartAccessible)
+            LiveMotionChart(motionViewModel: MotionViewModel(motionManager: motionManager), dataKeyPath: \.historicUserActionChartAccessible)
             Spacer()
             HStack {
                 Button("Start") {
