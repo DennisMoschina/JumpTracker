@@ -10,17 +10,18 @@ import ARKit
 import RealityKit
 import Combine
 
-private var bodySkeleton: BodySkeleton?
-private let bodySkeletonAnchor = AnchorEntity()
 
 struct ARViewContainer: UIViewRepresentable {
-    @State var character: BodyTrackedEntity?
-    let characterAnchor = AnchorEntity()
+    @State internal var bodySkeleton: BodySkeleton?
+    internal let bodySkeletonAnchor = AnchorEntity()
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
         
-        arView.setupForBodyTracking()
+        let configuration = ARBodyTrackingConfiguration()
+        arView.session.run(configuration)
+        arView.session.delegate = context.coordinator
+        
         arView.scene.addAnchor(bodySkeletonAnchor)
         
         return arView
@@ -28,27 +29,30 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
     }
-}
-
-extension ARView: ARSessionDelegate {
-    func setupForBodyTracking() {
-        let configuration = ARBodyTrackingConfiguration()
-        self.session.run(configuration)
-        
-        self.session.delegate = self
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
     }
     
-    public func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-        for anchor in anchors {
-            if let bodyAnchor = anchor as? ARBodyAnchor {
-                if let skeleton = bodySkeleton {
-                    // BodySkeleton already exists, update all joints and bones
-                    skeleton.update (with: bodyAnchor)
-                } else {
-                    // BodySkeleton doesn't yet exist. This means a body has been detected for the first time.
-                    // Create bodySkeleton entity and add it to the bodySkeletonAnchor
-                    bodySkeleton = BodySkeleton (for: bodyAnchor)
-                    bodySkeletonAnchor.addChild(bodySkeleton!)
+    class Coordinator: NSObject, ARSessionDelegate {
+        private let parent: ARViewContainer
+        
+        init(parent: ARViewContainer) {
+            self.parent = parent
+        }
+        
+        func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+            for anchor in anchors {
+                if let bodyAnchor = anchor as? ARBodyAnchor {
+                    if let skeleton = self.parent.bodySkeleton {
+                        // BodySkeleton already exists, update all joints and bones
+                        skeleton.update(with: bodyAnchor)
+                    } else {
+                        // BodySkeleton doesn't yet exist. This means a body has been detected for the first time.
+                        // Create bodySkeleton entity and add it to the bodySkeletonAnchor
+                        self.parent.bodySkeleton = BodySkeleton(for: bodyAnchor)
+                        self.parent.bodySkeletonAnchor.addChild(self.parent.bodySkeleton!)
+                    }
                 }
             }
         }
