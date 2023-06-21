@@ -12,14 +12,10 @@ class MotionRecorderViewModel: ObservableObject {
     private var motionRecorder: MotionCoreDataRecorder
     
     @Published var isRecording: Bool = false
-    @Published var startOnMonitor: Bool = false {
-        didSet {
-            self.motionRecorder.recordOnMonitoringStart = self.startOnMonitor
-        }
-    }
-    
+
     init(motionRecorder: MotionCoreDataRecorder) {
         self.motionRecorder = motionRecorder
+        self.motionRecorder.recordOnMonitoringStart = true
     }
     
     func startRecording() {
