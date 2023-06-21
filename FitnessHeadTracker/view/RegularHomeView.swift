@@ -9,37 +9,27 @@ import SwiftUI
 
 enum MainNavigation: Int, CaseIterable {
     case current
-    case attitude
     case charts
     case recordingsList
-    case bluetooth
     
     var description: String {
         switch (self) {
         case .current:
             return "Current Values"
-        case .attitude:
-            return "Attitude"
         case .charts:
             return "Charts"
         case .recordingsList:
             return "Recordings"
-        case .bluetooth:
-            return "Bluetooth"
         }
     }
     var imageName: String {
         switch (self) {
         case .current:
             return "display"
-        case .attitude:
-            return "circle.and.line.horizontal"
         case .charts:
             return "chart.xyaxis.line"
         case .recordingsList:
             return "recordingtape"
-        case .bluetooth:
-            return "airpodspro.chargingcase.wireless"
         }
     }
 }
@@ -65,17 +55,11 @@ struct RegularHomeView: View {
             switch self.selectedNavigation {
             case .current:
                 ContentView(motionViewModel: self.motionViewModel,
-                            distanceTrackerViewModel: self.distanceTrackerViewModel,
-                            speedViewModel: self.speedViewModel,
                             recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
-            case .attitude:
-                AttitudeIndicator(motionViewModel: self.motionViewModel)
             case.charts:
                 ValuesView(viewModel: self.motionViewModel)
             case .recordingsList:
                 RecordingsListView()
-            case .bluetooth:
-                DistanceView(distanceTrackerViewModel: AbsoluteDistanceTrackerViewModel(trackerFactory: RSSIBasedAbsoluteDistanceTrackerFactory(bleManager: BLEManager.Singleton)))
             }
         }
     }
