@@ -10,8 +10,8 @@ import RealityKit
 import ARKit
 
 class BodySkeleton: Entity {
-    var joints: [String : Entity] = [:]
-    var bones: [String : Entity] = [:]
+    @Published var joints: [String : Entity] = [:]
+    @Published var bones: [String : Entity] = [:]
     
     required init(for bodyAnchor: ARBodyAnchor) {
         super.init()

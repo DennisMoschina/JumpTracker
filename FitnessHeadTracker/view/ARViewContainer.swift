@@ -15,6 +15,8 @@ struct ARViewContainer: UIViewRepresentable {
     @State internal var bodySkeleton: BodySkeleton?
     internal let bodySkeletonAnchor = AnchorEntity()
     
+    var onSkeletonCreate: (BodySkeleton) -> Void = { _ in return }
+    
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
         

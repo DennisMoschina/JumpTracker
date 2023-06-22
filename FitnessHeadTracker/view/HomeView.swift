@@ -11,13 +11,21 @@ struct HomeView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
+    @Environment(\.persistenceController) var persistenceController
+    
     var body: some View {
         Group {
+            let dataRecorder = DataRecorder(persistenceController: self.persistenceController)
+            let motionViewModel = MotionViewModel(motionManager: MotionManager.singleton)
+            let motionRecorder = MotionCoreDataRecorder(dataRecorder: dataRecorder)
+            let hipPositionRecorder = HipPositionRecorder(dataRecorder: dataRecorder)
+            let recorderViewModel = MotionRecorderViewModel(motionRecorder: motionRecorder, hipPositionRecorder: hipPositionRecorder, dataRecorder: dataRecorder)
+            
             switch self.horizontalSizeClass {
             case .compact:
-                CompactHomeView()
+                CompactHomeView(motionViewModel: motionViewModel, recordingViewModel: recorderViewModel)
             case .regular:
-                RegularHomeView()
+                RegularHomeView(motionViewModel: motionViewModel, recordingViewModel: recorderViewModel)
             default:
                 Text("something really weird happened")
             }
@@ -28,6 +36,5 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

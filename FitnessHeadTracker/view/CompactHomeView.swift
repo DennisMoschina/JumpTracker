@@ -9,14 +9,16 @@
 import SwiftUI
 
 struct CompactHomeView: View {
-    private var motionViewModel: MotionViewModel = MotionViewModel(motionManager: MotionManager.singleton)
-    private var recordingViewModel: MotionRecorderViewModel = MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder())
+    var motionViewModel: MotionViewModel
+    var recordingViewModel: MotionRecorderViewModel
+    
+    @Environment(\.persistenceController) var persistenceController
     
     var body: some View {
         NavigationView {
             TabView {
                 ContentView(motionViewModel: self.motionViewModel,
-                            recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
+                            recordingViewModel: self.recordingViewModel)
                     .tabItem {
                         Label("Current", systemImage: "play")
                     }
@@ -27,6 +29,7 @@ struct CompactHomeView: View {
                     }
                 
                 RecordingsListView()
+                    .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
                     .tabItem {
                         Label("Recordings", systemImage: "recordingtape")
                     }
@@ -36,8 +39,11 @@ struct CompactHomeView: View {
 }
 
 struct CompactHomeView_Previews: PreviewProvider {
+    static let motionManager: any MotionManagerProtocol = MotionManagerMock()
+    static let dataRecorder: DataRecorder = DataRecorder(persistenceController: PersistenceController.preview)
+    
     static var previews: some View {
-        CompactHomeView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CompactHomeView(motionViewModel: MotionViewModel(motionManager: motionManager), recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder(dataRecorder: dataRecorder), hipPositionRecorder: HipPositionRecorder(dataRecorder: dataRecorder), dataRecorder: dataRecorder))
+            .environment(\.persistenceController, PersistenceController.preview)
     }
 }

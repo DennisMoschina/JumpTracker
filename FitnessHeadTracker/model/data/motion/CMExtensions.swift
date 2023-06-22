@@ -78,6 +78,7 @@ extension Recording: Encodable, Transferable {
         case startTime
         case name
         case motions
+        case hipPositions
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -85,6 +86,24 @@ extension Recording: Encodable, Transferable {
         try container.encode(self.startTime, forKey: .startTime)
         try container.encode(self.name, forKey: .name)
         try container.encode((self.motions?.array as? [CDMotion]), forKey: .motions)
+        try container.encode((self.hipPositions?.array as? [CDPosition]), forKey: .hipPositions)
+    }
+}
+
+extension CDPosition: Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case x
+        case y
+        case z
+        case timeInterval
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.timeInterval, forKey: .timeInterval)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+        try container.encode(self.z, forKey: .z)
     }
 }
 

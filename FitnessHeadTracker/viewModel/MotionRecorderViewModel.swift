@@ -9,23 +9,27 @@ import Foundation
 import Combine
 
 class MotionRecorderViewModel: ObservableObject {
-    private var motionRecorder: MotionCoreDataRecorder
+    private(set) var motionRecorder: MotionCoreDataRecorder
+    private(set) var dataRecorder: DataRecorder
+    private(set) var hipPositionRecorder: HipPositionRecorder
     
     @Published var isRecording: Bool = false
 
-    init(motionRecorder: MotionCoreDataRecorder) {
+    init(motionRecorder: MotionCoreDataRecorder, hipPositionRecorder: HipPositionRecorder, dataRecorder: DataRecorder) {
         self.motionRecorder = motionRecorder
+        self.dataRecorder = dataRecorder
+        self.hipPositionRecorder = hipPositionRecorder
         self.motionRecorder.recordOnMonitoringStart = true
     }
     
     func startRecording() {
         #warning("add check if successfull")
-        self.motionRecorder.startRecording()
+        self.dataRecorder.startRecording()
         self.isRecording = true
     }
     
     func endRecording() {
-        self.motionRecorder.endRecording()
+        self.dataRecorder.stopRecording()
         self.isRecording = false
     }
 }

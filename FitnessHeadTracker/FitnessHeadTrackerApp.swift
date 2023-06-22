@@ -10,14 +10,13 @@ import SwiftUI
 @main
 struct FitnessHeadTrackerApp: App {
     let persistenceController = PersistenceController.shared
-    let recorder = MotionCoreDataRecorder()
     
     @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
         WindowGroup {
             HomeView()
-               .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
+               .environment(\.persistenceController, self.persistenceController)
         }
         .onChange(of: self.scenePhase) { newValue in
             self.persistenceController.save()

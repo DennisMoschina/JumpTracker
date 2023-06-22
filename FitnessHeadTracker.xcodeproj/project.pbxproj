@@ -96,6 +96,8 @@
 		95DBFC912A4357730022D8F8 /* SkeletonBone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC902A4357730022D8F8 /* SkeletonBone.swift */; };
 		95DBFC932A43584E0022D8F8 /* Bones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC922A43584D0022D8F8 /* Bones.swift */; };
 		95DBFC952A43900C0022D8F8 /* BodySkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC942A43900C0022D8F8 /* BodySkeleton.swift */; };
+		95DBFC972A439CA00022D8F8 /* HipPositionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC962A439CA00022D8F8 /* HipPositionRecorder.swift */; };
+		95DBFC992A439F400022D8F8 /* DataRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC982A439F400022D8F8 /* DataRecorder.swift */; };
 		95FD5185293B81B200440CA8 /* AttitudeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD5184293B81B200440CA8 /* AttitudeIndicator.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +193,8 @@
 		95DBFC902A4357730022D8F8 /* SkeletonBone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBone.swift; sourceTree = "<group>"; };
 		95DBFC922A43584D0022D8F8 /* Bones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bones.swift; sourceTree = "<group>"; };
 		95DBFC942A43900C0022D8F8 /* BodySkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySkeleton.swift; sourceTree = "<group>"; };
+		95DBFC962A439CA00022D8F8 /* HipPositionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipPositionRecorder.swift; sourceTree = "<group>"; };
+		95DBFC982A439F400022D8F8 /* DataRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRecorder.swift; sourceTree = "<group>"; };
 		95FD5184293B81B200440CA8 /* AttitudeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -307,6 +311,8 @@
 				950D313E290A994400874EBF /* DistanceTracker */,
 				950D313F290A995100874EBF /* MotionManager */,
 				9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */,
+				95DBFC982A439F400022D8F8 /* DataRecorder.swift */,
+				95DBFC962A439CA00022D8F8 /* HipPositionRecorder.swift */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				9544AD1D29475AA400C92BC4 /* DataReceiver.swift in Sources */,
 				9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
+				95DBFC992A439F400022D8F8 /* DataRecorder.swift in Sources */,
 				950D3141290A996200874EBF /* MotionBasedDistanceTracker.swift in Sources */,
 				950D3148290AE72A00874EBF /* Filter.swift in Sources */,
 				9544AD1829475AA400C92BC4 /* ConnectionOptions.swift in Sources */,
@@ -637,6 +644,7 @@
 				9517473F29199B66007C3308 /* PersistenceController.swift in Sources */,
 				9510E4FC293B5F8B009A2562 /* AttitudeSlidersView.swift in Sources */,
 				95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */,
+				95DBFC972A439CA00022D8F8 /* HipPositionRecorder.swift in Sources */,
 				9544AD0729475A4200C92BC4 /* Device.swift in Sources */,
 				9504E89829106C670009D563 /* SpeedCalculatorProtocol.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,

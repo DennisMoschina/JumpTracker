@@ -35,12 +35,12 @@ enum MainNavigation: Int, CaseIterable {
 }
 
 struct RegularHomeView: View {
-    private var motionViewModel: MotionViewModel = MotionViewModel(motionManager: MotionManager.singleton)
-    private var distanceTrackerViewModel: DistanceTrackerViewModel = DistanceTrackerViewModel(distanceTracker: MotionBasedDistanceTracker(motionManager: MotionManager.singleton))
-    private var speedViewModel: SpeedViewModel = SpeedViewModel(speedCalculator: MotionBasedSpeedCalculator(motionManager: MotionManager.singleton))
-    private var recordingViewModel: MotionRecorderViewModel = MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder())
+    var motionViewModel: MotionViewModel
+    var recordingViewModel: MotionRecorderViewModel
     
     @State var selectedNavigation: MainNavigation = MainNavigation.current
+    
+    @Environment(\.persistenceController) var persistenceController
     
     var body: some View {
         NavigationSplitView {
@@ -55,20 +55,24 @@ struct RegularHomeView: View {
             switch self.selectedNavigation {
             case .current:
                 ContentView(motionViewModel: self.motionViewModel,
-                            recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder()))
+                            recordingViewModel: self.recordingViewModel)
             case.charts:
                 ValuesView(viewModel: self.motionViewModel)
             case .recordingsList:
                 RecordingsListView()
+                    .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
             }
         }
     }
 }
 
 struct RegularHomeView_Previews: PreviewProvider {
+    static let motionManager: any MotionManagerProtocol = MotionManagerMock()
+    static let dataRecorder: DataRecorder = DataRecorder(persistenceController: PersistenceController.preview)
+    
     static var previews: some View {
-        RegularHomeView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        RegularHomeView(motionViewModel: MotionViewModel(motionManager: motionManager), recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder(dataRecorder: dataRecorder), hipPositionRecorder: HipPositionRecorder(dataRecorder: dataRecorder), dataRecorder: dataRecorder))
+            .environment(\.persistenceController, PersistenceController.preview)
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (4th generation)"))
     }
 }

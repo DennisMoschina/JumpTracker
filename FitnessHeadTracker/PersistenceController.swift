@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -49,5 +50,22 @@ struct PersistenceController {
                 print("Error while saving context")
             }
         }
+    }
+}
+
+private struct PersistenceControllerKey: EnvironmentKey {
+    static let defaultValue: PersistenceController = PersistenceController.shared
+}
+
+extension EnvironmentValues {
+    var persistenceController: PersistenceController {
+        get { self[PersistenceControllerKey.self] }
+        set { self[PersistenceControllerKey.self] = newValue }
+    }
+}
+
+extension View {
+    func persistenceController(_ persistenceController: PersistenceController) -> some View {
+        environment(\.persistenceController, persistenceController)
     }
 }

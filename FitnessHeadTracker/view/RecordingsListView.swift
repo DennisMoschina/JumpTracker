@@ -54,7 +54,7 @@ struct RecordingsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             RecordingsListView()
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .environment(\.persistenceController, PersistenceController.preview)
         }
     }
 }
