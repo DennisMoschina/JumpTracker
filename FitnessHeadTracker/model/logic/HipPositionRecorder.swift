@@ -12,24 +12,18 @@ import RealityKit
 class HipPositionRecorder {
     var bodySkeleton: BodySkeleton? {
         didSet {
-            self.jointsCancellable = bodySkeleton?.$joints.sink(receiveValue: { joints in
-                self.updatedJoints(joints)
+            self.anchorCancellable = bodySkeleton?.$anchorPosition.sink(receiveValue: { position in
+                self.dataRecorder.addToRecording(hipPosition: position)
             })
         }
     }
     
-    var jointsCancellable: AnyCancellable?
+    var anchorCancellable: AnyCancellable?
     
     private let dataRecorder: DataRecorder
     
     init(bodySkeleton: BodySkeleton? = nil, dataRecorder: DataRecorder) {
         self.bodySkeleton = bodySkeleton
         self.dataRecorder = dataRecorder
-    }
-    
-    private func updatedJoints(_ joints: [String : Entity]) {
-        if let hipJoint = joints["hip_joint"] {
-            self.dataRecorder.addToRecording(hipPosition: hipJoint.position)
-        }
     }
 }

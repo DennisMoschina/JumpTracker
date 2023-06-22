@@ -12,7 +12,13 @@ import Combine
 
 
 struct ARViewContainer: UIViewRepresentable {
-    @State internal var bodySkeleton: BodySkeleton?
+    @State internal var bodySkeleton: BodySkeleton? {
+        didSet {
+            if let bodySkeleton {
+                self.onSkeletonCreate(bodySkeleton)
+            }
+        }
+    }
     internal let bodySkeletonAnchor = AnchorEntity()
     
     var onSkeletonCreate: (BodySkeleton) -> Void = { _ in return }

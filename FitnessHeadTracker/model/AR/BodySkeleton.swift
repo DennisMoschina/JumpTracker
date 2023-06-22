@@ -12,8 +12,13 @@ import ARKit
 class BodySkeleton: Entity {
     @Published var joints: [String : Entity] = [:]
     @Published var bones: [String : Entity] = [:]
+    @Published var bodyAnchor: ARBodyAnchor
+    @Published var anchorPosition: SIMD3<Float> = .init()
+    
+    var onUpdate: (ARBodyAnchor) -> Void = { _ in return }
     
     required init(for bodyAnchor: ARBodyAnchor) {
+        self.bodyAnchor = bodyAnchor
         super.init()
         
         for jointName in ARSkeletonDefinition.defaultBody3D.jointNames {
@@ -60,7 +65,10 @@ class BodySkeleton: Entity {
     }
     
     func update(with bodyAnchor: ARBodyAnchor) {
+        self.onUpdate(bodyAnchor)
+        self.bodyAnchor = bodyAnchor
         let rootPosition = simd_make_float3(bodyAnchor.transform.columns.3)
+        self.anchorPosition = rootPosition
         
         for jointName in ARSkeletonDefinition.defaultBody3D.jointNames {
             if
