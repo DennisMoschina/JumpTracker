@@ -91,7 +91,6 @@
 		95D03FED29153AA000C6B7C9 /* RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D03FEC29153AA000C6B7C9 /* RotationMatrix.swift */; };
 		95D03FEF29153B1F00C6B7C9 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D03FEE29153B1F00C6B7C9 /* Quaternion.swift */; };
 		95DBFC812A434B860022D8F8 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC802A434B850022D8F8 /* ARViewContainer.swift */; };
-		95DBFC8C2A4351650022D8F8 /* character in Resources */ = {isa = PBXBuildFile; fileRef = 95DBFC8B2A4351650022D8F8 /* character */; };
 		95DBFC8F2A43571B0022D8F8 /* SkeletonJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC8E2A43571B0022D8F8 /* SkeletonJoint.swift */; };
 		95DBFC912A4357730022D8F8 /* SkeletonBone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC902A4357730022D8F8 /* SkeletonBone.swift */; };
 		95DBFC932A43584E0022D8F8 /* Bones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC922A43584D0022D8F8 /* Bones.swift */; };
@@ -188,7 +187,6 @@
 		95D03FEC29153AA000C6B7C9 /* RotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMatrix.swift; sourceTree = "<group>"; };
 		95D03FEE29153B1F00C6B7C9 /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
 		95DBFC802A434B850022D8F8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
-		95DBFC8B2A4351650022D8F8 /* character */ = {isa = PBXFileReference; lastKnownFileType = folder; path = character; sourceTree = "<group>"; };
 		95DBFC8E2A43571B0022D8F8 /* SkeletonJoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonJoint.swift; sourceTree = "<group>"; };
 		95DBFC902A4357730022D8F8 /* SkeletonBone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBone.swift; sourceTree = "<group>"; };
 		95DBFC922A43584D0022D8F8 /* Bones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bones.swift; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 				950D3132290A7EF500874EBF /* viewModel */,
 				950D30FD2909E5D000874EBF /* FitnessHeadTrackerApp.swift */,
 				950D31012909E5D200874EBF /* Assets.xcassets */,
-				95DBFC8B2A4351650022D8F8 /* character */,
 				9517473E29199B66007C3308 /* PersistenceController.swift */,
 				9517474029199B6E007C3308 /* Main.xcdatamodeld */,
 				950D31032909E5D200874EBF /* Preview Content */,
@@ -554,7 +551,6 @@
 			files = (
 				95838AB9293B9F6100F5CEEE /* AttitudeSphereTexture.sks in Resources */,
 				950D31052909E5D200874EBF /* Preview Assets.xcassets in Resources */,
-				95DBFC8C2A4351650022D8F8 /* character in Resources */,
 				950D31022909E5D200874EBF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,7 +778,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitnessHeadTracker/Preview Content\"";
-				DEVELOPMENT_TEAM = 4875A95ZVA;
+				DEVELOPMENT_TEAM = 6DCQ69GP5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FitnessHeadTracker/Info.plist;
@@ -799,7 +795,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.moschina.dev.FitnessHeadTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.teco.JumpTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -815,7 +811,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitnessHeadTracker/Preview Content\"";
-				DEVELOPMENT_TEAM = 4875A95ZVA;
+				DEVELOPMENT_TEAM = 6DCQ69GP5G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FitnessHeadTracker/Info.plist;
@@ -832,7 +828,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.moschina.dev.FitnessHeadTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.teco.JumpTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
