@@ -64,7 +64,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         print("Authorization: \(authStatus)")
         
         switch CMHeadphoneMotionManager.authorizationStatus() {
-        case .restricted, .denied, .notDetermined:
+        case .restricted, .denied:
             self.failed = true
             self.reason = "Missing authorization"
             return
