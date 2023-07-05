@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TrackingView: View {
     @ObservedObject var motionViewModel: MotionViewModel
     @ObservedObject var recordingViewModel: MotionRecorderViewModel
     
@@ -25,12 +25,12 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TrackingView_Previews: PreviewProvider {
     static let motionManager: any MotionManagerProtocol = MotionManagerMock()
     static let dataRecorder = DataRecorder(persistenceController: PersistenceController.preview)
     
     static var previews: some View {
-        ContentView(motionViewModel: MotionViewModel(motionManager: motionManager),
+        TrackingView(motionViewModel: MotionViewModel(motionManager: motionManager),
                     recordingViewModel: MotionRecorderViewModel(motionRecorder: MotionCoreDataRecorder(dataRecorder: dataRecorder),
                                                                 hipPositionRecorder: HipPositionRecorder(dataRecorder: dataRecorder),
                                                                 dataRecorder: dataRecorder))

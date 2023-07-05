@@ -25,10 +25,6 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     
     var _updating: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     
-    var _failed: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-    
-    var reason: String = ""
-    
     private var startedTimestamp: CFTimeInterval = -1
     
     private override init() {
@@ -45,7 +41,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
      *
      * The data aquisition does not hapen in the main queue
      */
-    func start() async {
+    func start() async throws {
         print("Available: \(self.manager.isDeviceMotionAvailable)")
         var authStatus: String
         switch CMHeadphoneMotionManager.authorizationStatus() {
@@ -65,9 +61,7 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         
         switch CMHeadphoneMotionManager.authorizationStatus() {
         case .restricted, .denied:
-            self.failed = true
-            self.reason = "Missing authorization"
-            return
+            throw MotionManagerError(description: "Missing Authorization", type: .unauthorized)
         default:
             break
         }
@@ -99,10 +93,8 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
         print("Active: \(self.manager.isDeviceMotionActive)")
         
         if !(self.manager.isDeviceMotionActive && self.oldTimestamp > 0) {
-            self.reason = "Could not activate in time, make sure AirPods are connected"
-            self.failed = true
             self.stop()
-            return
+            throw MotionManagerError(description: "Could not activate in time, make sure AirPods are connected", type: .timeout)
         }
         self.updating = true
     }
@@ -122,8 +114,6 @@ class MotionManager: NSObject, MotionManagerProtocol, CMHeadphoneMotionManagerDe
     internal func headphoneMotionManagerDidDisconnect(_ manager: CMHeadphoneMotionManager) {
         print("disconnected Headphones")
         if self.updating {
-            self.failed = true
-            self.reason = "Headphones disconnected"
             self.updating = false            
         }
     }

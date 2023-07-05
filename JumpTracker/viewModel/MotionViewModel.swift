@@ -52,16 +52,19 @@ class MotionViewModel: ObservableObject {
             
             self.motion = motion
         })
-        self.failedCancellable = motionManager._failed.receive(on: DispatchQueue.main).sink(receiveValue: { failed in
-            self.failed = failed
-            self.reason = self.motionManager.reason
-        })
     }
     
-    func startMonitoring() {
-        Task {
-            await self.motionManager.start()
+    func startMonitoring() async -> Bool {
+        do {
+            try await self.motionManager.start()
+        } catch {
+            DispatchQueue.main.async {
+                self.reason = error.localizedDescription
+                self.failed = true                
+            }
+            return false
         }
+        return true
     }
     
     func stopMonitoring() {

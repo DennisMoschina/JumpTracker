@@ -16,7 +16,7 @@ struct CompactHomeView: View {
     
     var body: some View {
         TabView {
-            ContentView(motionViewModel: self.motionViewModel,
+            TrackingView(motionViewModel: self.motionViewModel,
                         recordingViewModel: self.recordingViewModel)
                 .tabItem {
                     Label("Current", systemImage: "play")

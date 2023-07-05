@@ -8,6 +8,22 @@
 import Foundation
 import Combine
 
+struct MotionManagerError: LocalizedError {
+    var description: String? = nil
+    var type: ErrorType
+    
+    var errorDescription: String? {
+        return self.description
+    }
+    
+    enum ErrorType {
+        case unauthorized
+        case timeout
+        case disconnected
+    }
+}
+
+
 protocol MotionManagerProtocol: ObservableObject {
     /// Access the `Acceleration` in which the device is accelerating
     var userAcceleration: Acceleration { get }
@@ -25,16 +41,11 @@ protocol MotionManagerProtocol: ObservableObject {
     var updating: Bool { get }
     var _updating: CurrentValueSubject<Bool, Never> { get }
     
-    var failed: Bool { get }
-    var _failed: CurrentValueSubject<Bool, Never> { get }
-    
-    var reason: String { get }
-    
     /// The time passed since the last update to the motion
     var timeInterval: Double { get }
     
     /// Start monitoring the motion
-    func start() async
+    func start() async throws
     
     /// Stop monitoring the motion
     func stop()
@@ -69,10 +80,5 @@ extension MotionManagerProtocol {
     var updating: Bool {
         get { self._updating.value }
         set { self._updating.value = newValue }
-    }
-    
-    var failed: Bool {
-        get { self._failed.value }
-        set { self._failed.value = newValue }
     }
 }

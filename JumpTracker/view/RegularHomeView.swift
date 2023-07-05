@@ -56,7 +56,7 @@ struct RegularHomeView: View {
         } detail: {
             switch self.selectedNavigation {
             case .current:
-                ContentView(motionViewModel: self.motionViewModel,
+                TrackingView(motionViewModel: self.motionViewModel,
                             recordingViewModel: self.recordingViewModel)
             case.charts:
                 ValuesView(viewModel: self.motionViewModel)

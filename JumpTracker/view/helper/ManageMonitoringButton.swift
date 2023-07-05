@@ -24,8 +24,11 @@ struct ManageMonitoringButton: View {
                 .tint(.red)
             } else {
                 Button {
-                    self.viewModel.startMonitoring()
-                    self.recordingViewModel.startRecording()
+                    Task {
+                        if await self.viewModel.startMonitoring() {
+                            self.recordingViewModel.startRecording()
+                        }
+                    }
                 } label: {
                     Text("Start Motion Monitoring")
                         .padding()
