@@ -11,29 +11,34 @@ struct ManageMonitoringButton: View {
     @ObservedObject var viewModel: MotionViewModel
     @ObservedObject var recordingViewModel: MotionRecorderViewModel
     
+    @State private var activating: Bool = false
+    
     var body: some View {
         Group {
-            if self.viewModel.updating {
-                Button {
+            Button {
+                if self.viewModel.updating {
                     self.viewModel.stopMonitoring()
                     self.recordingViewModel.endRecording()
-                } label: {
-                    Text("Stop Motion Monitoring")
-                        .padding()
-                }
-                .tint(.red)
-            } else {
-                Button {
+                } else {
+                    self.activating = true
                     Task {
                         if await self.viewModel.startMonitoring() {
                             self.recordingViewModel.startRecording()
                         }
+                        DispatchQueue.main.async { self.activating = false }
                     }
-                } label: {
-                    Text("Start Motion Monitoring")
+                }
+            } label: {
+                ZStack {
+                    if self.activating {
+                        ProgressView()
+                    }
+                    Text(self.viewModel.updating ? "Stop Motion Monitoring" : "Start Motion Monitoring")
                         .padding()
                 }
             }
+            .tint(self.viewModel.updating ? .red : .accentColor)
+            .disabled(self.activating)
         }
         .buttonStyle(.borderedProminent)
         .alert(self.viewModel.reason, isPresented: self.$viewModel.failed) {
