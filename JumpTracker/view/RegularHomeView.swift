@@ -7,11 +7,15 @@
 
 import SwiftUI
 
-enum MainNavigation: Int, CaseIterable {
+enum MainNavigation: Int, CaseIterable, Identifiable {
     case current
     case charts
     case recordingsList
     
+    var id: Int {
+        self.rawValue
+    }
+
     var description: String {
         switch (self) {
         case .current:
@@ -38,16 +42,14 @@ struct RegularHomeView: View {
     var motionViewModel: MotionViewModel
     var recordingViewModel: MotionRecorderViewModel
     
-    @State var selectedNavigation: MainNavigation = MainNavigation.current
+    @State var selectedNavigation: MainNavigation? = MainNavigation.current
     
     @Environment(\.persistenceController) var persistenceController
     
     var body: some View {
         NavigationSplitView {
-            List(MainNavigation.allCases, id: \.rawValue) { nav in
-                Button {
-                    self.selectedNavigation = nav
-                } label: {
+            List(MainNavigation.allCases, selection: self.$selectedNavigation) { nav in
+                NavigationLink(value: nav) {
                     Label(nav.description, systemImage: nav.imageName)
                 }
             }
@@ -61,6 +63,8 @@ struct RegularHomeView: View {
             case .recordingsList:
                 RecordingsListView()
                     .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
+            case .none:
+                Text("Select a View")
             }
         }
     }

@@ -15,24 +15,26 @@ struct CompactHomeView: View {
     @Environment(\.persistenceController) var persistenceController
     
     var body: some View {
-        NavigationView {
-            TabView {
-                ContentView(motionViewModel: self.motionViewModel,
-                            recordingViewModel: self.recordingViewModel)
-                    .tabItem {
-                        Label("Current", systemImage: "play")
-                    }
-                
+        TabView {
+            ContentView(motionViewModel: self.motionViewModel,
+                        recordingViewModel: self.recordingViewModel)
+                .tabItem {
+                    Label("Current", systemImage: "play")
+                }
+            
+            NavigationView {
                 ValuesView(viewModel: self.motionViewModel)
-                    .tabItem {
-                        Label("Charts", systemImage: "chart.xyaxis.line")
-                    }
-                
+            }
+            .tabItem {
+                Label("Charts", systemImage: "chart.xyaxis.line")
+            }
+            
+            NavigationView {
                 RecordingsListView()
                     .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("Recordings", systemImage: "recordingtape")
-                    }
+            }
+            .tabItem {
+                Label("Recordings", systemImage: "recordingtape")
             }
         }
     }

@@ -193,8 +193,7 @@
 				950D30FF2909E5D000874EBF /* ContentView.swift */,
 				950D3144290AADAB00874EBF /* LiveMotionChart.swift */,
 				9504E8A8291165F70009D563 /* HeadingView.swift */,
-				95174745291A7229007C3308 /* RecordingsListView.swift */,
-				9517474D29267726007C3308 /* RecordingDetailView.swift */,
+				95E351DE2A55768300078538 /* History */,
 				9510E4EF293A13BE009A2562 /* HomeView.swift */,
 				9510E4F1293A145D009A2562 /* CompactHomeView.swift */,
 				9510E4F3293A1503009A2562 /* RegularHomeView.swift */,
@@ -324,6 +323,15 @@
 				95DBFC942A43900C0022D8F8 /* BodySkeleton.swift */,
 			);
 			path = AR;
+			sourceTree = "<group>";
+		};
+		95E351DE2A55768300078538 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				95174745291A7229007C3308 /* RecordingsListView.swift */,
+				9517474D29267726007C3308 /* RecordingDetailView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

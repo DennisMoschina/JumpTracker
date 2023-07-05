@@ -38,6 +38,7 @@ struct LiveMotionChart: View {
             Text("\(self.motionViewModel.rotationRate.x)")
                 .opacity(0)
         }
+        .navigationTitle("Live Values")
     }
 }
 
