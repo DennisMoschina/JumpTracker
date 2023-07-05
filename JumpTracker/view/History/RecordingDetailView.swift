@@ -59,7 +59,7 @@ struct RecordingDetailView: View {
                 Button {
                     self.pressedDelete = true
                 } label: {
-                    Label("Löschen", systemImage: "trash")
+                    Label("Delete", systemImage: "trash")
                 }.foregroundColor(.red)
             }
         }
