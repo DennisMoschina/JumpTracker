@@ -8,8 +8,6 @@
 import Foundation
 
 class DeadBandFilter: Filter {
-    typealias T = Double
-    
     private let deadBand: Double
     
     init(deadBand: Double) {

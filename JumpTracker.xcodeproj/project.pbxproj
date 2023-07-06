@@ -61,6 +61,10 @@
 		95DBFC952A43900C0022D8F8 /* BodySkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC942A43900C0022D8F8 /* BodySkeleton.swift */; };
 		95DBFC972A439CA00022D8F8 /* HipPositionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC962A439CA00022D8F8 /* HipPositionRecorder.swift */; };
 		95DBFC992A439F400022D8F8 /* DataRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBFC982A439F400022D8F8 /* DataRecorder.swift */; };
+		95E351E22A55C63D00078538 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E12A55C63D00078538 /* LowPassFilter.swift */; };
+		95E351E52A56F68800078538 /* JumpHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E42A56F68800078538 /* JumpHeightCalculator.swift */; };
+		95E351E72A570B2100078538 /* JumpAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E62A570B2100078538 /* JumpAnalysisView.swift */; };
+		95E351E92A570B3100078538 /* JumpCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +124,10 @@
 		95DBFC942A43900C0022D8F8 /* BodySkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySkeleton.swift; sourceTree = "<group>"; };
 		95DBFC962A439CA00022D8F8 /* HipPositionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HipPositionRecorder.swift; sourceTree = "<group>"; };
 		95DBFC982A439F400022D8F8 /* DataRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRecorder.swift; sourceTree = "<group>"; };
+		95E351E12A55C63D00078538 /* LowPassFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPassFilter.swift; sourceTree = "<group>"; };
+		95E351E42A56F68800078538 /* JumpHeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpHeightCalculator.swift; sourceTree = "<group>"; };
+		95E351E62A570B2100078538 /* JumpAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpAnalysisView.swift; sourceTree = "<group>"; };
+		95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpCalculatorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +205,7 @@
 				9510E4F3293A1503009A2562 /* RegularHomeView.swift */,
 				959ED9002972F56B000FF474 /* ValuesView.swift */,
 				95DBFC802A434B850022D8F8 /* ARViewContainer.swift */,
+				95E351E62A570B2100078538 /* JumpAnalysisView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 		950D31292909EB5E00874EBF /* logic */ = {
 			isa = PBXGroup;
 			children = (
+				95E351E32A56F67000078538 /* jumpHeight */,
 				950D3146290AE71700874EBF /* filter */,
 				950D313F290A995100874EBF /* MotionManager */,
 				9517474329199CCE007C3308 /* MotionCoreDataRecorder.swift */,
@@ -256,6 +266,7 @@
 				950D3133290A7F2E00874EBF /* MotionViewModel.swift */,
 				9517474B29267107007C3308 /* MotionRecorderViewModel.swift */,
 				9517474F2927834D007C3308 /* RecordingViewModel.swift */,
+				95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -283,6 +294,7 @@
 				950D3147290AE72A00874EBF /* Filter.swift */,
 				950D3149290AE94A00874EBF /* EwmaFilter.swift */,
 				950D314D290B32F400874EBF /* DeadBandFilter.swift */,
+				95E351E12A55C63D00078538 /* LowPassFilter.swift */,
 			);
 			path = filter;
 			sourceTree = "<group>";
@@ -329,6 +341,14 @@
 				9517474D29267726007C3308 /* RecordingDetailView.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		95E351E32A56F67000078538 /* jumpHeight */ = {
+			isa = PBXGroup;
+			children = (
+				95E351E42A56F68800078538 /* JumpHeightCalculator.swift */,
+			);
+			path = jumpHeight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,7 +428,9 @@
 				95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */,
 				950D31002909E5D000874EBF /* TrackingView.swift in Sources */,
 				950D312B2909EC1F00874EBF /* MotionManager.swift in Sources */,
+				95E351E22A55C63D00078538 /* LowPassFilter.swift in Sources */,
 				9544AD2929475EF200C92BC4 /* Precision.swift in Sources */,
+				95E351E72A570B2100078538 /* JumpAnalysisView.swift in Sources */,
 				959ED9012972F56B000FF474 /* ValuesView.swift in Sources */,
 				9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */,
 				95174746291A7229007C3308 /* RecordingsListView.swift in Sources */,
@@ -436,6 +458,7 @@
 				95D03FEB29153A8D00C6B7C9 /* Attitude.swift in Sources */,
 				95DBFC932A43584E0022D8F8 /* Bones.swift in Sources */,
 				9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */,
+				95E351E52A56F68800078538 /* JumpHeightCalculator.swift in Sources */,
 				9504E8A9291165F70009D563 /* HeadingView.swift in Sources */,
 				95DBFC912A4357730022D8F8 /* SkeletonBone.swift in Sources */,
 				95D03FE929153A3500C6B7C9 /* Acceleration.swift in Sources */,
@@ -448,6 +471,7 @@
 				9510E4FC293B5F8B009A2562 /* AttitudeSlidersView.swift in Sources */,
 				95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */,
 				95DBFC972A439CA00022D8F8 /* HipPositionRecorder.swift in Sources */,
+				95E351E92A570B3100078538 /* JumpCalculatorViewModel.swift in Sources */,
 				95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */,
 				950D3136290A8A0E00874EBF /* MotionManagerProtocol.swift in Sources */,
 				9517474E29267726007C3308 /* RecordingDetailView.swift in Sources */,

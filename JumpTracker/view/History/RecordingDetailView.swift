@@ -17,6 +17,8 @@ struct RecordingDetailView: View {
     
     @State private var pressedDelete: Bool = false
     
+    @State private var showJumpAnalysis: Bool = false
+    
     var body: some View {
         Form {
             Section {
@@ -48,6 +50,17 @@ struct RecordingDetailView: View {
                 
                 Section {
                     RecordingChartsView(recordingViewModel: self.viewModel)
+                }
+                
+                Section {
+                    Button {
+                        self.showJumpAnalysis.toggle()
+                    } label: {
+                        Label("Analize Jump", systemImage: "waveform.and.magnifyingglass")
+                    }
+                }
+                .sheet(isPresented: self.$showJumpAnalysis) {
+                    JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: self.viewModel.recording))
                 }
             }
             

@@ -7,11 +7,7 @@
 
 import Foundation
 
-class EwmaFilter: Filter {
-    typealias T = Double
-    
-    // TODO: make work with every numeric type
-    
+class EwmaFilter: Filter { 
     private var oldValue: Double = 0
     
     private var alpha: Double

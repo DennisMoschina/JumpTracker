@@ -23,7 +23,6 @@ class MotionRecorderViewModel: ObservableObject {
     }
     
     func startRecording() {
-        #warning("add check if successfull")
         self.dataRecorder.startRecording()
         self.isRecording = true
     }

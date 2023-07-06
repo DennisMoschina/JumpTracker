@@ -8,8 +8,14 @@
 import Foundation
 
 protocol Filter {
-    associatedtype T where T: Numeric
-    
-    // TODO: use T
     func filter(_ element: Double) -> Double
+    
+    func filter(_ dataset: [Double]) -> [Double]
+}
+
+
+extension Filter {
+    func filter(_ dataset: [Double]) -> [Double] {
+        return dataset.map { self.filter($0) }
+    }
 }
