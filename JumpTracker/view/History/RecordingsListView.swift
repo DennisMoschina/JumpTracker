@@ -10,9 +10,9 @@ import Charts
 
 struct RecordingsListView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+     
     @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.startTime)
+        SortDescriptor(\.startTime, order: .reverse)
     ]) var recordings: FetchedResults<Recording>
     
     var body: some View {
