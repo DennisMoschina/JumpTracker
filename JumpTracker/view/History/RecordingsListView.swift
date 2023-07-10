@@ -48,7 +48,10 @@ struct RecordingRow: View {
     let recording: Recording
     
     var body: some View {
-        NavigationLink(destination: RecordingDetailView(viewModel: RecordingViewModel(recording: recording))) {
+        NavigationLink(destination:
+            RecordingDetailView(viewModel: RecordingViewModel(recording: recording))
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        ) {
             HStack {
                 Text(self.recording.name ?? "N/A")
                 

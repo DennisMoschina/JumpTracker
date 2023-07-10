@@ -13,8 +13,11 @@ class JumpCalculatorViewModel: ObservableObject {
     
     private let jumpCalculator: JumpHeightCalculator
     
-    init(recording: Recording) {
-        self.jumpCalculator = JumpHeightCalculator(recording: recording)
+    init(recording: Recording, trainedOn recordings: [Recording] = []) {
+        self.jumpCalculator = JumpHeightCalculator(recording: recording, filter: LowPassFilter(a: [1, -3.9926486, 6.45953643, -5.28227516 , 2.18014463, -0.36291277], b: [5.76413529e-05, 2.88206765e-04, 5.76413529e-04, 5.76413529e-04, 2.88206765e-04, 5.76413529e-05]))
+        if !recordings.isEmpty {
+            self.jumpCalculator.train(with: recordings)
+        }
         self.calculate()
     }
     

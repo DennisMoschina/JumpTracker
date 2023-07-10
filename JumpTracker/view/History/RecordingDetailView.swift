@@ -60,7 +60,10 @@ struct RecordingDetailView: View {
                     }
                 }
                 .sheet(isPresented: self.$showJumpAnalysis) {
-                    JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: self.viewModel.recording))
+                    let context = self.managedObjectContext
+                    let fetchRequest = Recording.fetchRequest()
+                    let recordings = (try? context.fetch(fetchRequest)) ?? []
+                    JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: self.viewModel.recording, trainedOn: recordings))
                 }
             }
             
