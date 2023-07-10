@@ -65,6 +65,10 @@
 		95E351E52A56F68800078538 /* JumpHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E42A56F68800078538 /* JumpHeightCalculator.swift */; };
 		95E351E72A570B2100078538 /* JumpAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E62A570B2100078538 /* JumpAnalysisView.swift */; };
 		95E351E92A570B3100078538 /* JumpCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */; };
+		95E351EB2A5960F200078538 /* AutoTimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351EA2A5960F200078538 /* AutoTimerSettings.swift */; };
+		95E351ED2A59618800078538 /* AutoTimerSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351EC2A59618800078538 /* AutoTimerSettingsViewModel.swift */; };
+		95E351EF2A59654300078538 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351EE2A59654300078538 /* SettingsView.swift */; };
+		95E351F12A598B8600078538 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E351F02A598B8600078538 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +132,10 @@
 		95E351E42A56F68800078538 /* JumpHeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpHeightCalculator.swift; sourceTree = "<group>"; };
 		95E351E62A570B2100078538 /* JumpAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpAnalysisView.swift; sourceTree = "<group>"; };
 		95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpCalculatorViewModel.swift; sourceTree = "<group>"; };
+		95E351EA2A5960F200078538 /* AutoTimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTimerSettings.swift; sourceTree = "<group>"; };
+		95E351EC2A59618800078538 /* AutoTimerSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTimerSettingsViewModel.swift; sourceTree = "<group>"; };
+		95E351EE2A59654300078538 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		95E351F02A598B8600078538 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +214,7 @@
 				959ED9002972F56B000FF474 /* ValuesView.swift */,
 				95DBFC802A434B850022D8F8 /* ARViewContainer.swift */,
 				95E351E62A570B2100078538 /* JumpAnalysisView.swift */,
+				95E351EE2A59654300078538 /* SettingsView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 				95DBFC8D2A4357120022D8F8 /* AR */,
 				950D312C290A7E3600874EBF /* data */,
 				950D31292909EB5E00874EBF /* logic */,
+				95E351F02A598B8600078538 /* Util.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -237,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				950D312D290A7E4100874EBF /* motion */,
+				95E351EA2A5960F200078538 /* AutoTimerSettings.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -267,6 +278,7 @@
 				9517474B29267107007C3308 /* MotionRecorderViewModel.swift */,
 				9517474F2927834D007C3308 /* RecordingViewModel.swift */,
 				95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */,
+				95E351EC2A59618800078538 /* AutoTimerSettingsViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -433,7 +445,10 @@
 				95E351E72A570B2100078538 /* JumpAnalysisView.swift in Sources */,
 				959ED9012972F56B000FF474 /* ValuesView.swift in Sources */,
 				9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */,
+				95E351EF2A59654300078538 /* SettingsView.swift in Sources */,
+				95E351F12A598B8600078538 /* Util.swift in Sources */,
 				95174746291A7229007C3308 /* RecordingsListView.swift in Sources */,
+				95E351EB2A5960F200078538 /* AutoTimerSettings.swift in Sources */,
 				950D30FE2909E5D000874EBF /* JumpTrackerApp.swift in Sources */,
 				950D313D290A93D400874EBF /* Distance.swift in Sources */,
 				95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */,
@@ -442,6 +457,7 @@
 				9510E4F2293A145D009A2562 /* CompactHomeView.swift in Sources */,
 				9504E89A29106C9C0009D563 /* SIMDSpeed.swift in Sources */,
 				9510E4F4293A1503009A2562 /* RegularHomeView.swift in Sources */,
+				95E351ED2A59618800078538 /* AutoTimerSettingsViewModel.swift in Sources */,
 				9510E4F0293A13BE009A2562 /* HomeView.swift in Sources */,
 				95DBFC952A43900C0022D8F8 /* BodySkeleton.swift in Sources */,
 				951747502927834D007C3308 /* RecordingViewModel.swift in Sources */,
