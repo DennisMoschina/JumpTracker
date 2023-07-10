@@ -46,7 +46,9 @@ class JumpHeightCalculator {
         guard hipPositions.count > 0 else { return -1 }
         
         let verticalHipPositions: [Double] = hipPositions.compactMap {
-            ($0 as? CDPosition)?.y as? Double
+            if let f = ($0 as? CDPosition)?.y {
+                return Double(f)
+            } else { return nil }
         }
         
         return self.calculateJumpHeight(positions: verticalHipPositions)
