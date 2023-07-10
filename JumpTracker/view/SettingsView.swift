@@ -30,6 +30,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     
     @ObservedObject var autoTimerSettingsViewModel: AutoTimerSettingsViewModel
+    @ObservedObject var jumpAnalysisViewModel: JumpAnalysisSettingsViewModel
     
     var body: some View {
         NavigationStack {
@@ -57,6 +58,20 @@ struct SettingsView: View {
                         }
                     }
                 }
+                
+                Section("Jump Analysis") {
+                    Toggle(isOn: self.$jumpAnalysisViewModel.showAnalysisAfterRecording) {
+                        Text("Show Analysis after recording")
+                    }
+                    if self.jumpAnalysisViewModel.showAnalysisAfterRecording {
+                        Toggle(isOn: self.$jumpAnalysisViewModel.showTrainedAnalysis) {
+                            Text("Use other recordings to improve calculation")
+                        }
+                        Toggle(isOn: self.$jumpAnalysisViewModel.showMeasured) {
+                            Text("Show measured jump height")
+                        }
+                    }
+                }
             }
             .navigationTitle("Settings")
             .toolbar {
@@ -70,6 +85,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(autoTimerSettingsViewModel: AutoTimerSettingsViewModel())
+        SettingsView(autoTimerSettingsViewModel: AutoTimerSettingsViewModel(), jumpAnalysisViewModel: JumpAnalysisSettingsViewModel())
     }
 }

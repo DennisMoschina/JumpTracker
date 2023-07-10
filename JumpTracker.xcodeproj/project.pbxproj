@@ -46,6 +46,8 @@
 		959ED9012972F56B000FF474 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED9002972F56B000FF474 /* ValuesView.swift */; };
 		959ED90329741FB4000FF474 /* RecordingChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED90229741FB4000FF474 /* RecordingChartsView.swift */; };
 		959ED905297420F9000FF474 /* RecordingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED904297420F9000FF474 /* RecordingChart.swift */; };
+		95B855F22A5C26C100FA87E9 /* JumpAnalysisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B855F12A5C26C100FA87E9 /* JumpAnalysisSettings.swift */; };
+		95B855F42A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B855F32A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift */; };
 		95CB241B2915BB7F00299821 /* RotationRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241A2915BB7F00299821 /* RotationRate.swift */; };
 		95CB241D2917349500299821 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241C2917349500299821 /* Speed.swift */; };
 		95CB241F29190B3500299821 /* SIMDDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB241E29190B3500299821 /* SIMDDistance.swift */; };
@@ -113,6 +115,8 @@
 		959ED9002972F56B000FF474 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
 		959ED90229741FB4000FF474 /* RecordingChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingChartsView.swift; sourceTree = "<group>"; };
 		959ED904297420F9000FF474 /* RecordingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingChart.swift; sourceTree = "<group>"; };
+		95B855F12A5C26C100FA87E9 /* JumpAnalysisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpAnalysisSettings.swift; sourceTree = "<group>"; };
+		95B855F32A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpAnalysisSettingsViewModel.swift; sourceTree = "<group>"; };
 		95CB241A2915BB7F00299821 /* RotationRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationRate.swift; sourceTree = "<group>"; };
 		95CB241C2917349500299821 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		95CB241E29190B3500299821 /* SIMDDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDDistance.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 			children = (
 				950D312D290A7E4100874EBF /* motion */,
 				95E351EA2A5960F200078538 /* AutoTimerSettings.swift */,
+				95B855F12A5C26C100FA87E9 /* JumpAnalysisSettings.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				9517474F2927834D007C3308 /* RecordingViewModel.swift */,
 				95E351E82A570B3100078538 /* JumpCalculatorViewModel.swift */,
 				95E351EC2A59618800078538 /* AutoTimerSettingsViewModel.swift */,
+				95B855F32A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 				95DBFC8F2A43571B0022D8F8 /* SkeletonJoint.swift in Sources */,
 				95D03FED29153AA000C6B7C9 /* RotationMatrix.swift in Sources */,
 				95CB241D2917349500299821 /* Speed.swift in Sources */,
+				95B855F42A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift in Sources */,
 				9517474829214EF5007C3308 /* Motion.swift in Sources */,
 				95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */,
 				950D31002909E5D000874EBF /* TrackingView.swift in Sources */,
@@ -465,6 +472,7 @@
 				950D3131290A7EB000874EBF /* SIMDRotationRate.swift in Sources */,
 				950D314E290B32F400874EBF /* DeadBandFilter.swift in Sources */,
 				9510E4F7293A8FC3009A2562 /* ManageMonitoringButton.swift in Sources */,
+				95B855F22A5C26C100FA87E9 /* JumpAnalysisSettings.swift in Sources */,
 				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
 				959ED905297420F9000FF474 /* RecordingChart.swift in Sources */,
 				9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */,
@@ -625,6 +633,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JumpTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jump Tracker ";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This App uses Bluetooth to track the distance between you and your phone";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera in order to track your body movement";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This App uses Motion to track your Body movement during a workout";
@@ -658,6 +667,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JumpTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jump Tracker ";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This App uses Bluetooth to track the distance between you and your phone";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera in order to track your body movement";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This App uses Motion to track your Body movement during a workout";

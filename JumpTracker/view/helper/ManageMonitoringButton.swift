@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ManageMonitoringButton: View {
     @ObservedObject var viewModel: MotionViewModel
     @ObservedObject var recordingViewModel: MotionRecorderViewModel
     var autoTimerSettings: AutoTimerSettings = AutoTimerSettings.shared
+    var jumpAnalysisSettings: JumpAnalysisSettings = JumpAnalysisSettings.shared
     
     @State private var activating: Bool = false
     @State private var showSettings: Bool = false
+    @State private var latestRecording: Recording? = nil
     
     var body: some View {
         HStack {
@@ -50,8 +53,18 @@ struct ManageMonitoringButton: View {
                 }
                 .tint(self.viewModel.updating ? .red : .accentColor)
                 .disabled(self.activating)
-                .onChange(of: self.recordingViewModel.isRecording) { newValue in
-                    guard newValue else { return }
+                .onChange(of: self.recordingViewModel.isRecording) { isRecording in
+                    if !isRecording {
+                        if self.jumpAnalysisSettings.showAnalysisAfterRecording {
+                            let fetchRequest = Recording.fetchRequest()
+                            fetchRequest.sortDescriptors?.append(NSSortDescriptor(keyPath: \Recording.startTime, ascending: true))
+                            if let recording = try? PersistenceController.shared.container.viewContext.fetch(fetchRequest).first {
+                                self.latestRecording = recording
+                            }
+                        }
+                    }
+                    
+                    guard isRecording else { return }
                     if self.autoTimerSettings.autoTimerStopOn {
                         Timer.scheduledTimer(withTimeInterval: self.autoTimerSettings.autoTimerStopTime, repeats: false) { _ in
                             DispatchQueue.main.async {
@@ -76,7 +89,10 @@ struct ManageMonitoringButton: View {
             }
         }
         .sheet(isPresented: self.$showSettings) {
-            SettingsView(autoTimerSettingsViewModel: AutoTimerSettingsViewModel(autoTimerSettings: self.autoTimerSettings))
+            SettingsView(autoTimerSettingsViewModel: AutoTimerSettingsViewModel(autoTimerSettings: self.autoTimerSettings), jumpAnalysisViewModel: JumpAnalysisSettingsViewModel(jumpAnalysisSettings: self.jumpAnalysisSettings))
+        }
+        .sheet(item: self.$latestRecording) { recording in
+            JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: recording, trained: self.jumpAnalysisSettings.showTrainedAnalysis))
         }
     }
     
