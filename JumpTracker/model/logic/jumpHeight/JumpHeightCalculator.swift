@@ -7,15 +7,23 @@
 
 import Foundation
 import Accelerate
+import OSLog
+import os.log
 
 
 class JumpHeightCalculator {
+    private static let logger: Logger = Logger(subsystem: "JumpTracker", category: "JumpHeightCalculator")
+    private static let poiLog: OSLog = OSLog(subsystem: "JumpTracker", category: .pointsOfInterest)
+    
     private let recording: Recording
     private let filter: Filter?
     
     private var correctionFactor: Double = 1
     
     var calculatedJumpHeight: Double {
+        os_signpost(.begin, log: Self.poiLog, name: "calculateJumpHeight")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateJumpHeight") }
+        
         let relativeVerticalAcceleration: [Double] = self.relativeVerticalAccelerations
         
         let verticalPositions: [Double] = relativeVerticalAcceleration.reduce([]) { partialResult, accel in
@@ -29,21 +37,36 @@ class JumpHeightCalculator {
     }
     
     var measuredJumpHeight: Double {
+        os_signpost(.begin, log: Self.poiLog, name: "calculateMeasuredJumpHeight")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateMeasuredJumpHeight") }
+        
         guard let verticalHipPositions: [Double] = extractVerticalHipPosition(from: recording) else { return -1 }
         
         return self.calculateJumpHeight(positions: verticalHipPositions)
     }
     
     var verticalAccelerations: [Double] {
-        self.extractVerticalAcceleration(from: self.recording)
+        os_signpost(.begin, log: Self.poiLog, name: "calculateVerticalAccel")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateVerticalAccel") }
+        
+        return self.extractVerticalAcceleration(from: self.recording)
     }
     var filteredVerticalAccelerations: [Double] {
-        self.filter?.filter(self.verticalAccelerations) ?? self.verticalAccelerations
+        os_signpost(.begin, log: Self.poiLog, name: "calculateFilteredVerticalAccel")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateFilteredVerticalAccel") }
+        
+        let verticalAccelerations = self.verticalAccelerations
+        return self.filter?.filter(verticalAccelerations) ?? verticalAccelerations
     }
     var relativeVerticalAccelerations: [Double] {
-        var relativeVerticalAccelerations: [Double] = [self.filteredVerticalAccelerations.first ?? 0]
+        os_signpost(.begin, log: Self.poiLog, name: "calculateRelativeVerticalAccel")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateRelativeVerticalAccel") }
+        
+        let filteredVerticalAccelerations = self.filteredVerticalAccelerations
+        
+        var relativeVerticalAccelerations: [Double] = [filteredVerticalAccelerations.first ?? 0]
         for i in 1..<(recording.motions?.count ?? 0) {
-            let newAcceleration = self.filteredVerticalAccelerations[i] - self.filteredVerticalAccelerations[i-1]
+            let newAcceleration = filteredVerticalAccelerations[i] - filteredVerticalAccelerations[i-1]
             relativeVerticalAccelerations.append(newAcceleration)
         }
         return relativeVerticalAccelerations
@@ -65,6 +88,9 @@ class JumpHeightCalculator {
     }
     
     private func findFactor(measuredHeights: [Double], calculatedHeights: [Double]) -> Double {
+        os_signpost(.begin, log: Self.poiLog, name: "findCorrectionFactor")
+        defer { os_signpost(.end, log: Self.poiLog, name: "findCorrectionFactor") }
+        
         let minFactor = 0.5
         let maxFactor = 2.0
         let stepSize = 0.001
@@ -89,10 +115,14 @@ class JumpHeightCalculator {
                 minError = error
             }
         }
+        Self.logger.debug("best factor for correction is \(bestFactor) with an average error of \(minError)")
         return bestFactor
     }
     
     private func calculateJumpHeight(positions: [Double]) -> Double {
+        os_signpost(.begin, log: Self.poiLog, name: "calculateJumpHeight")
+        defer { os_signpost(.end, log: Self.poiLog, name: "calculateJumpHeight") }
+        
         guard !positions.isEmpty else { return -1 }
         
         let sortedPositions: [Double] = positions.sorted()
@@ -102,6 +132,9 @@ class JumpHeightCalculator {
     }
     
     private func extractVerticalAcceleration(from recording: Recording) -> [Double] {
+        os_signpost(.begin, log: Self.poiLog, name: "extractVerticalAccel")
+        defer { os_signpost(.end, log: Self.poiLog, name: "extractVerticalAccel") }
+        
         guard let motions: NSOrderedSet = recording.motions else {
             fatalError()
         }
