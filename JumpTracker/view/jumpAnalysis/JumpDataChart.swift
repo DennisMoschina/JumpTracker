@@ -18,7 +18,9 @@ struct JumpDataChart: View {
                 Text("N/A")
                     .font(.title)
             } else {
-                LineChart(values: self.jumpAnalysisViewModel[keyPath: self.dataKeyPath])
+                GroupBox {
+                    LineChart(values: self.jumpAnalysisViewModel[keyPath: self.dataKeyPath])
+                }
             }
         }
     }
