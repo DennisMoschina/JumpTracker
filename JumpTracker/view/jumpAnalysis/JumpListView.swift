@@ -31,6 +31,7 @@ struct JumpListView: View {
             .navigationDestination(for: Recording.self) { recording in
                 JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: recording, trained: true))
             }
+            .navigationTitle("Jump Recordings")
         }
     }
 }

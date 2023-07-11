@@ -92,7 +92,21 @@ struct ManageMonitoringButton: View {
             SettingsView(autoTimerSettingsViewModel: AutoTimerSettingsViewModel(autoTimerSettings: self.autoTimerSettings), jumpAnalysisViewModel: JumpAnalysisSettingsViewModel(jumpAnalysisSettings: self.jumpAnalysisSettings))
         }
         .sheet(item: self.$latestRecording) { recording in
-            JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: recording, trained: self.jumpAnalysisSettings.showTrainedAnalysis))
+            if self.jumpAnalysisSettings.showMeasured {
+                JumpAnalysisView(jumpCalculatorViewModel: JumpCalculatorViewModel(recording: recording, trained: self.jumpAnalysisSettings.showTrainedAnalysis))
+            }
+            else {
+                let vm = JumpCalculatorViewModel(recording: recording, trained: self.jumpAnalysisSettings.showTrainedAnalysis)
+                NavigationStack {
+                    HStack {
+                        Text("Jump Height")
+                        Text("\(vm.calculatedJumpHeight)")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    .navigationTitle("Jump Analysis")
+                }
+            }
         }
     }
     
