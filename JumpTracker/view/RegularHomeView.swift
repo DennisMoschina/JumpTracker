@@ -11,6 +11,7 @@ enum MainNavigation: Int, CaseIterable, Identifiable {
     case current
     case charts
     case recordingsList
+    case jumpAnalysis
     
     var id: Int {
         self.rawValue
@@ -24,6 +25,8 @@ enum MainNavigation: Int, CaseIterable, Identifiable {
             return "Charts"
         case .recordingsList:
             return "Recordings"
+        case .jumpAnalysis:
+            return "Jump Analysis"
         }
     }
     var imageName: String {
@@ -34,6 +37,8 @@ enum MainNavigation: Int, CaseIterable, Identifiable {
             return "chart.xyaxis.line"
         case .recordingsList:
             return "recordingtape"
+        case .jumpAnalysis:
+            return "waveform.and.magnifyingglass"
         }
     }
 }
@@ -57,11 +62,14 @@ struct RegularHomeView: View {
             switch self.selectedNavigation {
             case .current:
                 TrackingView(motionViewModel: self.motionViewModel,
-                            recordingViewModel: self.recordingViewModel)
+                             recordingViewModel: self.recordingViewModel)
             case.charts:
                 ValuesView(viewModel: self.motionViewModel)
             case .recordingsList:
                 RecordingsListView()
+                    .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
+            case .jumpAnalysis:
+                JumpListView()
                     .environment(\.managedObjectContext, self.persistenceController.container.viewContext)
             case .none:
                 Text("Select a View")

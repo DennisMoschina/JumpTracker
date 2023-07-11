@@ -43,7 +43,10 @@
 		95643EF12912E037009C2628 /* SIMDQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF02912E037009C2628 /* SIMDQuaternion.swift */; };
 		95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF22912E097009C2628 /* SIMDAttitude.swift */; };
 		95643EF52912E0FA009C2628 /* SIMDRotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */; };
-		959ED9012972F56B000FF474 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED9002972F56B000FF474 /* ValuesView.swift */; };
+		9575E3C52A5C92020059B66D /* JumpDataChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575E3C42A5C92020059B66D /* JumpDataChart.swift */; };
+		9575E3C72A5C97270059B66D /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575E3C62A5C97270059B66D /* LineChart.swift */; };
+		9575E3CB2A5D50BA0059B66D /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575E3CA2A5D50BA0059B66D /* ValuesView.swift */; };
+		9575E3CD2A5D536A0059B66D /* JumpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575E3CC2A5D536A0059B66D /* JumpListView.swift */; };
 		959ED90329741FB4000FF474 /* RecordingChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED90229741FB4000FF474 /* RecordingChartsView.swift */; };
 		959ED905297420F9000FF474 /* RecordingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959ED904297420F9000FF474 /* RecordingChart.swift */; };
 		95B855F22A5C26C100FA87E9 /* JumpAnalysisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B855F12A5C26C100FA87E9 /* JumpAnalysisSettings.swift */; };
@@ -112,7 +115,10 @@
 		95643EF02912E037009C2628 /* SIMDQuaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDQuaternion.swift; sourceTree = "<group>"; };
 		95643EF22912E097009C2628 /* SIMDAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDAttitude.swift; sourceTree = "<group>"; };
 		95643EF42912E0FA009C2628 /* SIMDRotationMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDRotationMatrix.swift; sourceTree = "<group>"; };
-		959ED9002972F56B000FF474 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
+		9575E3C42A5C92020059B66D /* JumpDataChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpDataChart.swift; sourceTree = "<group>"; };
+		9575E3C62A5C97270059B66D /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		9575E3CA2A5D50BA0059B66D /* ValuesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
+		9575E3CC2A5D536A0059B66D /* JumpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListView.swift; sourceTree = "<group>"; };
 		959ED90229741FB4000FF474 /* RecordingChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingChartsView.swift; sourceTree = "<group>"; };
 		959ED904297420F9000FF474 /* RecordingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingChart.swift; sourceTree = "<group>"; };
 		95B855F12A5C26C100FA87E9 /* JumpAnalysisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpAnalysisSettings.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 		950D31272909E5EB00874EBF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				9575E3C32A5C91D50059B66D /* jumpAnalysis */,
 				9510E4F5293A8F99009A2562 /* helper */,
 				950D30FF2909E5D000874EBF /* TrackingView.swift */,
 				950D3144290AADAB00874EBF /* LiveMotionChart.swift */,
@@ -215,9 +222,8 @@
 				9510E4EF293A13BE009A2562 /* HomeView.swift */,
 				9510E4F1293A145D009A2562 /* CompactHomeView.swift */,
 				9510E4F3293A1503009A2562 /* RegularHomeView.swift */,
-				959ED9002972F56B000FF474 /* ValuesView.swift */,
+				9575E3CA2A5D50BA0059B66D /* ValuesView.swift */,
 				95DBFC802A434B850022D8F8 /* ARViewContainer.swift */,
-				95E351E62A570B2100078538 /* JumpAnalysisView.swift */,
 				95E351EE2A59654300078538 /* SettingsView.swift */,
 			);
 			path = view;
@@ -323,6 +329,17 @@
 				9510E4F6293A8FC3009A2562 /* ManageMonitoringButton.swift */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		9575E3C32A5C91D50059B66D /* jumpAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				9575E3C42A5C92020059B66D /* JumpDataChart.swift */,
+				9575E3C62A5C97270059B66D /* LineChart.swift */,
+				95E351E62A570B2100078538 /* JumpAnalysisView.swift */,
+				9575E3CC2A5D536A0059B66D /* JumpListView.swift */,
+			);
+			path = jumpAnalysis;
 			sourceTree = "<group>";
 		};
 		95CB24202919443000299821 /* simd */ = {
@@ -440,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95DBFC8F2A43571B0022D8F8 /* SkeletonJoint.swift in Sources */,
+				9575E3CD2A5D536A0059B66D /* JumpListView.swift in Sources */,
 				95D03FED29153AA000C6B7C9 /* RotationMatrix.swift in Sources */,
 				95CB241D2917349500299821 /* Speed.swift in Sources */,
 				95B855F42A5C272700FA87E9 /* JumpAnalysisSettingsViewModel.swift in Sources */,
@@ -450,7 +468,6 @@
 				95E351E22A55C63D00078538 /* LowPassFilter.swift in Sources */,
 				9544AD2929475EF200C92BC4 /* Precision.swift in Sources */,
 				95E351E72A570B2100078538 /* JumpAnalysisView.swift in Sources */,
-				959ED9012972F56B000FF474 /* ValuesView.swift in Sources */,
 				9544ACF82946252F00C92BC4 /* AbsoluteDistance.swift in Sources */,
 				95E351EF2A59654300078538 /* SettingsView.swift in Sources */,
 				95E351F12A598B8600078538 /* Util.swift in Sources */,
@@ -462,6 +479,7 @@
 				95DBFC812A434B860022D8F8 /* ARViewContainer.swift in Sources */,
 				95D03FE729151C1B00C6B7C9 /* CMExtensions.swift in Sources */,
 				9510E4F2293A145D009A2562 /* CompactHomeView.swift in Sources */,
+				9575E3C52A5C92020059B66D /* JumpDataChart.swift in Sources */,
 				9504E89A29106C9C0009D563 /* SIMDSpeed.swift in Sources */,
 				9510E4F4293A1503009A2562 /* RegularHomeView.swift in Sources */,
 				95E351ED2A59618800078538 /* AutoTimerSettingsViewModel.swift in Sources */,
@@ -474,6 +492,7 @@
 				9510E4F7293A8FC3009A2562 /* ManageMonitoringButton.swift in Sources */,
 				95B855F22A5C26C100FA87E9 /* JumpAnalysisSettings.swift in Sources */,
 				950D314A290AE94A00874EBF /* EwmaFilter.swift in Sources */,
+				9575E3C72A5C97270059B66D /* LineChart.swift in Sources */,
 				959ED905297420F9000FF474 /* RecordingChart.swift in Sources */,
 				9517474229199B6E007C3308 /* Main.xcdatamodeld in Sources */,
 				950D3134290A7F2E00874EBF /* MotionViewModel.swift in Sources */,
@@ -484,6 +503,7 @@
 				9517474429199CCE007C3308 /* MotionCoreDataRecorder.swift in Sources */,
 				95E351E52A56F68800078538 /* JumpHeightCalculator.swift in Sources */,
 				9504E8A9291165F70009D563 /* HeadingView.swift in Sources */,
+				9575E3CB2A5D50BA0059B66D /* ValuesView.swift in Sources */,
 				95DBFC912A4357730022D8F8 /* SkeletonBone.swift in Sources */,
 				95D03FE929153A3500C6B7C9 /* Acceleration.swift in Sources */,
 				95643EF32912E097009C2628 /* SIMDAttitude.swift in Sources */,

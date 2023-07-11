@@ -16,21 +16,7 @@ class JumpHeightCalculator {
     private var correctionFactor: Double = 1
     
     var calculatedJumpHeight: Double {
-        guard let motions: NSOrderedSet = self.recording.motions else {
-            return -1
-        }
-        let accelerations: [Acceleration] = motions.compactMap { motion in
-            (motion as? CDMotion)?.userAcceleration
-        }
-        var verticalAccelerations: [Double] = accelerations.map { $0.z }
-        if let filter = self.filter {
-            verticalAccelerations = filter.filter(verticalAccelerations)
-        }
-        var relativeVerticalAcceleration: [Double] = [verticalAccelerations[0]]
-        for i in 1..<verticalAccelerations.count {
-            let newAcceleration = verticalAccelerations[i] - verticalAccelerations[i-1]
-            relativeVerticalAcceleration.append(newAcceleration)
-        }
+        let relativeVerticalAcceleration: [Double] = self.relativeVerticalAccelerations
         
         let verticalPositions: [Double] = relativeVerticalAcceleration.reduce([]) { partialResult, accel in
             var newResult = partialResult
@@ -43,18 +29,24 @@ class JumpHeightCalculator {
     }
     
     var measuredJumpHeight: Double {
-        guard let hipPositions: NSOrderedSet = self.recording.hipPositions else {
-            return -1
-        }
-        guard hipPositions.count > 0 else { return -1 }
-        
-        let verticalHipPositions: [Double] = hipPositions.compactMap {
-            if let f = ($0 as? CDPosition)?.y {
-                return Double(f)
-            } else { return nil }
-        }
+        guard let verticalHipPositions: [Double] = extractVerticalHipPosition(from: recording) else { return -1 }
         
         return self.calculateJumpHeight(positions: verticalHipPositions)
+    }
+    
+    var verticalAccelerations: [Double] {
+        self.extractVerticalAcceleration(from: self.recording)
+    }
+    var filteredVerticalAccelerations: [Double] {
+        self.filter?.filter(self.verticalAccelerations) ?? self.verticalAccelerations
+    }
+    var relativeVerticalAccelerations: [Double] {
+        var relativeVerticalAccelerations: [Double] = [self.filteredVerticalAccelerations.first ?? 0]
+        for i in 1..<(recording.motions?.count ?? 0) {
+            let newAcceleration = self.filteredVerticalAccelerations[i] - self.filteredVerticalAccelerations[i-1]
+            relativeVerticalAccelerations.append(newAcceleration)
+        }
+        return relativeVerticalAccelerations
     }
     
     init(recording: Recording, filter: Filter? = nil) {
@@ -107,5 +99,20 @@ class JumpHeightCalculator {
         let ground: Double = sortedPositions[sortedPositions.count / 2]
         let maxHeight = positions.max() ?? ground
         return maxHeight - ground
+    }
+    
+    private func extractVerticalAcceleration(from recording: Recording) -> [Double] {
+        guard let motions: NSOrderedSet = recording.motions else {
+            fatalError()
+        }
+        guard motions.count > 0 else { fatalError() }
+        
+        return motions.map {
+            if let f = ($0 as? CDMotion)?.userAcceleration?.z {
+                return Double(f)
+            } else {
+                fatalError()
+            }
+        }
     }
 }

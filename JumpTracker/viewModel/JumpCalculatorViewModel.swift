@@ -12,6 +12,13 @@ class JumpCalculatorViewModel: ObservableObject {
     @Published var calculatedJumpHeight: Double = 0
     @Published var measuredJumpHeight: Double = 0
     
+    @Published var verticalHipPositions: [Double]
+    
+    @Published var verticalAcceleration: [Double]
+    @Published var filteredVerticalAcceleration: [Double]
+    @Published var relativeVerticalAcceleration: [Double]
+    
+
     private let jumpCalculator: JumpHeightCalculator
     
     convenience init(recording: Recording, trained: Bool, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
@@ -25,7 +32,14 @@ class JumpCalculatorViewModel: ObservableObject {
     }
     
     init(recording: Recording, trainedOn recordings: [Recording] = []) {
-        self.jumpCalculator = JumpHeightCalculator(recording: recording, filter: LowPassFilter(a: [1, -3.9926486, 6.45953643, -5.28227516 , 2.18014463, -0.36291277], b: [5.76413529e-05, 2.88206765e-04, 5.76413529e-04, 5.76413529e-04, 2.88206765e-04, 5.76413529e-05]))
+        let jumpCalculator = JumpHeightCalculator(recording: recording, filter: LowPassFilter(a: [1, -3.9926486, 6.45953643, -5.28227516 , 2.18014463, -0.36291277], b: [5.76413529e-05, 2.88206765e-04, 5.76413529e-04, 5.76413529e-04, 2.88206765e-04, 5.76413529e-05]))
+        self.jumpCalculator = jumpCalculator
+        self.verticalHipPositions = extractVerticalHipPosition(from: recording) ?? []
+        
+        self.verticalAcceleration = jumpCalculator.verticalAccelerations
+        self.filteredVerticalAcceleration = jumpCalculator.filteredVerticalAccelerations
+        self.relativeVerticalAcceleration = jumpCalculator.relativeVerticalAccelerations
+        
         if !recordings.isEmpty {
             self.jumpCalculator.train(with: recordings)
         }
